@@ -1,9 +1,10 @@
+import Landing from "./LandingComponents/Landing"
 
 function App() {
 
   return (
-    <div className="min-h-screen bg-blue-300">
-      hello world
+    <div className="min-h-screen bg-[#ffffff] font-Public">
+      <Landing />
     </div>
   )
 }

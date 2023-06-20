@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'Public': ['Public Sans', 'sans-serif']
+    }
   },
   plugins: [],
 }

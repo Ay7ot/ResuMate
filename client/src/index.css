@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.landingShadow {
+  background: #ffffff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.gradient {
+  background: linear-gradient(90deg, #64C2DB 13.89%, #7476ED 36.94%, #C994DF 59.2%, #E56F8C 88.89%);
+}
+
+.landing-bg {
+  background-image: url(../public/landingbackground.png);
+  background-position: center;
+  background-size: cover;
+}
+
+/* @media screen and (min-width:1024px) {
+  .landing-bg{
+    top: -57px;
+  }
+} */
