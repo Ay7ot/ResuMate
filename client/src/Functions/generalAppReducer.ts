@@ -3,6 +3,17 @@ import { GeneralAppActionType, GeneralAppContextType } from "../Types/GeneralApp
 export function generalAppReducer(state: GeneralAppContextType, action: GeneralAppActionType){
     switch(action.type){
 
+        case 'showNavBar':
+            return {
+                ...state,
+                navShown: true
+            }
+        case 'hideNavBar':
+            return {
+                ...state,
+                navShown: false
+            }
+        
 
         default:
             return state

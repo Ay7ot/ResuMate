@@ -14,13 +14,18 @@
 }
 
 .landing-bg {
-  background-image: url(../public/landingbackground.png);
+  background-image: url(../landingbackground.png);
   background-position: center;
   background-size: cover;
 }
 
-/* @media screen and (min-width:1024px) {
-  .landing-bg{
-    top: -57px;
-  }
+/* .outside {
+  opacity: 0;
+  transform: translate3d(-250px, 0, 0);
+}
+
+.fade-in-right {
+  opacity: 1;
+  transition: 1s all ease-in;
+  transform: translate3d(0,0,0);
 } */
