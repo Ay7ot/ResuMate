@@ -47,7 +47,7 @@ export default function Landing() {
     return () => {
       window.removeEventListener("click", handleClickOutside);
     };
-  });
+  }, [showLogin, dispatch]);
 
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function Landing() {
     return () => {
       window.removeEventListener("click", handleClickOutside);
     };
-  });
+  }, [showSignup, dispatch]);
 
   function hideNavBar(){
     dispatch({

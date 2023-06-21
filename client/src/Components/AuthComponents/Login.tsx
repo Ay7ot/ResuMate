@@ -24,7 +24,6 @@ export default function Login() {
             }
         })
         hideLoginPage()
-        
     }
 
     return (

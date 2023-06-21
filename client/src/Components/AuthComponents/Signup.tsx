@@ -49,11 +49,13 @@ export default function Signup() {
                 <form className="flex flex-col gap-3 mt-6">
                     <input 
                         type="email"
-                        className="w-full outline-none border-b-[1px] border-[#000000]"
+                        className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1.1rem]"
+                        placeholder="Email"
                     />
                     <input 
                         type="password"
-                        className="w-full outline-none border-b-[1px] border-[#000000]"
+                        className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1.1rem]"
+                        placeholder="Password"
                     />
                     
                     <input 
@@ -70,7 +72,7 @@ export default function Signup() {
                 </div>
                 <button className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
                     <i className="text-[1.7rem]"><FcGoogle /></i>
-                    <p>Login up with Google</p>
+                    <p>Sign up with Google</p>
                 </button>
             </div>
             <footer className="text-center text-[1.125rem]">Already have an account? <span onClick={(e)=>{e.stopPropagation(); showLoginPage()}} className="py-1 border-b-[1px] border-[#192657] text-[#192657]">Login</span> </footer>
