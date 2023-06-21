@@ -6,7 +6,9 @@ import { generalAppReducer } from '../Functions/generalAppReducer'
 export const GeneralAppContext = createContext<GeneralAppContextType>({
     theme: 'light',
     dispatch: ()=>{return},
-    navShown: false
+    navShown: false,
+    showSignup: false,
+    showLogin: false
 })
 
 export function GeneralAppProvider({children}: {children: ReactNode}){
@@ -14,7 +16,7 @@ export function GeneralAppProvider({children}: {children: ReactNode}){
     const value = useGeneralAppContext()
 
     const [mainstate, dispatch] = useReducer(generalAppReducer, value)
-    
+
     console.log(mainstate)
     return (
         <GeneralAppContext.Provider value={{...mainstate, dispatch}}>

@@ -3,7 +3,7 @@ import { useGeneralAppContext } from '../../Functions/useGeneralAppContext'
 
 export default function Navlanding() {
 
-  const {  dispatch } = useGeneralAppContext()
+  const {  dispatch, navShown, showLogin, showSignup } = useGeneralAppContext()
 
   function showNavBar(){
     dispatch({
@@ -13,12 +13,12 @@ export default function Navlanding() {
 
   return (
     <>
-    <div className='w-full sticky top-0 landingShadow py-[1rem] px-8 md:px-[3rem] lg:px-[6rem] flex justify-between'>
+    <div className={`w-full z-[999999] sticky top-0 landingShadow py-[1rem] px-8 md:px-[3rem] lg:px-[6rem] flex justify-between ${navShown || showLogin || showSignup ? '' : 'bg-[#ffffff]'}`}>
         <div className="flex items-center gap-2">
             <img src="resumateIcon.png" className="w-[25px] md:w-[30px]"/>
             <p className="text-[#192657] font-bold  text-xl md:text-[1.5rem]">ResuMate</p>
         </div>
-        <div className='hidden lg:block'>
+        <div className='hidden md:block'>
             <button className="w-[10rem] px-[28px] py-[12px] ">Login</button>
             <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]">Create Resume</button>
         </div>
