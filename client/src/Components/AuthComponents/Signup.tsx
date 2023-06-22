@@ -31,7 +31,7 @@ export default function Signup() {
     return (
         <>
         {showSignup && 
-        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:p-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] min-h-screen">
+        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] min-h-screen">
             <div>
                 <div className="flex items-center  md:px-3 justify-between">
                     <div></div>
@@ -48,21 +48,21 @@ export default function Signup() {
                 <form className="flex flex-col gap-3 mt-6">
                     <input 
                         type="email"
-                        className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1.1rem]"
+                        className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
                         placeholder="Email"
                     />
                     <input 
                         type="password"
-                        className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1.1rem]"
+                        className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
                         placeholder="Password"
                     />
                     
                     <input 
                         type="password"
-                        className="w-full outline-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1.1rem]"
+                        className="w-full outline-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1rem]"
                         placeholder="Confirm Password"
                     />
-                    <button className="z-[99999] mt-14 w-full text-center py-4 rounded-md gradient text-[#ffffff]">Sign up</button>
+                    <button className="z-[99999] mt-14 md:mt-6 w-full text-center py-4 rounded-md gradient text-[#ffffff]">Sign up</button>
                 </form>
                 <div className="flex items-center justify-between gap-6 mt-8">
                     <div className="h-[1px] w-full border-[1px]"></div>
@@ -74,7 +74,7 @@ export default function Signup() {
                     <p>Sign up with Google</p>
                 </button>
             </div>
-            <footer className="text-center text-[1.125rem]">Already have an account? <span onClick={(e)=>{e.stopPropagation(); showLoginPage()}} className="py-1 border-b-[1px] border-[#192657] text-[#192657]">Login</span> </footer>
+            <footer className="mt-4 text-center text-[1.125rem]">Already have an account? <span onClick={(e)=>{e.stopPropagation(); showLoginPage()}} className="cursor-pointer py-1 border-b-[1px] border-[#192657] text-[#192657]">Login</span> </footer>
         </div>}
         </>
     )

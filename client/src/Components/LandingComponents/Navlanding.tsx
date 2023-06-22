@@ -23,9 +23,9 @@ export default function Navlanding() {
   }
   function showSignupPage(){
     dispatch({
-        type: 'setShowLogin',
+        type: 'setShowSignup',
         payload: {
-            showLoginPayload: true
+            showSignupPayload: true
         }
     })
     
