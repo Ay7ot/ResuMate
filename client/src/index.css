@@ -30,3 +30,9 @@
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
 }
+
+.imageOutline:hover {
+  border-image: linear-gradient(#64C2DB, #7476ED, #C994DF, #E56F8C) 30;
+  border-width: 2px;
+  border-style: solid;
+}
