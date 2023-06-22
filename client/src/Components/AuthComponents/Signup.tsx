@@ -31,14 +31,13 @@ export default function Signup() {
     return (
         <>
         {showSignup && 
-        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] h-screen">
+        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:p-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] min-h-screen">
             <div>
-                <div className="flex items-center  px-3 justify-between">
+                <div className="flex items-center  md:px-3 justify-between">
                     <div></div>
                     <div className="flex items-center gap-2">
                         <img 
                             src="resumateIcon.png"
-                            className=""
                         />
                         <p className="text-[#192657] font-bold  text-lg md:text-[1.3rem]">ResuMate</p>
                     </div>
