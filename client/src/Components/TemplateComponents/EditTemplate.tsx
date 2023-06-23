@@ -1,12 +1,13 @@
-import { useLocation } from "react-router-dom"
-import Istanbul from "./Istanbul"
+// import { useLocation } from "react-router-dom"
+// import Istanbul from "./Istanbul"
 import { useRef } from "react"
 import html2pdf from "html2pdf.js"
+import Porto from "./Porto"
 
 export default function EditTemplate() {
 
-    const location = useLocation()
-    const template = location.state
+    // const location = useLocation()
+    // const template = location.state
 
     
     const itemref = useRef<HTMLDivElement | null>(null)
@@ -34,9 +35,10 @@ export default function EditTemplate() {
     }
     
     return (
-        <div className="p-3">
-            <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
-            <Istanbul itemref={itemref}/>
-        </div>
+      <div className="p-3">
+        <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
+        {/* <Istanbul itemref={itemref}/> */}
+        <Porto />
+      </div>
     )
 }
