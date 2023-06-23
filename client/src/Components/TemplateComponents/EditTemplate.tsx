@@ -15,7 +15,7 @@ export default function EditTemplate() {
 
 
         const toDownload = itemref.current
-        
+        console.log('...is downloading')
         if(toDownload){
     
           const opt = {
@@ -29,6 +29,7 @@ export default function EditTemplate() {
           html2pdf().from(toDownload).set(opt).save('document.pdf')
     
         }
+        console.log('has downloaded ')
 
     }
     
