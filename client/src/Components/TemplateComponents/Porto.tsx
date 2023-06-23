@@ -65,6 +65,7 @@ export default function Porto() {
                             </div>
                         </section>
                     </div>
+                    
                     <div className="w-[30%] p-6">
                         <section>
                             <h2 className="text-sm font-semibold text-[#333333]">CONTACT</h2>

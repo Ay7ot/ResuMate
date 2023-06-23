@@ -2,7 +2,8 @@
 // import Istanbul from "./Istanbul"
 import { useRef } from "react"
 import html2pdf from "html2pdf.js"
-import Porto from "./Porto"
+// import Porto from "./Porto"
+import Lisbon from "./Lisbon"
 
 export default function EditTemplate() {
 
@@ -38,7 +39,8 @@ export default function EditTemplate() {
       <div className="p-3">
         <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
         {/* <Istanbul itemref={itemref}/> */}
-        <Porto />
+        {/* <Porto /> */}
+        <Lisbon />
       </div>
     )
 }
