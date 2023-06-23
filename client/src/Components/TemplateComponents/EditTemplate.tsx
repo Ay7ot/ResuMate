@@ -1,12 +1,41 @@
 import { useLocation } from "react-router-dom"
+import Istanbul from "./Istanbul"
+import { useRef } from "react"
+import html2pdf from "html2pdf.js"
 
 export default function EditTemplate() {
 
     const location = useLocation()
     const template = location.state
+
+    
+    const itemref = useRef<HTMLDivElement | null>(null)
+
+    async function generatePdf(){
+
+
+        const toDownload = itemref.current
+        
+        if(toDownload){
+    
+          const opt = {
+            margin:       0.1,
+            filename:     'myfile.pdf',
+            image:        { type: 'png', quality: 0.98 },
+            // html2canvas:  { scale: 1 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+          };
+    
+          html2pdf().from(toDownload).set(opt).save('document.pdf')
+    
+        }
+
+    }
+    
     return (
-        <div>
-            {template.name}
+        <div className="p-3">
+            <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
+            <Istanbul itemref={itemref}/>
         </div>
     )
 }
