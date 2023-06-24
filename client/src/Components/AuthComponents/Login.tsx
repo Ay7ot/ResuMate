@@ -27,7 +27,7 @@ export default function Login() {
     }
 
     return (
-        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] min-h-screen">
+        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] min-h-[100dvh]">
             <div>
                 <div className="flex items-center md:px-3 justify-between">
                     <div></div>
@@ -45,12 +45,12 @@ export default function Login() {
                 <form className="flex flex-col gap-3 mt-6">
                     <input 
                         type="email"
-                        className="w-full outline-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1rem]"
+                        className="w-full outline-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1rem]  focus:mt-3"
                         placeholder="Email"
                     />
                     <input 
                         type="password"
-                        className="w-full outline-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1rem]"
+                        className="w-full outline-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1rem] focus:mt-3"
                         placeholder="Password"
                     />
                     <button className="z-[99999] mt-14 md:mt-6 w-full text-center py-4 rounded-md gradient text-[#ffffff]">Login</button>

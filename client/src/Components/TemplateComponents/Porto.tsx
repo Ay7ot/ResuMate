@@ -5,7 +5,7 @@ export default function Porto() {
     const itemref = useRef<HTMLDivElement | null>(null)
 
     return (
-        <div className='min-h-[1030px] bg-[#f4f5fd]' ref={itemref}>
+        <div className=' min-h-[841px] w-[595px] bg-[#f4f5fd]' ref={itemref}>
             <div className='h-full'>
                 <section className="bg-[#4FC133] p-6 ">
                     <h1 className="text-[2rem] text-white font-semibold">Name Surname</h1>

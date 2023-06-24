@@ -5,7 +5,7 @@ import EditTemplate from "./TemplateComponents/EditTemplate"
 function App() {
 
   return (
-    <div className="min-h-screen bg-[#ffffff] font-Public">
+    <div className="min-h-[100dvh] bg-[#ffffff] font-Public">
       <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/templates" element={<ChooseTemplate />} />

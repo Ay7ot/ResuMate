@@ -1,15 +1,15 @@
-// import { useLocation } from "react-router-dom"
-// import Istanbul from "./Istanbul"
+import { useLocation } from "react-router-dom"
+import Istanbul from "./Istanbul"
 import { useRef } from "react"
 import html2pdf from "html2pdf.js"
-// import Porto from "./Porto"
-// import Lisbon from "./Lisbon"
+import Porto from "./Porto"
+import Lisbon from "./Lisbon"
 import Madrid from "./Madrid"
 
 export default function EditTemplate() {
 
-    // const location = useLocation()
-    // const template = location.state
+    const location = useLocation()
+    const template = location.state
 
     
     const itemref = useRef<HTMLDivElement | null>(null)
@@ -22,11 +22,14 @@ export default function EditTemplate() {
         if(toDownload){
     
           const opt = {
-            margin:       0.1,
+            margin:       0,
             filename:     'myfile.pdf',
-            image:        { type: 'png', quality: 0.98 },
-            // html2canvas:  { scale: 1 },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            image:        { type: 'png', quality: 1 },
+            html2canvas:  { scale: 1, useCORS: true },
+            jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' },
+            pagebreak: {
+              mode: 'avoid-all'
+            },
           };
     
           html2pdf().from(toDownload).set(opt).save('document.pdf')
@@ -37,12 +40,25 @@ export default function EditTemplate() {
     }
     
     return (
-      <div className="p-3">
-        <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
-        {/* <Istanbul itemref={itemref}/> */}
-        {/* <Porto /> */}
-        {/* <Lisbon /> */}
-        <Madrid itemref={itemref}/>
+      <div className='flex lg:w-screen'>
+        <div className='lg:w-[70%] w-full'>
+          hey
+        </div>
+        <div className='hidden lg:block bg-[#FAFAFA] min-h-[100dvh]'>
+          <div className='chosenTemplate w-[595px] mt-[-8rem] mb-[-10rem]'>
+            {
+              template.name === 'Istanbul' ? <Istanbul itemref={itemref}/> 
+              :template.name === 'Porto' ? <Porto />
+              :template.name === 'Lisbon' ? <Lisbon />
+              :template.name === 'Madrid' ? <Madrid itemref={itemref}/>
+              : <Istanbul itemref={itemref}/>
+            }
+          </div>
+          
+          <div className='px-[7.9rem]'>
+              <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
+          </div>
+        </div>
       </div>
     )
 }

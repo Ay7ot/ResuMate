@@ -36,3 +36,8 @@
   border-width: 2px;
   border-style: solid;
 }
+
+.chosenTemplate {
+  transform: scale(0.58);
+  transform-origin: center;
+}
