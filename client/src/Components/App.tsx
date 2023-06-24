@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#ffffff] font-Public">
       <Routes>
-          <Route path="/landing" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/templates" element={<ChooseTemplate />} />
           <Route path="/edit-template" element={<EditTemplate />} />
       </Routes>

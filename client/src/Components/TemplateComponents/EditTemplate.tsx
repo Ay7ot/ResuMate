@@ -32,7 +32,7 @@ export default function EditTemplate() {
           html2pdf().from(toDownload).set(opt).save('document.pdf')
     
         }
-        console.log('has downloaded ')
+        console.log('has downloaded')
 
     }
     
