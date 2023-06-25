@@ -27,9 +27,9 @@ export default function EditTemplate() {
             image:        { type: 'png', quality: 1 },
             html2canvas:  { scale: 1, useCORS: true },
             jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' },
-            pagebreak: {
-              mode: 'avoid-all'
-            },
+            // pagebreak: {
+            //   mode: 'avoid-all'
+            // },
           };
     
           html2pdf().from(toDownload).set(opt).save('document.pdf')
@@ -41,7 +41,7 @@ export default function EditTemplate() {
     
     return (
       <div className='flex lg:w-screen'>
-        <div className='lg:w-[70%] w-full'>
+        <div className='lg:w-[70%] w-full px-10 md:px-24'>
           hey
         </div>
         <div className='hidden lg:block bg-[#FAFAFA] min-h-[100dvh]'>
