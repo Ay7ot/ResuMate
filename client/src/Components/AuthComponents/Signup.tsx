@@ -1,11 +1,13 @@
 import { RxCross1 } from "react-icons/rx";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { FcGoogle } from 'react-icons/fc'
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
 
     const { dispatch, showSignup} = useGeneralAppContext()
     
+    const history = useNavigate()
 
 
     function hideSignupPage(){
@@ -28,6 +30,13 @@ export default function Signup() {
         
     }
 
+    const signupUser = () => {
+
+        setTimeout(()=>{
+           history('/templates')
+        },1000)
+    }
+
     return (
         <>
         {showSignup && 
@@ -45,7 +54,7 @@ export default function Signup() {
                 </div>
                 <hr  className="mt-6"/>
                 <h2 className="text-center mt-9 text-[#192657] text-[1.5rem] font-semibold">Sign up to Create Resume</h2>
-                <form className="flex flex-col gap-3 mt-6">
+                <form onClick={(e)=>{e.preventDefault(); signupUser()}} className="flex flex-col gap-3 mt-6">
                     <input 
                         type="email"
                         className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
@@ -69,7 +78,7 @@ export default function Signup() {
                     <p className="text-[#121212] text-[1.125rem]">or</p>
                     <div className="h-[1px] w-full border-[1px]"></div>
                 </div>
-                <button className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
+                <button onClick={signupUser} className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
                     <i className="text-[1.7rem]"><FcGoogle /></i>
                     <p>Sign up with Google</p>
                 </button>
