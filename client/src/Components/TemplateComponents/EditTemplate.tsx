@@ -1,10 +1,11 @@
 import { useLocation } from "react-router-dom"
 import Istanbul from "./Istanbul"
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import html2pdf from "html2pdf.js"
 import Porto from "./Porto"
 import Lisbon from "./Lisbon"
 import Madrid from "./Madrid"
+import TemplateDetails from "./TemplateDetails"
 
 export default function EditTemplate() {
 
@@ -14,6 +15,10 @@ export default function EditTemplate() {
     
     const itemref = useRef<HTMLDivElement | null>(null)
 
+    useEffect(()=>{
+      window.scrollTo(0,0)
+    })
+    
     async function generatePdf(){
 
 
@@ -41,8 +46,8 @@ export default function EditTemplate() {
     
     return (
       <div className='flex lg:w-screen'>
-        <div className='lg:w-[70%] w-full px-10 md:px-24'>
-          hey
+        <div className='lg:w-[70%] pt-16 w-full px-10 md:px-24'>
+          <TemplateDetails />
         </div>
         <div className='hidden lg:block bg-[#FAFAFA] min-h-[100dvh]'>
           <div className='chosenTemplate w-[595px] mt-[-8rem] mb-[-10rem]'>

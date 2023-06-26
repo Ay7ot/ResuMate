@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom"
 import NavTemplates from "./NavTemplates"
+import { useEffect } from 'react'
 
 export default function ChooseTemplate() {
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    })
 
     const resumeTemplates = [
         {
