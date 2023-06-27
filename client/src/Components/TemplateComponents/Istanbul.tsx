@@ -77,6 +77,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                             <li className="text-[10px] text-[#7D7D7D] mt-2">Neque eu quisque porttitor leo viverra tortor pharetra. Porttitor arcu gravida amet tristique. Consectetur lectus sit egestas viverra nulla. </li>
                         </ul>
                     </div>
+                    
                 </section>
                 <section className="mt-4">
                     <h2 className="text-[#0E9FC1] text-xs font-semibold">EDUCATION</h2>

@@ -13,7 +13,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                 </div>
             </div>
             <div className="flex mt-3">
-                <div className="w-[30%] p-6 bg-[#3780C333]">
+                <div className="w-[30%] min-h-[500px] p-6 bg-[#3780C333]">
                     <section>
                         <h2 className="text-xs font-semibold text-[#333333]">SKILLS</h2>
                         <ul className="px-4 list-disc mt-3">
@@ -49,22 +49,6 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                     <section className="mt-5">
                         <h2 className="text-xs font-semibold text-[#3780C3]">WORK EXPERIENCE</h2>
                         <hr  className="border-t-[1px] border-[#C4C4C4] mt-1"/>
-                        <div className='flex gap-4 mt-3'>
-                            <p className="text-[10px] text-[#333333] w-[18%]">
-                                Month 20xx - <br />
-                                Month 20xx
-                            </p>
-                            <div className="w-[82%]">
-                                <h3 className='text-[#3780C3] text-[10px]'>JOB TITLE</h3>
-                                <h4 className="text-[10px] text-[#333333]">Company Name</h4>
-                                <ul className="list-disc pl-6">
-                                    <li className="text-[10px] text-[#7D7D7D] ">Lorem ipsum dolor sit amet consectetur. Quisque morbi turpis semper at adipiscing. Quam sagittis quis tempus mattis diam. </li>
-                                    <li className="text-[10px] text-[#7D7D7D]">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
-                                    <li className="text-[10px] text-[#7D7D7D]">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
-                                    <li className="text-[10px] text-[#7D7D7D]">Neque eu quisque porttitor leo viverra tortor pharetra. Porttitor arcu gravida amet tristique. Consectetur lectus sit egestas viverra nulla. </li>
-                                </ul>
-                            </div>
-                        </div>
                         <div className='flex gap-4 mt-3'>
                             <p className="text-[10px] text-[#333333] w-[18%]">
                                 Month 20xx - <br />

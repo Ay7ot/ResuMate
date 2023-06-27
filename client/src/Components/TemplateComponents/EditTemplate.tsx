@@ -45,11 +45,11 @@ export default function EditTemplate() {
     }
     
     return (
-      <div className='flex lg:w-screen'>
-        <div className='lg:w-[70%] pt-16 w-full px-10 md:px-24'>
+      <div className='flex lg:w-screen h-screen'>
+        <div className='pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
           <TemplateDetails />
         </div>
-        <div className='hidden lg:block bg-[#FAFAFA] min-h-[100dvh]'>
+        <div className='hidden lg:block bg-[#FAFAFA] h-[100dvh]'>
           <div className='chosenTemplate w-[595px] mt-[-8rem] mb-[-10rem]'>
             {
               template.name === 'Istanbul' ? <Istanbul itemref={itemref}/> 
