@@ -1,9 +1,9 @@
-import {RiCompassFill} from 'react-icons/ri'
+import { RiCompassFill } from 'react-icons/ri'
 import { useGeneralAppContext } from '../../Functions/useGeneralAppContext'
 
 export default function LandingBody() {
 
-  const {dispatch} = useGeneralAppContext()
+  const { dispatch } = useGeneralAppContext()
 
   function showLoginPage(){
     dispatch({
@@ -13,7 +13,7 @@ export default function LandingBody() {
       }
     })
   }
-
+  
   return (
     <div className='pb-4 mt-[105px] flex items-center flex-col mx-10 lg:mx-[200px] landing-bg relative'>
       <div className='z-[99999] flex text-[#192657] gap-2 items-center rounded-full py-[10px] px-[12px] bg-[#1926571a]'>
@@ -25,7 +25,6 @@ export default function LandingBody() {
         Crafting an impressive Resume has never been easier or more efficent. Our user-friendly platform offers a range of powerful tools and features to help you create a compelling resume in no time. Say goodbye to the hassle of formatting and let our intuitive interface guide you through the process.
       </p>
       <button onClick={(e)=>{e.stopPropagation(); showLoginPage()}} className="z-[99999] mt-14 px-16 py-4 rounded-md gradient text-[#ffffff]">Create Resume</button>
-      
     </div>
   )
 }

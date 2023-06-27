@@ -29,8 +29,6 @@ export default function Navlanding() {
             showSignupPayload: true
         }
     })
-    
-    
   }
 
   return (
