@@ -9,7 +9,7 @@ export default function Skill() {
                 <input 
                     type="text" 
                     placeholder='Skill'
-                    className='outline-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                 />
             </div>
             <div className='text-[#192657] gap-3 font-medium flex items-center mt-6'>

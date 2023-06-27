@@ -13,7 +13,7 @@ export default function ProfessionalSummary() {
             </div>
             <hr className='mt-3 border-[#C4C4C4] border-t-[1px]'/>
             <textarea 
-                className='outline-none text-[#444444] placeholder:text-[#444444] w-full text-sm md:text-base bg-[#FAFAFA] placeholder:italic mt-3'
+                className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] w-full text-sm md:text-base bg-[#FAFAFA] placeholder:italic mt-3'
                 rows={6}
                 placeholder='e.g. I am a highly motivated and experienced language model with a knack for learning new things ...'
             />

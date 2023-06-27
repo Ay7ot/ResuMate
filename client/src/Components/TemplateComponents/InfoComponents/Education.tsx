@@ -11,12 +11,12 @@ export default function Education() {
                     <input 
                         type="text" 
                         placeholder='School'
-                        className='outline-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                     />
                     <input 
                         type="text" 
                         placeholder='Degree'
-                        className='outline-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                     />
                 </div>
                 <div className='grid grid-cols-2 gap-6 mt-6'>
@@ -33,7 +33,7 @@ export default function Education() {
                     <input 
                         type="text" 
                         placeholder='Location'
-                        className='outline-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                     />
                 </div>
             </div>

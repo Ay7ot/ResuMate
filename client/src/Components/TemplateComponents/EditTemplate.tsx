@@ -45,7 +45,7 @@ export default function EditTemplate() {
     }
     
     return (
-      <div className='flex lg:w-screen h-screen'>
+      <div className='flex lg:w-screen h-[100dvh]'>
         <div className='pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
           <TemplateDetails />
         </div>

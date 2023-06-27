@@ -12,12 +12,12 @@ export default function WorkHistory() {
                 <input 
                     type="text" 
                     placeholder='Job Title'
-                    className='outline-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                 />
                 <input 
                     type="text" 
                     placeholder='Employer'
-                    className='outline-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                 />
             </div>
             <div className='grid grid-cols-2 gap-6 mt-6'>
@@ -34,7 +34,7 @@ export default function WorkHistory() {
                 <input 
                     type="text" 
                     placeholder='Location'
-                    className='outline-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                 />
             </div>
         </div>
@@ -48,7 +48,7 @@ export default function WorkHistory() {
                 </div>
                 <hr className='mt-3 border-[#C4C4C4] border-t-[1px]'/>
                 <textarea 
-                    className='outline-none text-[#444444] placeholder:text-[#444444] w-full text-sm md:text-base bg-[#FAFAFA] placeholder:italic mt-3'
+                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] w-full text-sm md:text-base bg-[#FAFAFA] placeholder:italic mt-3'
                     rows={6}
                     placeholder='e.g. I am a highly motivated and experienced language model with a knack for learning new things ...'
                 />
