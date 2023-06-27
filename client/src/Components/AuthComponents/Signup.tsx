@@ -40,7 +40,7 @@ export default function Signup() {
     return (
         <>
         {showSignup && 
-        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] min-h-[100dvh]">
+        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] h-[100dvh]">
             <div>
                 <div className="flex items-center  md:px-3 justify-between">
                     <div></div>
