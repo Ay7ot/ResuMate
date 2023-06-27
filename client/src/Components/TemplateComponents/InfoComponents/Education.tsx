@@ -37,10 +37,10 @@ export default function Education() {
                     />
                 </div>
             </div>
-            <div className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
+            <button className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
                 <FaPlus />
                 <p>add more work education</p>
-            </div>
+            </button>
         </section>
     )
 }

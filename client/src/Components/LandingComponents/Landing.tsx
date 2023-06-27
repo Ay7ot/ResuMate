@@ -100,7 +100,7 @@ export default function Landing() {
 
   return (
     <>
-      <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-1000 ease-linear darken min-h-[100dvh]' : ''} pb-4`}>
+      <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-1000 ease-linear darken min-h-[100dvh]' : ''}`}>
         <Navlanding />
         <LandingBody />
       </div>

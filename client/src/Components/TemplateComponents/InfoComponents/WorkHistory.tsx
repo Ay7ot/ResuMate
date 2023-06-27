@@ -16,7 +16,7 @@ export default function WorkHistory() {
                 />
                 <input 
                     type="text" 
-                    placeholder='Employer'
+                    placeholder='Company Name'
                     className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                 />
             </div>
@@ -54,10 +54,10 @@ export default function WorkHistory() {
                 />
             </div>
         </div>
-        <div className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
+        <button className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
             <FaPlus />
             <p>add more work history</p>
-        </div>
+        </button>
     </section>
 
   )
