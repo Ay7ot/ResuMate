@@ -26,19 +26,19 @@ export default function ChooseTemplate() {
             image: 'Template8.png'
         }, {
             name: 'Istanbul',
-            image: 'Template1.png'
+            image: 'Istanbul.png'
         },
         {
             name: 'Porto',
-            image: 'Template2.png'
+            image: 'Porto.png'
         },
         {
             name: 'Lisbon',
-            image: 'Template3.png'
+            image: 'Lisbon.png'
         },
         {
             name: 'Madrid',
-            image: 'Template4.png'
+            image: 'Madrid.png'
         },
     ]
 

@@ -31,10 +31,7 @@ export default function EditTemplate() {
             filename:     'myfile.pdf',
             image:        { type: 'png', quality: 1 },
             html2canvas:  { scale: 1, useCORS: true },
-            jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' },
-            // pagebreak: {
-            //   mode: 'avoid-all'
-            // },
+            jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' }
           };
     
           html2pdf().from(toDownload).set(opt).save('document.pdf')
