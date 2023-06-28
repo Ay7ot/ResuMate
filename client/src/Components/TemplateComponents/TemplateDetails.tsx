@@ -6,6 +6,7 @@ import ProfessionalSummary from './InfoComponents/ProfessionalSummary'
 import WorkHistory from './InfoComponents/WorkHistory'
 import Education from './InfoComponents/Education'
 import Language from './InfoComponents/Language'
+import Skill from './InfoComponents/Skill'
 
 export default function TemplateDetails() {
     
@@ -29,6 +30,7 @@ export default function TemplateDetails() {
             <ProfessionalSummary />
             <WorkHistory />
             <Education />
+            <Skill />
             <Language />
             <button className='py-3 px-7 flex items-center text-[#192657] border-[1px] border-[#192657] rounded-md mt-[60px] justify-center'>
                 <FaPlus />
