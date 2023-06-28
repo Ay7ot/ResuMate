@@ -5,7 +5,7 @@ import {IoLocationOutline} from 'react-icons/io5'
 export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
     return (
-        <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd]' ref={itemref }>
+        <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
             <div className='w-[30%]  bg-[#0E9FC1] min-h-full text-[#ffffff]'>
                 <h1 className="text-xl pt-6 px-6 font-semibold">NAME <br /> SURNAME</h1>
                 <section className="flex flex-col gap-3 pt-6 px-6">
@@ -53,18 +53,6 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                 </section>
                 <section className="mt-4">
                     <h2 className="text-[#0E9FC1] text-xs font-semibold">WORK EXPERIENCE</h2>
-                    <div className="mt-2">
-                        <h3 className="text-[10px] text-[#0E9FC1]">JOB TITLE</h3>
-                        <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">Company title</h4>
-                        <h5 className="text-[10px] mt-1 text-[#7D7D7D]">Month 20xx - Month 20xx</h5>
-                        
-                        <ul className="list-disc pl-8">
-                            <li className="text-[10px] text-[#7D7D7D] mt-2 ">Lorem ipsum dolor sit amet consectetur. Quisque morbi turpis semper at adipiscing. Quam sagittis quis tempus mattis diam. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque eu quisque porttitor leo viverra tortor pharetra. Porttitor arcu gravida amet tristique. Consectetur lectus sit egestas viverra nulla. </li>
-                        </ul>
-                    </div>
                     <div className="mt-2">
                         <h3 className="text-[10px] text-[#0E9FC1]">JOB TITLE</h3>
                         <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">Company title</h4>

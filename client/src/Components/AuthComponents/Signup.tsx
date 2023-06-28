@@ -57,18 +57,18 @@ export default function Signup() {
                 <form onClick={(e)=>{e.preventDefault(); signupUser()}} className="flex flex-col gap-3 mt-6">
                     <input 
                         type="email"
-                        className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
+                        className="w-full outline-none rounded-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
                         placeholder="Email"
                     />
                     <input 
                         type="password"
-                        className="w-full outline-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
+                        className="w-full outline-none rounded-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
                         placeholder="Password"
                     />
                     
                     <input 
                         type="password"
-                        className="w-full outline-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1rem]"
+                        className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1rem]"
                         placeholder="Confirm Password"
                     />
                     <button className="z-[99999] mt-14 md:mt-6 w-full text-center py-4 rounded-md gradient text-[#ffffff]">Sign up</button>

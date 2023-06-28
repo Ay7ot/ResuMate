@@ -5,7 +5,7 @@ export default function Lisbon() {
     const itemref = useRef<HTMLDivElement | null>(null)
 
     return (
-        <div className=' min-h-[841px] w-[595px] bg-[#f4f5fd]' ref={itemref}>
+        <div className=' min-h-[841px] w-[595px] bg-[#f4f5fd] relative' ref={itemref}>
             <div className="bg-[#EFB153] p-6 text-[#ffffff]">
                 <h1 className="text-[2rem] font-semibold">Name Surname</h1>
                 <div className="mt-3">

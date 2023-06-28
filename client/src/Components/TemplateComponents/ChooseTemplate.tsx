@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom"
 import NavTemplates from "./NavTemplates"
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function ChooseTemplate() {
 
+    const scrollRef = useRef<HTMLDivElement | null>(null)
+    
     useEffect(()=>{
-        window.scrollTo(0,0)
-    })
+        if(scrollRef.current){
+            console.log('component has mounted')
+            scrollRef.current.scrollTo(0,0)
+        }
+    },[])
 
     const resumeTemplates = [
         {
@@ -50,7 +55,7 @@ export default function ChooseTemplate() {
                 alt="A desk pencil holder with two pencils and a brush"
                 className="w-[50px] mb-8 mt-12"
             />
-            <div className="mx-5 md:mx-14 lg:mx-[190px]">
+            <div ref={scrollRef} className="mx-5 md:mx-14 lg:mx-[190px]">
                 <h2 className="text-center text-[1.5rem] lg:text-[2rem] text-[#192657] font-medium">Choose a resume template to start</h2>
                 <p className="text-center text-[#444444] text-sm lg:text-base">Once you've selected your preferred template, our user-friendly resume builder will guide you through the customization process. Personalize the template with your own information, such as your contact details, work history, education, and skills.</p>
                 <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
