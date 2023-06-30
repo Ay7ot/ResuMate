@@ -1,6 +1,6 @@
-import {FiPhoneCall} from 'react-icons/fi'
-import {GoMail} from 'react-icons/go'
-import {IoLocationOutline} from 'react-icons/io5'
+import { FiPhoneCall } from 'react-icons/fi'
+import { GoMail } from 'react-icons/go'
+import { IoLocationOutline } from 'react-icons/io5'
 
 export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
