@@ -1,7 +1,7 @@
 import { RxCross1 } from "react-icons/rx";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { FcGoogle } from 'react-icons/fc'
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Login() {
