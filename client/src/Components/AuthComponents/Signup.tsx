@@ -2,12 +2,28 @@ import { RxCross1 } from "react-icons/rx";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { FcGoogle } from 'react-icons/fc'
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Signup() {
 
     const { dispatch, showSignup} = useGeneralAppContext()
+    const [emailShown, setEmailShown] = useState(false)
+    const [passwordShown, setPasswordShown] = useState(false)
+    const [showConfirm, setShowConfirm] = useState(false)
+
+    function showEmail(){
+        setEmailShown(true)
+    }
+
+    function showPassword(){
+        setPasswordShown(true)
+    }
+
+    function setPasswordShowConfirm(){
+        setShowConfirm(true)
+    }
     
-    const history = useNavigate()
+    const navigateTo = useNavigate()
 
 
     function hideSignupPage(){
@@ -33,14 +49,14 @@ export default function Signup() {
     const signupUser = () => {
 
         setTimeout(()=>{
-           history('/templates')
+           navigateTo('/templates')
         },1000)
     }
 
     return (
         <>
         {showSignup && 
-        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] h-[100dvh]">
+        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] min-h-[100dvh]">
             <div>
                 <div className="flex items-center  md:px-3 justify-between">
                     <div></div>
@@ -54,22 +70,29 @@ export default function Signup() {
                 </div>
                 <hr  className="mt-6"/>
                 <h2 className="text-center mt-9 text-[#192657] text-[1.5rem] font-semibold">Sign up to Create Resume</h2>
-                <form onClick={(e)=>{e.preventDefault(); signupUser()}} className="flex flex-col gap-3 mt-6">
+                <form onSubmit={(e)=>{e.preventDefault(); signupUser()}} className="flex flex-col gap-3 mt-6">
+                    <p className={`text-[#192657] text-sm ${emailShown ? 'block' : 'hidden'}`}>Email Address</p>
                     <input 
                         type="email"
-                        className="w-full outline-none rounded-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
+                        className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
                         placeholder="Email"
+                        onClick={showEmail}
                     />
+
+                    <p className={`text-[#192657] text-sm ${showConfirm ? 'block' : 'hidden'}`}>Password</p>
                     <input 
                         type="password"
-                        className="w-full outline-none rounded-none border-b-[1px]  border-[#9d9d9d] py-3 mb-1 text-[1rem]"
+                        className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
                         placeholder="Password"
+                        onClick={setPasswordShowConfirm}
                     />
-                    
+
+                    <p className={`text-[#192657] text-sm ${passwordShown ? 'block' : 'hidden'}`}>Confirm Password</p>
                     <input 
                         type="password"
-                        className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] py-3 mb-1 text-[1rem]"
-                        placeholder="Confirm Password"
+                        className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
+                        placeholder="Password"
+                        onClick={showPassword}
                     />
                     <button className="z-[99999] mt-14 md:mt-6 w-full text-center py-4 rounded-md gradient text-[#ffffff]">Sign up</button>
                 </form>
