@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom"
 import NavTemplates from "./NavTemplates"
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 export default function ChooseTemplate() {
 
     const scrollRef = useRef<HTMLDivElement | null>(null)
-    
-    useEffect(()=>{
-        if(scrollRef.current){
-            console.log('component has mounted')
-            scrollRef.current.scrollTo(0,0)
-        }
-    },[])
 
     const resumeTemplates = [
         {
