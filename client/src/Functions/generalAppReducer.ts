@@ -23,7 +23,11 @@ export function generalAppReducer(state: GeneralAppContextType, action: GeneralA
                 ...state,
                 showSignup: action.payload?.showSignupPayload ?? false
             }
-        
+        case 'setCurrentUser':
+            return {
+                ...state,
+                currentUser: action.payload?.currentUserPayload ?? null
+            }
 
         default:
             return state

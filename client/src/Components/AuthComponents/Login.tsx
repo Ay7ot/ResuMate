@@ -3,6 +3,9 @@ import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { FcGoogle } from 'react-icons/fc'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useAuthContext } from "../../Functions/useAuthContext";
 
 export default function Login() {
 
@@ -10,6 +13,7 @@ export default function Login() {
     const [emailShown, setEmailShown] = useState(false)
     const [passwordShown, setPasswordShown] = useState(false)
 
+    const {email, password, authDispatch} = useAuthContext()
 
     function showEmail(){
         setEmailShown(true)
@@ -40,11 +44,20 @@ export default function Login() {
         hideLoginPage()
     }
 
-    const loginUser = () => {
-
-        setTimeout(()=>{
-           navigateTo('/templates')
-        },1000)
+    async function loginUser(userEmail: string, userPassword: string){
+        await signInWithEmailAndPassword(auth, userEmail, userPassword)
+        .then(user=>{
+            dispatch({
+                type:'setCurrentUser',
+                payload: {
+                    currentUserPayload: user.user
+                }
+            })
+            navigateTo('/templates')
+        })
+        .catch((error)=>{
+            console.error(error)
+        })
     }
 
     return (
@@ -63,20 +76,39 @@ export default function Login() {
                 </div>
                 <hr  className="mt-6"/>
                 <h2 className="text-center mt-9 text-[#192657] text-[1.5rem] font-semibold">Login to Create Resume</h2>
-                <form onSubmit={(e)=>{e.preventDefault(); loginUser()}} className="flex flex-col gap-3 mt-6">
+                <form onSubmit={(e)=>{e.preventDefault(); loginUser(email, password)}} className="flex flex-col gap-3 mt-6">
                     <p className={`text-[#192657] text-sm ${emailShown ? 'block' : 'hidden'}`}>Email Address</p>
                     <input 
                         type="email"
                         className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
                         placeholder="Email"
                         onClick={showEmail}
+                        value={email}
+                        onChange={(e)=>{
+                            authDispatch({
+                                type:'setEmail',
+                                payload: {
+                                    emailPayload: e.target.value
+                                }
+                            })
+                        }}
                     />
+
                     <p className={`text-[#192657] text-sm ${passwordShown ? 'block' : 'hidden'}`}>Password</p>
                     <input 
                         type="password"
                         className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
                         placeholder="Password"
                         onClick={showPassword}
+                        value={password}
+                        onChange={(e)=>{
+                            authDispatch({
+                                type:'setPassword',
+                                payload: {
+                                    passwordPayload: e.target.value
+                                }
+                            })
+                        }}
                     />
                     <button className="z-[99999] mt-14 md:mt-6 w-full text-center py-4 rounded-md gradient text-[#ffffff]">Login</button>
                 </form>
@@ -85,7 +117,7 @@ export default function Login() {
                     <p className="text-[#121212] text-[1.125rem]">or</p>
                     <div className="h-[1px] w-full border-[1px]"></div>
                 </div>
-                <button onClick={loginUser} className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
+                <button className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
                     <i className="text-[1.7rem]"><FcGoogle /></i>
                     <p>Login with Google</p>
                 </button>

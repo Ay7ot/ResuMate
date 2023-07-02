@@ -3,6 +3,9 @@ import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { FcGoogle } from 'react-icons/fc'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuthContext } from "../../Functions/useAuthContext";
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from "../../firebase";
 
 export default function Signup() {
 
@@ -10,6 +13,8 @@ export default function Signup() {
     const [emailShown, setEmailShown] = useState(false)
     const [passwordShown, setPasswordShown] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
+
+    const {email, password, passwordConfirm, authDispatch} = useAuthContext()
 
     function showEmail(){
         setEmailShown(true)
@@ -43,16 +48,25 @@ export default function Signup() {
             }
         })
         hideSignupPage()
-        
     }
 
-    const signupUser = () => {
-
-        setTimeout(()=>{
-           navigateTo('/templates')
-        },1000)
+    async function signupUser(userEmail: string, userPassword: string){
+        await createUserWithEmailAndPassword(auth, userEmail, userPassword)
+        .then(user => {
+            console.log(user)
+            dispatch({
+                type: 'setCurrentUser',
+                payload: {
+                    currentUserPayload: user.user
+                }
+            })
+            navigateTo('/templates')
+        })
+        .catch((error)=>{
+            console.error(error)
+        })
     }
-
+    
     return (
         <>
         {showSignup && 
@@ -70,21 +84,22 @@ export default function Signup() {
                 </div>
                 <hr  className="mt-6"/>
                 <h2 className="text-center mt-9 text-[#192657] text-[1.5rem] font-semibold">Sign up to Create Resume</h2>
-                <form onSubmit={(e)=>{e.preventDefault(); signupUser()}} className="flex flex-col gap-3 mt-6">
+                <form onSubmit={(e)=>{e.preventDefault(); signupUser(email, password)}} className="flex flex-col gap-3 mt-6">
                     <p className={`text-[#192657] text-sm ${emailShown ? 'block' : 'hidden'}`}>Email Address</p>
                     <input 
                         type="email"
                         className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
                         placeholder="Email"
                         onClick={showEmail}
-                    />
-
-                    <p className={`text-[#192657] text-sm ${showConfirm ? 'block' : 'hidden'}`}>Password</p>
-                    <input 
-                        type="password"
-                        className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
-                        placeholder="Password"
-                        onClick={setPasswordShowConfirm}
+                        value={email}
+                        onChange={(e)=>{
+                            authDispatch({
+                                type:'setEmail',
+                                payload: {
+                                    emailPayload: e.target.value
+                                }
+                            })
+                        }}
                     />
 
                     <p className={`text-[#192657] text-sm ${passwordShown ? 'block' : 'hidden'}`}>Confirm Password</p>
@@ -93,6 +108,32 @@ export default function Signup() {
                         className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
                         placeholder="Password"
                         onClick={showPassword}
+                        value={password}
+                        onChange={(e)=>{
+                            authDispatch({
+                                type:'setPassword',
+                                payload: {
+                                    passwordPayload: e.target.value
+                                }
+                            })
+                        }}
+                    />
+
+                    <p className={`text-[#192657] text-sm ${showConfirm ? 'block' : 'hidden'}`}>Password</p>
+                    <input 
+                        type="password"
+                        className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
+                        placeholder="Confirm Password"
+                        onClick={setPasswordShowConfirm}
+                        value={passwordConfirm}
+                        onChange={(e)=>{
+                            authDispatch({
+                                type:'setPasswordConfirm',
+                                payload: {
+                                    passwordConfirmPayload: e.target.value
+                                }
+                            })
+                        }}
                     />
                     <button className="z-[99999] mt-14 md:mt-6 w-full text-center py-4 rounded-md gradient text-[#ffffff]">Sign up</button>
                 </form>
@@ -101,7 +142,7 @@ export default function Signup() {
                     <p className="text-[#121212] text-[1.125rem]">or</p>
                     <div className="h-[1px] w-full border-[1px]"></div>
                 </div>
-                <button onClick={signupUser} className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
+                <button className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
                     <i className="text-[1.7rem]"><FcGoogle /></i>
                     <p>Sign up with Google</p>
                 </button>

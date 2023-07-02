@@ -5,6 +5,7 @@ import Navlanding from "./Navlanding";
 import {RxCross1} from 'react-icons/rx';
 import Login from '../AuthComponents/Login';
 import Signup from '../AuthComponents/Signup';
+import { AuthProvider } from '../../Contexts/AuthContexts';
 
 export default function Landing() {
 
@@ -106,8 +107,10 @@ export default function Landing() {
           <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); showSignupPage()}}>Create Resume</button>
         </div>
       </div>
-      {showLogin && <div ref={loginRef} ><Login /></div>}
-      {showSignup && <div ref={SignupRef} ><Signup /></div>}
+      <AuthProvider>
+        {showLogin && <div ref={loginRef} ><Login /></div>}
+        {showSignup && <div ref={SignupRef} ><Signup /></div>}
+      </AuthProvider>
     </>
   )
 }

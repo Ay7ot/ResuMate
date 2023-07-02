@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getDatabase} from "firebase/database"
+import { getAuth } from "firebase/auth"
 
 
 const firebaseConfig = {
@@ -11,12 +12,13 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_STORAGEBUCKET,
   messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
   appId: import.meta.env.VITE_APPID,
-  measurementId: import.meta.env.VITE_MEASUREMENTID
+  measurementId: import.meta.env.VITE_MEASUREMENTID 
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 const db = getDatabase(app)
+const auth = getAuth()
 
-export { db }
+export { db, auth }
