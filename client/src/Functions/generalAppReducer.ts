@@ -28,7 +28,12 @@ export function generalAppReducer(state: GeneralAppContextType, action: GeneralA
                 ...state,
                 currentUser: action.payload?.currentUserPayload ?? null
             }
-
+        case 'showNoAuthModal':
+            return {
+                ...state,
+                showSignup: false,
+                showLogin: false
+            }
         default:
             return state
     }

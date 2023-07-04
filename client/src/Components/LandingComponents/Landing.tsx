@@ -15,6 +15,11 @@ export default function Landing() {
   const SignupRef = useRef<HTMLDivElement>(null)
   const loginRef = useRef<HTMLDivElement>(null)
 
+  useEffect(()=>{
+    dispatch({
+      type: 'showNoAuthModal'
+    })
+  },[dispatch])
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {

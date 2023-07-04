@@ -1,9 +1,12 @@
 import { RiCompassFill } from 'react-icons/ri'
 import { useGeneralAppContext } from '../../Functions/useGeneralAppContext'
+import { useNavigate } from 'react-router-dom'
 
 export default function LandingBody() {
 
-  const { dispatch } = useGeneralAppContext()
+  const { dispatch, currentUser } = useGeneralAppContext()
+
+  const navigateTo = useNavigate()
 
   function showLoginPage(){
     dispatch({
@@ -12,6 +15,14 @@ export default function LandingBody() {
         showLoginPayload: true
       }
     })
+  }
+
+  function createResumeButtonFunction(){
+    if(currentUser !== null){
+      navigateTo('/templates')
+    } else {
+      showLoginPage()
+    }
   }
   
   return (
@@ -24,7 +35,7 @@ export default function LandingBody() {
       <p className='z-[99999] text-center text-[#333333] text-[0.8rem] lg:text-base mt-8 leading-6 lg:leading-8'>
         Crafting an impressive Resume has never been easier or more efficent. Our user-friendly platform offers a range of powerful tools and features to help you create a compelling resume in no time. Say goodbye to the hassle of formatting and let our intuitive interface guide you through the process.
       </p>
-      <button onClick={(e)=>{e.stopPropagation(); showLoginPage()}} className="z-[99999] mt-14 px-16 py-4 rounded-md gradient text-[#ffffff]">Create Resume</button>
+      <button onClick={(e)=>{e.stopPropagation(); createResumeButtonFunction()}} className="z-[99999] mt-14 px-16 py-4 rounded-md gradient text-[#ffffff]">Create Resume</button>
     </div>
   )
 }

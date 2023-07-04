@@ -18,6 +18,38 @@ export function authReducer(state: AuthContextType, action: AuthActionType){
                 ...state,
                 passwordConfirm: action.payload?.passwordConfirmPayload ?? ''
             }
+        case 'setEmailEmptyErrorMessage':
+            return {
+                ...state,
+                errorMessage: action.payload?.errorMessagePayload ?? {
+                    type: null,
+                    message: ''
+                } 
+            }
+        case 'setPasswordEmptyErrorMessage':
+            return {
+                ...state,
+                errorMessage: action.payload?.errorMessagePayload ?? {
+                    type: null,
+                    message: ''
+                } 
+            }
+        case 'setPasswordConfirmEmptyErrorMessage':
+            return {
+                ...state,
+                errorMessage: action.payload?.errorMessagePayload ?? {
+                    type: null,
+                    message: ''
+                } 
+            }
+        case 'setNoErrorMessage':
+            return {
+                ...state,
+                errorMessage: {
+                    type: null,
+                    message: ''
+                }
+            }
     default:
             return state
     }

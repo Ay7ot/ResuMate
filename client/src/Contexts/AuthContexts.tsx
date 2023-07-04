@@ -3,12 +3,15 @@ import { AuthContextType } from "../Types/AuthTypes";
 import { useAuthContext } from "../Functions/useAuthContext";
 import { authReducer } from "../Functions/authReducer";
 
-
 export const AuthContext = createContext<AuthContextType>({
     email: '',
     password: '',
     passwordConfirm: '',
-    authDispatch: ()=>{return}
+    authDispatch: ()=>{return},
+    errorMessage: {
+        type: null,
+        message: ''
+    }
 })
 
 export const AuthProvider = ({children}: {children: ReactNode}) => {
