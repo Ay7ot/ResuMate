@@ -6,6 +6,7 @@ import Porto from "./Porto"
 import Lisbon from "./Lisbon"
 import Madrid from "./Madrid"
 import TemplateDetails from "./TemplateDetails"
+import { UserDetailsProvider } from "../../Contexts/UserDetailContext"
 
 export default function EditTemplate() {
 
@@ -42,25 +43,27 @@ export default function EditTemplate() {
     }
     
     return (
-      <div className='flex lg:w-screen h-[100dvh]'>
-        <div className='pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
-          <TemplateDetails />
-        </div>
-        <div className='hidden lg:block bg-[#FAFAFA] h-[100dvh]'>
-          <div className='chosenTemplate w-[595px] mt-[-8rem] mb-[-10rem]'>
-            {
-              template.name === 'Istanbul' ? <Istanbul itemref={itemref}/> 
-              :template.name === 'Porto' ? <Porto />
-              :template.name === 'Lisbon' ? <Lisbon />
-              :template.name === 'Madrid' ? <Madrid itemref={itemref}/>
-              : <Istanbul itemref={itemref}/>
-            }
+      <UserDetailsProvider>
+        <div className='flex lg:w-screen h-[100dvh]'>
+          <div className='pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
+            <TemplateDetails />
           </div>
-          
-          <div className='px-[7.9rem]'>
-              <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
+          <div className='hidden lg:block bg-[#FAFAFA] h-[100dvh]'>
+            <div className='chosenTemplate w-[595px] mt-[-8rem] mb-[-10rem]'>
+              {
+                template.name === 'Istanbul' ? <Istanbul itemref={itemref}/> 
+                :template.name === 'Porto' ? <Porto />
+                :template.name === 'Lisbon' ? <Lisbon />
+                :template.name === 'Madrid' ? <Madrid itemref={itemref}/>
+                : <Istanbul itemref={itemref}/>
+              }
+            </div>
+            
+            <div className='px-[7.9rem]'>
+                <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
+            </div>
           </div>
         </div>
-      </div>
+      </UserDetailsProvider>
     )
 }

@@ -20,7 +20,6 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
 
     const [authState, authDispatch] = useReducer(authReducer, value)
 
-    console.log(authState)
     return (
         <AuthContext.Provider value ={{...authState, authDispatch}}>
             {children}

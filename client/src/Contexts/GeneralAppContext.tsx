@@ -34,8 +34,7 @@ export function GeneralAppProvider({children}: {children: ReactNode}){
         })
         return unsubscribe
     },[])
-
-    console.log(mainstate)
+    
     return (
         <GeneralAppContext.Provider value={{...mainstate, dispatch}}>
             {children}
