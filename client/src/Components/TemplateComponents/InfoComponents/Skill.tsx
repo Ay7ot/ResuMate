@@ -2,8 +2,12 @@ import {FaPlus} from 'react-icons/fa'
 import { LuEdit } from 'react-icons/lu'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { HiBars2 } from 'react-icons/hi2'
+import { useUserDetails } from '../../../Functions/useUserDetails'
 
 export default function Skill(){
+
+    const {currentSkill, userDispatch} = useUserDetails()
+
     return (
         <section className='mt-[3rem]'>
             <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Skills</h2> 
@@ -40,6 +44,15 @@ export default function Skill(){
 
             <div className='mt-8'>
                 <input 
+                    value={currentSkill}
+                    onChange={(e)=>{
+                        userDispatch({
+                            type: 'setCurrentSkill',
+                            payload: {
+                                currentSkillPayload: e.target.value
+                            }
+                        })
+                    }}
                     type="text" 
                     placeholder='Skill'
                     className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'

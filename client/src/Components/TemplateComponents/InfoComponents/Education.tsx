@@ -3,8 +3,13 @@ import { FaPlus } from 'react-icons/fa'
 import { LuEdit } from 'react-icons/lu'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { HiBars2 } from 'react-icons/hi2'
+import { useUserDetails } from '../../../Functions/useUserDetails'
 
 export default function Education() {
+    const { school, userDispatch } = useUserDetails()
+    const { schoolName , degree, month, location} = school
+    // const { start, end} = month
+
     return (
         <section className='mt-[3rem]'>
             <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Education</h2> 
@@ -30,11 +35,35 @@ export default function Education() {
             <div className='mt-8 '>
                 <div className='grid grid-cols-2 gap-6'>
                     <input 
+                        value={schoolName}
+                        onChange={(e)=>{
+                            userDispatch({
+                                type: 'setSchool',
+                                payload: {
+                                    schoolPayload: {
+                                        ...school,
+                                        schoolName: e.target.value
+                                    }
+                                }
+                            })
+                        }}
                         type="text" 
                         placeholder='School'
                         className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                     />
                     <input 
+                        value={degree}
+                        onChange={(e)=>{
+                            userDispatch({
+                                type: 'setSchool',
+                                payload: {
+                                    schoolPayload: {
+                                        ...school,
+                                        degree: e.target.value
+                                    }
+                                }
+                            })
+                        }}
                         type="text" 
                         placeholder='Degree'
                         className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
@@ -52,6 +81,18 @@ export default function Education() {
                         </div>
                     </div>
                     <input 
+                        value={location}
+                        onChange={(e)=>{
+                            userDispatch({
+                                type: 'setSchool',
+                                payload: {
+                                    schoolPayload: {
+                                        ...school,
+                                        location: e.target.value
+                                    }
+                                }
+                            })
+                        }}
                         type="text" 
                         placeholder='Location'
                         className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'

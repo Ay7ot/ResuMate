@@ -9,11 +9,14 @@ export type UserDetailContextType = {
     state: string;
     professionalSummary: string;
     skills: string[];
+    currentSkill: string;
     awards: string[];
     language: string[];
+    currentLanguage: string;
     workHistory: jobInformation[];
     work: jobInformation;
-    education: school[]
+    education: school[];
+    school: school
 }
 
 export type jobInformation = {
@@ -34,7 +37,8 @@ export type school = {
         start: string;
         end: string;
     };
-    course?: string
+    course?: string;
+    location: string;
 }
 
 export type userActionType = {
@@ -48,11 +52,14 @@ export type userActionType = {
         countryPayload?: string;
         statePayload?: string;
         professionalSummaryPayload?: string;
+        currentSkillPayload?: string;
         skillsPayload?: string[];
         awardsPayload?: string[];
         languagePayload?: string[];
+        currentLanguagePayload?: string
         workHistoryPayload?: jobInformation[];
         workPayload?: jobInformation;
-        educationPayload?: school[]
+        educationPayload?: school[];
+        schoolPayload?: school
     }
 }

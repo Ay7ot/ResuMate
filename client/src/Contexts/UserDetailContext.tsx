@@ -14,8 +14,10 @@ export const UserDetails = createContext<UserDetailContextType>({
     state: '',
     professionalSummary: '',
     skills: [],
+    currentSkill: '',
     awards: [],
     language: [],
+    currentLanguage: '',
     workHistory: [],
     work: {
         jobTitle: '',
@@ -27,7 +29,17 @@ export const UserDetails = createContext<UserDetailContextType>({
         jobItems: [],
         location: ''
     },
-    education: []
+    education: [],
+    school: {
+        schoolName: '',
+        degree: '',
+        month: {
+            start: '',
+            end: '',
+        },
+        course: '',
+        location: ''
+    }
 })
 
 export function UserDetailsProvider({children}: {children : ReactNode}){

@@ -64,6 +64,45 @@ export function userReducer(state: UserDetailContextType, action: userActionType
                     location: ''
                 }
             }
+        case 'setEducation':
+            return {
+                ...state,
+                education: action.payload?.educationPayload ?? []
+            }
+        case 'setSchool':
+            return {
+                ...state,
+                school: action.payload?.schoolPayload ?? {
+                    schoolName: '',
+                    degree: '',
+                    month: {
+                        start: '',
+                        end: '',
+                    },
+                    course: '',
+                    location: ''
+                }
+            }
+        case 'setSkills':
+            return {
+                ...state,
+                skills: action.payload?.skillsPayload ?? []
+            }
+        case 'setCurrentSkill':
+            return {
+                ...state,
+                currentSkill: action.payload?.currentSkillPayload ?? ''
+            }
+        case 'setLanguage':
+            return {
+                ...state,
+                language: action.payload?.languagePayload ?? []
+            }
+        case 'setCurrentLanguage':
+            return {
+                ...state,
+                currentLanguage: action.payload?.currentLanguagePayload ?? ''
+            }
         default:
             return state
     }
