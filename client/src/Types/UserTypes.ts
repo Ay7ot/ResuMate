@@ -12,6 +12,7 @@ export type UserDetailContextType = {
     awards: string[];
     language: string[];
     workHistory: jobInformation[];
+    work: jobInformation;
     education: school[]
 }
 
@@ -23,6 +24,7 @@ export type jobInformation = {
     };
     companyName: string;
     jobItems: string[];
+    location: string;
 }
 
 export type school = {
@@ -50,6 +52,7 @@ export type userActionType = {
         awardsPayload?: string[];
         languagePayload?: string[];
         workHistoryPayload?: jobInformation[];
+        workPayload?: jobInformation;
         educationPayload?: school[]
     }
 }

@@ -1,6 +1,10 @@
 import { FiBold, FiItalic, FiUnderline } from 'react-icons/fi'
+import { useUserDetails } from '../../../Functions/useUserDetails'
 
 export default function ProfessionalSummary() {
+
+  const {professionalSummary, userDispatch} = useUserDetails()
+
   return (
     <section className='mt-[3rem]'>
         <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Professional Summary</h2>
@@ -13,9 +17,18 @@ export default function ProfessionalSummary() {
             </div>
             <hr className='mt-3 border-[#C4C4C4] border-t-[1px]'/>
             <textarea 
-                className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] w-full text-sm md:text-base bg-[#FAFAFA] placeholder:italic mt-3'
-                rows={6}
-                placeholder='e.g. I am a highly motivated and experienced language model with a knack for learning new things ...'
+              value={professionalSummary}
+              onChange={(e)=>{
+                userDispatch({
+                  type: 'setProfessionalSummary',
+                  payload: {
+                    professionalSummaryPayload: e.target.value
+                  }
+                })
+              }}
+              className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] w-full text-sm md:text-base bg-[#FAFAFA] placeholder:italic mt-3'
+              rows={6}
+              placeholder='e.g. I am a highly motivated and experienced language model with a knack for learning new things ...'
             />
         </div>
     </section>

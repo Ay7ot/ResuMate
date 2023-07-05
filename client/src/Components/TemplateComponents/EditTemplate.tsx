@@ -1,12 +1,12 @@
 import { useLocation } from "react-router-dom"
 import Istanbul from "./Istanbul"
 import { useRef, useEffect } from "react"
-import html2pdf from "html2pdf.js"
 import Porto from "./Porto"
 import Lisbon from "./Lisbon"
 import Madrid from "./Madrid"
 import TemplateDetails from "./TemplateDetails"
 import { UserDetailsProvider } from "../../Contexts/UserDetailContext"
+import TemplateStyles from "./TemplateStyles"
 
 export default function EditTemplate() {
 
@@ -20,28 +20,6 @@ export default function EditTemplate() {
       window.scrollTo(0,0)
     })
     
-    async function generatePdf(){
-
-
-        const toDownload = itemref.current
-        console.log('...is downloading')
-        if(toDownload){
-    
-          const opt = {
-            margin:       0,
-            filename:     'myfile.pdf',
-            image:        { type: 'png', quality: 1 },
-            html2canvas:  { scale: 1, useCORS: true },
-            jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' }
-          };
-    
-          html2pdf().from(toDownload).set(opt).save('document.pdf')
-    
-        }
-        console.log('has downloaded')
-
-    }
-    
     return (
       <UserDetailsProvider>
         <div className='flex lg:w-screen h-[100dvh]'>
@@ -49,7 +27,7 @@ export default function EditTemplate() {
             <TemplateDetails />
           </div>
           <div className='hidden lg:block bg-[#FAFAFA] h-[100dvh]'>
-            <div className='chosenTemplate w-[595px] mt-[-8rem] mb-[-10rem]'>
+            <div className='chosenTemplate shadow-lg w-[595px] mt-[-8rem] mb-[-10rem]'>
               {
                 template.name === 'Istanbul' ? <Istanbul itemref={itemref}/> 
                 :template.name === 'Porto' ? <Porto />
@@ -58,10 +36,7 @@ export default function EditTemplate() {
                 : <Istanbul itemref={itemref}/>
               }
             </div>
-            
-            <div className='px-[7.9rem]'>
-                <button onClick={generatePdf} className="mb-6 p-2 bg-blue-300 rounded-md">Download</button>
-            </div>
+            <TemplateStyles itemRef={itemref}/>
           </div>
         </div>
       </UserDetailsProvider>

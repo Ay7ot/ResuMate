@@ -17,6 +17,16 @@ export const UserDetails = createContext<UserDetailContextType>({
     awards: [],
     language: [],
     workHistory: [],
+    work: {
+        jobTitle: '',
+        month: {
+            start: '',
+            end: '',
+        },
+        companyName: '',
+        jobItems: [],
+        location: ''
+    },
     education: []
 })
 
@@ -25,6 +35,8 @@ export function UserDetailsProvider({children}: {children : ReactNode}){
     const value = useUserDetails() 
 
     const [userState, userDispatch] = useReducer(userReducer, value)
+    
+    console.log(userState)
 
     return (
         <UserDetails.Provider value={{...userState, userDispatch}}>

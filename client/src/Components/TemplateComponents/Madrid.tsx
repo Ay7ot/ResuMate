@@ -13,7 +13,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                 </div>
             </div>
             <div className="flex mt-3">
-                <div className="w-[30%] min-h-[500px] p-6 bg-[#3780C333]">
+                <div className="w-[30%] min-h-[732px] p-6 bg-[#3780C333]">
                     <section>
                         <h2 className="text-xs font-semibold text-[#333333]">SKILLS</h2>
                         <ul className="px-4 list-disc mt-3">

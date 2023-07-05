@@ -37,6 +37,12 @@
   border-style: solid;
 }
 
+.templateColor {
+  border-image-slice: 1;
+  border-radius: 50%;
+  border-color: blue;
+}
+
 .chosenTemplate {
   transform: scale(0.58);
   transform-origin: center;
