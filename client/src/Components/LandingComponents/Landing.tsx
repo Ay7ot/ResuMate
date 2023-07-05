@@ -82,7 +82,6 @@ export default function Landing() {
         }
     })
     
-    
   }
 
   function showSignupPage(){
@@ -92,15 +91,11 @@ export default function Landing() {
             showLoginPayload: true
         }
     })
-    
-    
   }
-
-
 
   return (
     <>
-      <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-1000 ease-linear darken min-h-[100dvh]' : ''}`}>
+      <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-1000 ease-linear darken' : ''} min-h-[100dvh]`}>
         <Navlanding />
         <LandingBody />
       </div>
