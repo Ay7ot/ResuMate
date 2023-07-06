@@ -15,7 +15,7 @@ ResuMate is a web-based application that allows users to create and customize pr
 
 To use the Resume Templating Web App locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/resume-templating-web-app.git`
+1. Clone the repository: `git clone https://github.com/Ay7ot/ResuMate.git`
 2. Install the necessary dependencies: `yarn`
 3. Start the development server: `yarn dev`
 4. Open your web browser and visit `http://localhost:5173` to access the app.
