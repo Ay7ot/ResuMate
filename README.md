@@ -37,7 +37,7 @@ We welcome contributions from the community to improve ResuMate. If you'd like t
 2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`.
 3. Make your changes and test thoroughly.
 4. Commit your changes: `git commit -m "Add feature/fix your-feature-name"`.
-5. Push to the branch: `git push origin feature/your-feature-name`.
+5. Push to the branch: `git push origin feature/your-feature-name.`.
 6. Submit a pull request describing your changes.
 
 Please ensure that your code adheres to the project's coding conventions and includes appropriate documentation where necessary.
