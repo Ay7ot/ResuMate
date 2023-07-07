@@ -1,25 +1,28 @@
 import { FiPhoneCall } from 'react-icons/fi'
 import { GoMail } from 'react-icons/go'
 import { IoLocationOutline } from 'react-icons/io5'
+import { useUserDetails } from '../../Functions/useUserDetails'
 
 export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
+    const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state } = useUserDetails()
     return (
         <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
             <div className='w-[30%]  bg-[#0E9FC1] min-h-full text-[#ffffff]'>
-                <h1 className="text-xl pt-6 px-6 font-semibold">NAME <br /> SURNAME</h1>
+                <h1 className="text-xl pt-6 px-6 font-semibold">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
+                <h2 className='px-6 font-semibold text-xs pt-3'>{profession}</h2>
                 <section className="flex flex-col gap-3 pt-6 px-6">
                     <div className="flex gap-3 items-center ">
                         <i className="text-[1.2rem]"><FiPhoneCall /></i>
-                        <p className="text-[10px]">+234 8075200170</p>
+                        <p className="text-[10px]">{phoneNumber}</p>
                     </div>
                     <div className="flex gap-3 items-center ">
                         <i className="text-[1.2rem]"><GoMail /></i>
-                        <p className="text-[10px] w-full break-all">ayomidotzee@gmail.com</p>
+                        <p className="text-[10px] w-full break-all">{email}</p>
                     </div>
                     <div className="flex gap-3 items-center ">
                         <i className="text-[1.2rem]"><IoLocationOutline /></i>
-                        <p className="text-[10px] break-words">Abuja, Nigeria</p>
+                        <p className="text-[10px] break-words">{`${state}, ${country}`}</p>
                     </div>
                 </section>
                 <section className="mt-6">
@@ -47,10 +50,13 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
             </div>
 
             <div className='w-[70%] px-4 py-6'>
+                {professionalSummary!=='' && 
                 <section>
                     <h2 className="text-[#0E9FC1] text-xs font-semibold">PROFESSIONAL SUMMARY</h2>
-                    <p className="text-[#7D7D7D] text-[10px] mt-2">Lorem ipsum dolor sit amet consectetur. Quisque morbi turpis semper at adipiscing. Quam sagittis quis tempus mattis diam. Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. In amet velit duis justo in quisque pharetra malesuada urna. Suspendisse mi tellus mauris consectetur in odio. Neque eu quisque porttitor leo viverra tortor pharetra. Porttitor arcu gravida amet tristique. Consectetur lectus sit egestas viverra nulla. </p>
+                    <p className="text-[#7D7D7D] text-[10px] mt-2">{professionalSummary}</p>
                 </section>
+                }
+                {workHistory.length > 0 &&
                 <section className="mt-4">
                     <h2 className="text-[#0E9FC1] text-xs font-semibold">WORK EXPERIENCE</h2>
                     <div className="mt-2">
@@ -64,7 +70,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                             <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
                             <li className="text-[10px] text-[#7D7D7D] mt-2">Neque eu quisque porttitor leo viverra tortor pharetra. Porttitor arcu gravida amet tristique. Consectetur lectus sit egestas viverra nulla. </li>
                         </ul>
-                    </div>
+                    </div> 
                     <div className="mt-2">
                         <h3 className="text-[10px] text-[#0E9FC1]">JOB TITLE</h3>
                         <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">Company title</h4>
@@ -79,12 +85,15 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                     </div>
                     
                 </section>
-                <section className="mt-4">
+                }
+                {education.length > 0 &&
+                <section className="m t-4">
                     <h2 className="text-[#0E9FC1] text-xs font-semibold">EDUCATION</h2>
                     <h3 className="text-[#0E9FC1] text-[10px] mt-2">DEGREE  Month 20xx-20xx</h3>
                     <h4 className="text-[10px] text-[#7D7D7D] mt-2">School Name</h4>
                     <p className="text-[10px] text-[#7D7D7D] mt-2">Location</p>
                 </section>
+                }
             </div>
         </div>
     )

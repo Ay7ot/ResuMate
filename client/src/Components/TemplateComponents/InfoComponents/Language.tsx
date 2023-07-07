@@ -6,7 +6,7 @@ import { useUserDetails } from '../../../Functions/useUserDetails'
 
 export default function Language() {
 
-    const {currentLanguage, userDispatch} = useUserDetails()
+    const { currentLanguage, userDispatch } = useUserDetails()
 
     return (
         <section className='mt-[3rem]'>
