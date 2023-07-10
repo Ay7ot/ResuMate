@@ -1,17 +1,20 @@
 import { FiBold, FiItalic, FiUnderline } from 'react-icons/fi'
-import { BsCalendar4 } from 'react-icons/bs'
+import {useState} from 'react'
 import { FaPlus } from 'react-icons/fa'
 import { LuEdit } from 'react-icons/lu'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { HiBars2 } from 'react-icons/hi2'
 import { useUserDetails } from '../../../Functions/useUserDetails'
+import { DatePicker } from '@mui/x-date-pickers';
+import { getMonth } from '../../../Functions/useMonth'
 
 export default function WorkHistory() {
 
     const {userDispatch, work} = useUserDetails()
 
-    const {jobTitle, month, companyName, jobItems, location} = work
-    // const {start, end} = month
+    const [startDate, setStartDate] = useState<any>(null)
+    const [endDate, setEndDate] = useState<any>(null)
+    const {jobTitle, companyName, jobItems, location } = work
 
     return (
         <section className='mt-[3rem]'>
@@ -90,14 +93,48 @@ export default function WorkHistory() {
                 </div>
                 <div className='grid grid-cols-2 gap-6 mt-6'>
                     <div className='grid grid-cols-2 gap-6'>
-                        <div className='text-[14px] text-[#444444] gap-2 py-2 border-b-[1px] flex items-center border-[#444444]'>
-                            <BsCalendar4 />
-                            <p>Start</p>
-                        </div>
-                        <div className='text-[14px] text-[#444444] gap-2 py-2 border-b-[1px] flex items-center border-[#444444]'>
-                            <BsCalendar4 />
-                            <p>End Date</p>
-                        </div>
+                    <DatePicker 
+                            value={startDate}
+                            onChange={(value)=>{
+                                setStartDate(value)
+                                const month = getMonth(value.$M+1)
+                                userDispatch({
+                                    type: 'setWork',
+                                    payload: {
+                                        workPayload: {
+                                            ...work,
+                                            month: {
+                                                ...work.month,
+                                                start: `${month} ${value.$y}`
+                                            }
+                                        }
+                                    }
+                                })
+                            }}
+                            label="Start"
+                            views={['year', 'month']}
+                        />
+                        <DatePicker 
+                            value={endDate}
+                            onChange={(value)=>{
+                                setEndDate(value)
+                                const month = getMonth(value.$M+1)
+                                userDispatch({
+                                    type: 'setWork',
+                                    payload: {
+                                        workPayload: {
+                                            ...work,
+                                            month: {
+                                                ...work.month,
+                                                end: `${month} ${value.$y}`
+                                            }
+                                        }
+                                    }
+                                })
+                            }}
+                            label="End"
+                            views={['year', 'month']}
+                        />
                     </div>
                     <input 
                         type="text" 
