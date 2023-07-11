@@ -30,8 +30,8 @@ export default function EditTemplate() {
             <div className='chosenTemplate shadow-lg w-[595px] mt-[-8rem] mb-[-10rem]'>
               {
                 template.name === 'Istanbul' ? <Istanbul itemref={itemref}/> 
-                :template.name === 'Porto' ? <Porto />
-                :template.name === 'Lisbon' ? <Lisbon />
+                :template.name === 'Porto' ? <Porto itemref={itemref}/>
+                :template.name === 'Lisbon' ? <Lisbon itemref={itemref}/>
                 :template.name === 'Madrid' ? <Madrid itemref={itemref}/>
                 : <Istanbul itemref={itemref}/>
               }

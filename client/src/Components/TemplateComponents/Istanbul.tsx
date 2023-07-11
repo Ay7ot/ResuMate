@@ -6,6 +6,7 @@ import { useUserDetails } from '../../Functions/useUserDetails'
 export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state } = useUserDetails()
+    
     return (
         <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
             <div className='w-[30%]  bg-[#0E9FC1] min-h-full text-[#ffffff]'>
@@ -31,13 +32,6 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                         <li className="text-[10px] mt-2">Executive team leadership</li>
                         <li className="text-[10px] mt-2">Sales Management</li>
                         <li className="text-[10px] mt-2">Inventory report generation</li>
-                    </ul>
-                </section>
-                <section className="mt-6">
-                    <h2 className="bg-[#00000033] px-6 py-3 font-semibold text-xs">AWARD</h2>
-                    <ul className="px-10 list-disc mt-3">
-                        <li className="text-[10px] mt-2">Executive team leadership</li>
-                        <li className="text-[10px] mt-2">Sales Management</li>
                     </ul>
                 </section>
                 <section className="mt-6">

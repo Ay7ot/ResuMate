@@ -14,7 +14,7 @@ export default function WorkHistory() {
 
     const [startDate, setStartDate] = useState<any>(null)
     const [endDate, setEndDate] = useState<any>(null)
-    const {jobTitle, companyName, jobItems, location } = work
+    const {jobTitle, companyName, location } = work
 
     return (
         <section className='mt-[3rem]'>

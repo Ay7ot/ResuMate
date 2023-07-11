@@ -13,7 +13,7 @@ export default function TemplateStyles({itemRef}: {itemRef: React.MutableRefObje
         margin:       0,
         filename:     'myfile.pdf',
         image:        { type: 'png', quality: 1 },
-        html2canvas:  { scale: 1, useCORS: true },
+        html2canvas:  { scale: 2, useCORS: true },
         jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' }
       };
 

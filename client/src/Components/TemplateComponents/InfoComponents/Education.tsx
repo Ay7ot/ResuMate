@@ -1,4 +1,3 @@
-import { BsCalendar4 } from 'react-icons/bs'
 import { FaPlus } from 'react-icons/fa'
 import { LuEdit } from 'react-icons/lu'
 import { RiDeleteBinLine } from 'react-icons/ri'
