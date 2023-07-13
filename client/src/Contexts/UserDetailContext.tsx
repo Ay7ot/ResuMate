@@ -2,6 +2,7 @@ import { createContext, ReactNode, useReducer } from "react";
 import { useUserDetails } from "../Functions/useUserDetails";
 import { UserDetailContextType } from "../Types/UserTypes";
 import { userReducer } from "../Functions/userReducer";
+import { nanoid } from 'nanoid'
 
 export const UserDetails = createContext<UserDetailContextType>({
     userDispatch: ()=>{return},
@@ -18,7 +19,19 @@ export const UserDetails = createContext<UserDetailContextType>({
     awards: [],
     language: [],
     currentLanguage: '',
-    workHistory: [],
+    workHistory: [
+        {
+            jobTitle: '',
+            month: {
+                start: '',
+                end: '',
+            },
+            companyName: '',
+            jobItems: [],
+            location: '',
+            id: nanoid()
+        }
+    ],
     work: {
         jobTitle: '',
         month: {
@@ -27,7 +40,8 @@ export const UserDetails = createContext<UserDetailContextType>({
         },
         companyName: '',
         jobItems: [],
-        location: ''
+        location: '',
+        id: nanoid()
     },
     education: [],
     school: {

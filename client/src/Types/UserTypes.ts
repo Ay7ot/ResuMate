@@ -28,6 +28,7 @@ export type jobInformation = {
     companyName: string;
     jobItems: string[];
     location: string;
+    id: string;
 }
 
 export type school = {

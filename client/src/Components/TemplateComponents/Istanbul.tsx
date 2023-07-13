@@ -50,33 +50,25 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                     <p className="text-[#7D7D7D] text-[10px] mt-2">{professionalSummary}</p>
                 </section>
                 }
-                {workHistory.length > 0 &&
+                {workHistory.length > 0 && workHistory[0].jobTitle!=='' &&
                 <section className="mt-4">
                     <h2 className="text-[#0E9FC1] text-xs font-semibold">WORK EXPERIENCE</h2>
-                    <div className="mt-2">
-                        <h3 className="text-[10px] text-[#0E9FC1]">JOB TITLE</h3>
-                        <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">Company title</h4>
-                        <h5 className="text-[10px] mt-1 text-[#7D7D7D]">Month 20xx - Month 20xx</h5>
-                        
-                        <ul className="list-disc pl-8">
-                            <li className="text-[10px] text-[#7D7D7D] mt-2 ">Lorem ipsum dolor sit amet consectetur. Quisque morbi turpis semper at adipiscing. Quam sagittis quis tempus mattis diam. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque eu quisque porttitor leo viverra tortor pharetra. Porttitor arcu gravida amet tristique. Consectetur lectus sit egestas viverra nulla. </li>
-                        </ul>
-                    </div> 
-                    <div className="mt-2">
-                        <h3 className="text-[10px] text-[#0E9FC1]">JOB TITLE</h3>
-                        <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">Company title</h4>
-                        <h5 className="text-[10px] mt-1 text-[#7D7D7D]">Month 20xx - Month 20xx</h5>
-                        
-                        <ul className="list-disc pl-8">
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Lorem ipsum dolor sit amet consectetur. Quisque morbi turpis semper at adipiscing. Quam sagittis quis tempus mattis diam. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
-                            <li className="text-[10px] text-[#7D7D7D] mt-2">Neque eu quisque porttitor leo viverra tortor pharetra. Porttitor arcu gravida amet tristique. Consectetur lectus sit egestas viverra nulla. </li>
-                        </ul>
-                    </div>
+                    {workHistory.map((work, index)=>{
+                        return (
+                            <div key={index} className="mt-2">
+                                <h3 className="text-[10px] text-[#0E9FC1]">{work.jobTitle.toUpperCase()}</h3>
+                                <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">{work.companyName}</h4>
+                                <h5 className="text-[10px] mt-1 text-[#7D7D7D]">{work.month.start} - {work.month.end}</h5>
+                                
+                                <ul className="list-disc pl-8">
+                                    <li className="text-[10px] text-[#7D7D7D] mt-2 ">Lorem ipsum dolor sit amet consectetur. Quisque morbi turpis semper at adipiscing. Quam sagittis quis tempus mattis diam. </li>
+                                    <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
+                                    <li className="text-[10px] text-[#7D7D7D] mt-2">Neque auctor duis id curabitur sed morbi vulputate ut. Nisl risus feugiat at amet pellentesque. </li>
+                                    <li className="text-[10px] text-[#7D7D7D] mt-2">Neque eu quisque porttitor leo viverra tortor pharetra. Porttitor arcu gravida amet tristique. Consectetur lectus sit egestas viverra nulla. </li>
+                                </ul>
+                            </div> 
+                        )
+                    })}
                     
                 </section>
                 }
