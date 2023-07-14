@@ -27,22 +27,14 @@ export const UserDetails = createContext<UserDetailContextType>({
                 end: '',
             },
             companyName: '',
-            jobItems: [],
+            jobItems: [{
+                jobDetail: '',
+                id: nanoid()
+            }],
             location: '',
             id: nanoid()
         }
     ],
-    work: {
-        jobTitle: '',
-        month: {
-            start: '',
-            end: '',
-        },
-        companyName: '',
-        jobItems: [],
-        location: '',
-        id: nanoid()
-    },
     education: [],
     school: {
         schoolName: '',

@@ -8,6 +8,7 @@ import { useUserDetails } from '../../../Functions/useUserDetails'
 import { DatePicker } from '@mui/x-date-pickers';
 import { getMonth } from '../../../Functions/useMonth'
 import { BsChevronDown } from 'react-icons/bs'
+import { nanoid } from 'nanoid'
 
 export default function WorkHistory() {
 
@@ -122,6 +123,43 @@ export default function WorkHistory() {
         }
     }
 
+    function addNewWorkHistory(){
+        const newWork = {
+            jobTitle: '',
+            month: {
+                start: '',
+                end: '',
+            },
+            companyName: '',
+            jobItems: [],
+            location: '',
+            id: nanoid()
+        }
+
+        userDispatch({
+            type:'setWorkHistory',
+            payload: {
+                workHistoryPayload: [
+                    ...workHistory,
+                    newWork
+                ]
+            }
+        })
+    }
+
+    function deleteJobHistory(id: string){
+        const toBeDeleted = workHistory.find(work=>work.id === id)
+        const newWorkHistory = workHistory.filter(work=>work.id!==toBeDeleted?.id)
+        if(toBeDeleted){
+            userDispatch({
+                type: 'setWorkHistory',
+                payload: {
+                    workHistoryPayload: newWorkHistory
+                }
+            })
+        }
+    }
+
     return (
         <section className='mt-[3rem]'>
             <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Work History</h2>
@@ -129,7 +167,7 @@ export default function WorkHistory() {
             
             {workHistory.map((work, index)=>{
 
-                const { jobTitle, companyName, location } = work
+                const { jobTitle, companyName, location, jobItems } = work
 
                 return (
                     <div key={index} className='mt-8 border-[1px] p-4 border-[#F1F1F1]'>
@@ -211,24 +249,101 @@ export default function WorkHistory() {
                                         <i><FiItalic /></i>
                                         <i><FiUnderline /></i>
                                     </div>
-                                    <hr className='mt-3 border-[#C4C4C4] border-t-[1px]'/>
-                                    <textarea 
-                                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] w-full text-sm md:text-base bg-[#FAFAFA] placeholder:italic mt-3'
-                                        rows={6}
-                                        placeholder='e.g. I am a highly motivated and experienced language model with a knack for learning new things ...'
-                                    />
+                                    <hr className='mt-3 border-[rgb(196,196,196)] border-t-[1px]'/>
+                                    <ul className='flex flex-col gap-3 mt-6 min-h-[100px] list-disc ml-6'>
+                                        {jobItems.map((item, index)=>{
+                                            return (
+                                                <li key={index} className='flex justify-between'>
+                                                    <input 
+                                                        autoFocus={index > 0 && jobItems.length-1===index ? true : false}
+                                                        className='outline-none bg-[#fafafa]'
+                                                        value={item.jobDetail}
+                                                        onChange={(e)=>{
+                                                            const newWorkHistory = workHistory.map(newwork=>{
+                                                                if(newwork.id === work.id){
+                                                                    return {
+                                                                        ...newwork,
+                                                                        jobItems: newwork.jobItems.map(newItem=>{
+                                                                            if(newItem.id === item.id){
+                                                                                return {
+                                                                                    ...newItem,
+                                                                                    jobDetail: e.target.value
+                                                                                }
+                                                                            }else return newItem
+                                                                        })
+                                                                    }
+                                                                }else return newwork
+                                                            })
+                                                            userDispatch({
+                                                                type: 'setWorkHistory',
+                                                                payload: {
+                                                                    workHistoryPayload: newWorkHistory
+                                                                }
+                                                            })
+                                                        }}
+
+                                                        onKeyUp={(e)=>{
+                                                            if(e.key==='Enter'){
+                                                                const newWorkHistory = workHistory.map(newwork=>{
+                                                                    if(newwork.id === work.id){
+                                                                        return {
+                                                                            ...newwork,
+                                                                            jobItems: [
+                                                                                ...newwork.jobItems,
+                                                                                {
+                                                                                    jobDetail: '',
+                                                                                    id: nanoid()
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }else return newwork
+                                                                })
+                                                                userDispatch({
+                                                                    type: 'setWorkHistory',
+                                                                    payload: {
+                                                                        workHistoryPayload: newWorkHistory
+                                                                    }
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                    <i 
+                                                        onClick={()=>{
+                                                            const newWorkHistory = workHistory.map(newWork=>{
+                                                                if(newWork.id===work.id && newWork.jobItems.length > 1){
+                                                                    return {
+                                                                        ...newWork,
+                                                                        jobItems: newWork.jobItems.filter(newItem=>newItem.id !== item.id)
+                                                                    }
+                                                                }else return newWork
+                                                            })
+                                                            userDispatch({
+                                                                type: 'setWorkHistory',
+                                                                payload: {
+                                                                    workHistoryPayload: newWorkHistory
+                                                                }
+                                                            })
+                                                        }} 
+                                                        className='text-[#9d9d9d]'
+                                                    >
+                                                        <RiDeleteBinLine />
+                                                    </i>
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                         <div className='mt-6 flex items-center justify-end text-[#9D9D9D] gap-3'>
                             <i><LuEdit /></i>
-                            <i><RiDeleteBinLine /></i>
+                            <i onClick={()=>deleteJobHistory(work.id)}><RiDeleteBinLine /></i>
                         </div>
                     </div>
                 )
             })}
             
-            <button className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
+            <button onClick={addNewWorkHistory} className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
                 <FaPlus />
                 <p>add more work history</p>
             </button>

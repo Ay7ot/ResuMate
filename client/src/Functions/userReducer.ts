@@ -1,5 +1,4 @@
 import { UserDetailContextType, userActionType } from "../Types/UserTypes";
-import { nanoid } from 'nanoid'
 
 export function userReducer(state: UserDetailContextType, action: userActionType){
     switch(action.type){
@@ -47,21 +46,6 @@ export function userReducer(state: UserDetailContextType, action: userActionType
             return {
                 ...state,
                 workHistory: action.payload?.workHistoryPayload ?? []
-            }
-        case 'setWork':
-            return {
-                ...state,
-                work: action.payload?.workPayload ?? {
-                    jobTitle: '',
-                    month: {
-                        start: '',
-                        end: '',
-                    },
-                    companyName: '',
-                    jobItems: [],
-                    location: '',
-                    id: nanoid()
-                }
             }
         case 'setEducation':
             return {

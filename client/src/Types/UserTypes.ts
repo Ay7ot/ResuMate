@@ -14,7 +14,6 @@ export type UserDetailContextType = {
     language: string[];
     currentLanguage: string;
     workHistory: jobInformation[];
-    work: jobInformation;
     education: school[];
     school: school
 }
@@ -26,7 +25,7 @@ export type jobInformation = {
         end: string;
     };
     companyName: string;
-    jobItems: string[];
+    jobItems: {jobDetail: string, id: string}[];
     location: string;
     id: string;
 }
@@ -59,7 +58,6 @@ export type userActionType = {
         languagePayload?: string[];
         currentLanguagePayload?: string
         workHistoryPayload?: jobInformation[];
-        workPayload?: jobInformation;
         educationPayload?: school[];
         schoolPayload?: school
     }
