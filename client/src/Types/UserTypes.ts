@@ -28,6 +28,7 @@ export type jobInformation = {
     jobItems: {jobDetail: string, id: string}[];
     location: string;
     id: string;
+    isShowing: boolean;
 }
 
 export type school = {

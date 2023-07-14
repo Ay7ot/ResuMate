@@ -7,7 +7,7 @@ import { HiBars2 } from 'react-icons/hi2'
 import { useUserDetails } from '../../../Functions/useUserDetails'
 import { DatePicker } from '@mui/x-date-pickers';
 import { getMonth } from '../../../Functions/useMonth'
-import { BsChevronDown } from 'react-icons/bs'
+import { BsChevronDown, BsDot } from 'react-icons/bs'
 import { nanoid } from 'nanoid'
 
 export default function WorkHistory() {
@@ -131,18 +131,29 @@ export default function WorkHistory() {
                 end: '',
             },
             companyName: '',
-            jobItems: [],
+            jobItems: [{
+                jobDetail: '',
+                id: nanoid()
+            }],
             location: '',
-            id: nanoid()
+            id: nanoid(),
+            isShowing: true
         }
+
+        const newWorkHistory = [
+            ...workHistory.map(work=>{
+                return {
+                    ...work,
+                    isShowing: false
+                }
+            }),
+            newWork
+        ]
 
         userDispatch({
             type:'setWorkHistory',
             payload: {
-                workHistoryPayload: [
-                    ...workHistory,
-                    newWork
-                ]
+                workHistoryPayload: newWorkHistory
             }
         })
     }
@@ -160,6 +171,29 @@ export default function WorkHistory() {
         }
     }
 
+    function editJobHistory(id: string){
+        const toBeEdited = workHistory.find(work=>work.id === id)
+        if(toBeEdited){
+            const newWorkHistory = workHistory.map(work=>{
+                if(work.id===toBeEdited.id){
+                    return {
+                        ...work,
+                        isShowing: !toBeEdited.isShowing
+                    }
+                }else return {
+                    ...work,
+                    isShowing: false
+                }
+            })
+            userDispatch({
+                type: 'setWorkHistory',
+                payload: {
+                    workHistoryPayload: newWorkHistory
+                }
+            })
+        }
+    }
+
     return (
         <section className='mt-[3rem]'>
             <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Work History</h2>
@@ -167,7 +201,7 @@ export default function WorkHistory() {
             
             {workHistory.map((work, index)=>{
 
-                const { jobTitle, companyName, location, jobItems } = work
+                const { jobTitle, companyName, location, jobItems, isShowing } = work
 
                 return (
                     <div key={index} className='mt-8 border-[1px] p-4 border-[#F1F1F1]'>
@@ -175,17 +209,14 @@ export default function WorkHistory() {
                             <i className='text-[2rem] text-[#9D9D9D]'>
                                 <HiBars2 />
                             </i>
-                            <div className='flex flex-col w-full'>
-                            <div className='flex justify-between items-center'>
-                                    <div>
-                                        <h3 className='text-[10px] md:text-xs text-[#9D9D9D]'>{`Work History ${index+1}`}</h3>
-                                        <h4 className='text-[#192657] font-medium text-base lg:text-[1.25rem] mt-2'>{`${jobTitle ===''? 'Not Specified' : `${`${jobTitle} ${companyName ==='' ? '' : `at ${companyName}`}`}`}`}</h4>
-                                    </div>
-                                    <i className='text-[#192657]'><BsChevronDown /></i>
-                            </div>
+                            <div className='flex flex-col w-full'> 
+                                <div>
+                                    <h3 className='text-[10px] md:text-xs text-[#9D9D9D]'>{`Work History ${index+1}`}</h3>
+                                    <h4 className='text-[#192657] font-medium text-base lg:text-[1.25rem] mt-2'>{`${jobTitle ===''? 'Not Specified' : `${`${jobTitle} ${companyName ==='' ? '' : `at ${companyName}`}`}`}`}</h4>
+                                </div>
                             </div>
                         </div>
-                        <div className={``}>    
+                        <div className={`${isShowing? '': 'hidden'} transition-all duration-150`}>    
                             <div className='grid grid-cols-2 gap-6 mt-6'>
                                 <input 
                                     type="text" 
@@ -250,51 +281,30 @@ export default function WorkHistory() {
                                         <i><FiUnderline /></i>
                                     </div>
                                     <hr className='mt-3 border-[rgb(196,196,196)] border-t-[1px]'/>
-                                    <ul className='flex flex-col gap-3 mt-6 min-h-[100px] list-disc ml-6'>
+                                    <div className='flex flex-col gap-3 mt-6 min-h-[100px]'>
                                         {jobItems.map((item, index)=>{
                                             return (
-                                                <li key={index} className='flex justify-between'>
-                                                    <input 
-                                                        autoFocus={index > 0 && jobItems.length-1===index ? true : false}
-                                                        className='outline-none bg-[#fafafa]'
-                                                        value={item.jobDetail}
-                                                        onChange={(e)=>{
-                                                            const newWorkHistory = workHistory.map(newwork=>{
-                                                                if(newwork.id === work.id){
-                                                                    return {
-                                                                        ...newwork,
-                                                                        jobItems: newwork.jobItems.map(newItem=>{
-                                                                            if(newItem.id === item.id){
-                                                                                return {
-                                                                                    ...newItem,
-                                                                                    jobDetail: e.target.value
-                                                                                }
-                                                                            }else return newItem
-                                                                        })
-                                                                    }
-                                                                }else return newwork
-                                                            })
-                                                            userDispatch({
-                                                                type: 'setWorkHistory',
-                                                                payload: {
-                                                                    workHistoryPayload: newWorkHistory
-                                                                }
-                                                            })
-                                                        }}
-
-                                                        onKeyUp={(e)=>{
-                                                            if(e.key==='Enter'){
+                                                <div key={index} className='flex justify-between'>
+                                                    <div className='flex items-center gap-2 w-full'>
+                                                        <i><BsDot /></i>
+                                                        <input
+                                                            style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
+                                                            autoFocus={index > 0 && jobItems.length-1===index ? true : false}
+                                                            className='outline-none bg-[#fafafa] min-h-[1rem] w-[90%]'
+                                                            value={item.jobDetail} 
+                                                            onChange={(e)=>{
                                                                 const newWorkHistory = workHistory.map(newwork=>{
                                                                     if(newwork.id === work.id){
                                                                         return {
                                                                             ...newwork,
-                                                                            jobItems: [
-                                                                                ...newwork.jobItems,
-                                                                                {
-                                                                                    jobDetail: '',
-                                                                                    id: nanoid()
-                                                                                }
-                                                                            ]
+                                                                            jobItems: newwork.jobItems.map(newItem=>{
+                                                                                if(newItem.id === item.id){
+                                                                                    return {
+                                                                                        ...newItem,
+                                                                                        jobDetail: e.target.value
+                                                                                    }
+                                                                                }else return newItem
+                                                                            })
                                                                         }
                                                                     }else return newwork
                                                                 })
@@ -304,10 +314,35 @@ export default function WorkHistory() {
                                                                         workHistoryPayload: newWorkHistory
                                                                     }
                                                                 })
-                                                            }
-                                                        }}
-                                                    />
-                                                    <i 
+                                                            }}
+
+                                                            onKeyUp={(e)=>{
+                                                                if(e.key==='Enter'){
+                                                                    const newWorkHistory = workHistory.map(newwork=>{
+                                                                        if(newwork.id === work.id){
+                                                                            return {
+                                                                                ...newwork,
+                                                                                jobItems: [
+                                                                                    ...newwork.jobItems,
+                                                                                    {
+                                                                                        jobDetail: '',
+                                                                                        id: nanoid()
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        }else return newwork
+                                                                    })
+                                                                    userDispatch({
+                                                                        type: 'setWorkHistory',
+                                                                        payload: {
+                                                                            workHistoryPayload: newWorkHistory
+                                                                        }
+                                                                    })
+                                                                }
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <button 
                                                         onClick={()=>{
                                                             const newWorkHistory = workHistory.map(newWork=>{
                                                                 if(newWork.id===work.id && newWork.jobItems.length > 1){
@@ -327,17 +362,17 @@ export default function WorkHistory() {
                                                         className='text-[#9d9d9d]'
                                                     >
                                                         <RiDeleteBinLine />
-                                                    </i>
-                                                </li>
+                                                    </button>
+                                                </div>
                                             )
                                         })}
-                                    </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className='mt-6 flex items-center justify-end text-[#9D9D9D] gap-3'>
-                            <i><LuEdit /></i>
-                            <i onClick={()=>deleteJobHistory(work.id)}><RiDeleteBinLine /></i>
+                            <button className='hover:text-blue-300' onClick={()=>editJobHistory(work.id)}><LuEdit /></button>
+                            <button className='hover:text-blue-300' onClick={()=>deleteJobHistory(work.id)}><RiDeleteBinLine /></button>
                         </div>
                     </div>
                 )

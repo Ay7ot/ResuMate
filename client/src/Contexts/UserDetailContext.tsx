@@ -32,8 +32,10 @@ export const UserDetails = createContext<UserDetailContextType>({
                 id: nanoid()
             }],
             location: '',
-            id: nanoid()
+            id: nanoid(),
+            isShowing: true
         }
+
     ],
     education: [],
     school: {
