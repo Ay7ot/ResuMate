@@ -14,11 +14,16 @@ export const UserDetails = createContext<UserDetailContextType>({
     country: '',
     state: '',
     professionalSummary: '',
-    skills: [],
-    currentSkill: '',
-    awards: [],
-    language: [],
-    currentLanguage: '',
+    skills: [{
+        skill: '',
+        id: nanoid(),
+        isShowing: true
+    }],
+    languages: [{
+        language: '',
+        id: nanoid(),
+        isShowing: true
+    }],
     workHistory: [
         {
             jobTitle: '',

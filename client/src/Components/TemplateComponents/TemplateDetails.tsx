@@ -1,6 +1,6 @@
  import {IoChevronBack} from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
-import { FaPlus } from 'react-icons/fa'
+// import { FaPlus } from 'react-icons/fa'
 import PersonalInfo from './InfoComponents/PersonalInfo'
 import ProfessionalSummary from './InfoComponents/ProfessionalSummary'
 import WorkHistory from './InfoComponents/WorkHistory'
@@ -32,10 +32,10 @@ export default function TemplateDetails() {
             <Education />
             <Skill />
             <Language />
-            <button className='py-3 px-7 flex items-center text-[#192657] border-[1px] border-[#192657] rounded-md mt-[60px] justify-center'>
+            {/* <button className='py-3 px-7 flex items-center text-[#192657] border-[1px] border-[#192657] rounded-md mt-[60px] justify-center'>
                 <FaPlus />
                 <p>Add Section</p>
-            </button>
+            </button> */}
         </div>
     )
 }

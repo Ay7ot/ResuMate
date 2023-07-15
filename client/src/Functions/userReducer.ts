@@ -57,20 +57,10 @@ export function userReducer(state: UserDetailContextType, action: userActionType
                 ...state,
                 skills: action.payload?.skillsPayload ?? []
             }
-        case 'setCurrentSkill':
+        case 'setLanguages':
             return {
                 ...state,
-                currentSkill: action.payload?.currentSkillPayload ?? ''
-            }
-        case 'setLanguage':
-            return {
-                ...state,
-                language: action.payload?.languagePayload ?? []
-            }
-        case 'setCurrentLanguage':
-            return {
-                ...state,
-                currentLanguage: action.payload?.currentLanguagePayload ?? ''
+                languages: action.payload?.languagesPayload ?? []
             }
         default:
             return state

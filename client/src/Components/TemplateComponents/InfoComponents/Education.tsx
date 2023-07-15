@@ -15,7 +15,7 @@ export default function Education() {
     const [endDate, setEndDate] = useState<any>(null)
 
     function updateSchoolName(id: string, schoolname: string){
-        const toBeUpdated = education?.find(work=>work.id === id)
+        const toBeUpdated = education?.find(education=>education.id === id)
         if(toBeUpdated){
             const newEducation = education.map(education=>{
                 if(education.id === toBeUpdated.id){
@@ -35,7 +35,7 @@ export default function Education() {
     }
 
     function updateDegree(id: string, degree: string){
-        const toBeUpdated = education?.find(work=>work.id === id)
+        const toBeUpdated = education?.find(education=>education.id === id)
         if(toBeUpdated){
             const newEducation = education.map(education=>{
                 if(education.id === toBeUpdated.id){
@@ -55,7 +55,7 @@ export default function Education() {
     }
 
     function updateCourse(id: string, course: string){
-        const toBeUpdated = education?.find(work=>work.id === id)
+        const toBeUpdated = education?.find(education=>education.id === id)
         if(toBeUpdated){
             const newEducation = education.map(education=>{
                 if(education.id === toBeUpdated.id){
@@ -75,7 +75,7 @@ export default function Education() {
     }
 
     function updateLocation(id: string, location: string){
-        const toBeUpdated = education?.find(work=>work.id === id)
+        const toBeUpdated = education?.find(education=>education.id === id)
         if(toBeUpdated){
             const newEducation = education.map(education=>{
                 if(education.id === toBeUpdated.id){
@@ -95,7 +95,7 @@ export default function Education() {
     }
 
     function updateStartDate(id: string, dateStarted: string){
-        const toBeUpdated = education?.find(work=>work.id === id)
+        const toBeUpdated = education?.find(education=>education.id === id)
         if(toBeUpdated){
             const newEducation = education.map(education=>{
                 if(education.id === toBeUpdated.id){
@@ -118,7 +118,7 @@ export default function Education() {
     }
 
     function updateEndDate(id: string, dateEnded: string){
-        const toBeUpdated = education?.find(work=>work.id === id)
+        const toBeUpdated = education?.find(education=>education.id === id)
         if(toBeUpdated){
             const newEducation = education.map(education=>{
                 if(education.id === toBeUpdated.id){
@@ -173,8 +173,8 @@ export default function Education() {
     }
 
     function deleteEducation(id: string){
-        const toBeDeleted = education.find(work=>work.id === id)
-        const newEducation = education.filter(work=>work.id!==toBeDeleted?.id)
+        const toBeDeleted = education.find(education=>education.id === id)
+        const newEducation = education.filter(education=>education.id!==toBeDeleted?.id)
         if(toBeDeleted){
             userDispatch({
                 type: 'setEducation',
@@ -186,9 +186,9 @@ export default function Education() {
     }
 
     function editEducation(id: string){
-        const toBeEdited = education.find(work=>work.id === id)
+        const toBeEdited = education.find(education=>education.id === id)
         if(toBeEdited){
-            const newWorkHistory = education.map(education=>{
+            const newEducation = education.map(education=>{
                 if(education.id===toBeEdited.id){
                     return {
                         ...education,
@@ -202,7 +202,7 @@ export default function Education() {
             userDispatch({
                 type: 'setEducation',
                 payload: {
-                    educationPayload: newWorkHistory
+                    educationPayload: newEducation
                 }
             })
         }
@@ -227,7 +227,7 @@ export default function Education() {
                             <div className='flex flex-col w-full'> 
                                 <div>
                                 <h3 className='text-[10px] md:text-xs text-[#9D9D9D]'>{`Education ${index+1}`}</h3>
-                                <h4 className='text-[#192657] font-medium text-base lg:text-[1.25rem] mt-2'>{`${`${degree} ${course}`}`}</h4>
+                                <h4 className='text-[#192657] font-medium text-base lg:text-[1.25rem] mt-2'>{`${ degree === '' ? 'Not Specified' : `${`${degree} ${course}`}`}`}</h4>
                                 <p className='text-[#444444] text-xs md:text-sm'>{schoolName}</p>
                                 </div>
                             </div>
@@ -309,7 +309,7 @@ export default function Education() {
 
             <button onClick={addNewEducation} className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
                 <FaPlus />
-                <p>add more work education</p>
+                <p>add more education</p>
             </button>
         </section>
     )
