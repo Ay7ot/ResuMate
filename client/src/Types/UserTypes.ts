@@ -15,7 +15,6 @@ export type UserDetailContextType = {
     currentLanguage: string;
     workHistory: jobInformation[];
     education: school[];
-    school: school
 }
 
 export type jobInformation = {
@@ -40,6 +39,8 @@ export type school = {
     };
     course?: string;
     location: string;
+    id: string;
+    isShowing: boolean
 }
 
 export type userActionType = {
@@ -60,6 +61,5 @@ export type userActionType = {
         currentLanguagePayload?: string
         workHistoryPayload?: jobInformation[];
         educationPayload?: school[];
-        schoolPayload?: school
     }
 }

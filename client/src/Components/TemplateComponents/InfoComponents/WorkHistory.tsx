@@ -7,7 +7,7 @@ import { HiBars2 } from 'react-icons/hi2'
 import { useUserDetails } from '../../../Functions/useUserDetails'
 import { DatePicker } from '@mui/x-date-pickers';
 import { getMonth } from '../../../Functions/useMonth'
-import { BsChevronDown, BsDot } from 'react-icons/bs'
+import {  BsDot } from 'react-icons/bs'
 import { nanoid } from 'nanoid'
 
 export default function WorkHistory() {
@@ -158,6 +158,7 @@ export default function WorkHistory() {
         })
     }
 
+
     function deleteJobHistory(id: string){
         const toBeDeleted = workHistory.find(work=>work.id === id)
         const newWorkHistory = workHistory.filter(work=>work.id!==toBeDeleted?.id)
@@ -170,7 +171,6 @@ export default function WorkHistory() {
             })
         }
     }
-
     function editJobHistory(id: string){
         const toBeEdited = workHistory.find(work=>work.id === id)
         if(toBeEdited){

@@ -37,17 +37,20 @@ export const UserDetails = createContext<UserDetailContextType>({
         }
 
     ],
-    education: [],
-    school: {
-        schoolName: '',
-        degree: '',
-        month: {
-            start: '',
-            end: '',
-        },
-        course: '',
-        location: ''
-    }
+    education: [
+        {
+            schoolName: '',
+            degree: '',
+            month: {
+                start: '',
+                end: '',
+            },
+            course: '',
+            location: '',
+            id: nanoid(),
+            isShowing: true
+        }
+    ]
 })
 
 export function UserDetailsProvider({children}: {children : ReactNode}){

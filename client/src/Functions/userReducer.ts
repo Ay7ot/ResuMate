@@ -52,20 +52,6 @@ export function userReducer(state: UserDetailContextType, action: userActionType
                 ...state,
                 education: action.payload?.educationPayload ?? []
             }
-        case 'setSchool':
-            return {
-                ...state,
-                school: action.payload?.schoolPayload ?? {
-                    schoolName: '',
-                    degree: '',
-                    month: {
-                        start: '',
-                        end: '',
-                    },
-                    course: '',
-                    location: ''
-                }
-            }
         case 'setSkills':
             return {
                 ...state,
