@@ -7,10 +7,12 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from "../../firebase";
 import { CgDanger } from "react-icons/cg";
 import GoogleButton from "./GoogleButton";
+import Loader from "../Loader";
 
 export default function Signup() {
 
     const { dispatch, showSignup} = useGeneralAppContext()
+    const [loading, setLoading] = useState(false)
     const [emailShown, setEmailShown] = useState(false)
     const [passwordShown, setPasswordShown] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
@@ -120,6 +122,7 @@ export default function Signup() {
                 }
             })
         } else {
+            setLoading(true)
             await createUserWithEmailAndPassword(auth, userEmail, userPassword)
             .then(user => {
                 dispatch({
@@ -128,11 +131,12 @@ export default function Signup() {
                         currentUserPayload: user.user
                     }
                 })
-                navigateTo('/templates')
             })
             .catch((error)=>{
                 console.error(error)
             })
+            setLoading(false)
+            navigateTo('/templates')
         } 
     }
     
@@ -240,7 +244,7 @@ export default function Signup() {
                             </div>
                         }
                     </div>
-                    <button className="z-[99999] mt-14 md:mt-6 w-full text-center py-4 rounded-md gradient text-[#ffffff]">Sign up</button>
+                    <button className="z-[99999] mt-14 md:mt-6 w-full  flex justify-center items-center py-4 rounded-md gradient text-[#ffffff]">{loading ? <Loader /> : 'Sign up'}</button>
                 </form>
                 <div className="flex items-center justify-between gap-6 mt-8">
                     <div className="h-[1px] w-full border-[1px]"></div>
