@@ -48,6 +48,26 @@
   transform-origin: center;
 }
 
+.blur-load {
+  background-position: center;
+  background-size: cover;
+}
+
+.blur-load.loaded > img {
+  opacity: 1;
+}
+
+.blur-load > img {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.selected {
+  border-image: linear-gradient(#64C2DB, #C994DF, #E56F8C, #7476ED) 30;
+  border-width: 2px;
+  border-style: solid;
+}
+
 .loader {
   border: 4px solid rgba(0, 0, 0, .1);
   border-left-color: transparent;

@@ -34,6 +34,11 @@ export function generalAppReducer(state: GeneralAppContextType, action: GeneralA
                 showSignup: false,
                 showLogin: false
             }
+        case 'setResumeTemplates':
+            return {
+                ...state,
+                resumeTemplates : action.payload?.resumeTemplatesPayload ?? []
+            }
         default:
             return state
     }

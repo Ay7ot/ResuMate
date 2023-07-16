@@ -11,7 +11,50 @@ export const GeneralAppContext = createContext<GeneralAppContextType>({
     navShown: false,
     showSignup: false,
     showLogin: false,
-    currentUser: null
+    currentUser: null,
+    resumeTemplates: [
+        
+        {
+            name: 'Kyiv',
+            image: 'Kyiv.png',
+            isSelected: false
+        },
+        {
+            name: 'Cardiff',
+            image: 'Cardiff.png',
+            isSelected: false
+        },
+        {
+            name: 'Milan',
+            image: 'Milan.png',
+            isSelected: false
+        },
+        {
+            name: 'Berlin',
+            image: 'Berlin.png',
+            isSelected: false
+        }, 
+        {
+            name: 'Istanbul',
+            image: 'Istanbul.png',
+            isSelected: false
+        },
+        {
+            name: 'Porto',
+            image: 'Porto.png',
+            isSelected: false
+        },
+        {
+            name: 'Lisbon',
+            image: 'Lisbon.png',
+            isSelected: false
+        },
+        {
+            name: 'Madrid',
+            image: 'Madrid.png',
+            isSelected: false
+        }
+    ]
 })
 
 export function GeneralAppProvider({children}: {children: ReactNode}){

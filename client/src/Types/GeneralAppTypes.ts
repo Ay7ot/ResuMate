@@ -6,7 +6,12 @@ export type GeneralAppContextType = {
     navShown: boolean;
     showLogin: boolean;
     showSignup: boolean;
-    currentUser: User | null
+    currentUser: User | null,
+    resumeTemplates: {
+        name: string;
+        image: string;
+        isSelected: boolean
+    }[]
 }
 
 export type GeneralAppActionType = {
@@ -15,6 +20,11 @@ export type GeneralAppActionType = {
         navShownPayload?: boolean;
         showLoginPayload?: boolean;
         showSignupPayload?: boolean;
-        currentUserPayload?: User | null
+        currentUserPayload?: User | null,
+        resumeTemplatesPayload?:  {
+            name: string;
+            image: string;
+            isSelected: boolean
+        }[]
     }
 }
