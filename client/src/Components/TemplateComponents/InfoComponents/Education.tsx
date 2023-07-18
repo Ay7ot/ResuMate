@@ -114,6 +114,7 @@ export default function Education() {
                     educationPayload: newEducation
                 }
             })
+            setStartDate(null)
         }
     }
 
@@ -137,6 +138,7 @@ export default function Education() {
                     educationPayload: newEducation
                 }
             })
+            setEndDate(null)
         }
     }
 

@@ -29,7 +29,10 @@ export type jobInformation = {
         end: string;
     };
     companyName: string;
-    jobItems: {jobDetail: string, id: string}[];
+    jobItems: {
+        jobDetail: string,
+        id: string
+    }[];
     location: string;
     id: string;
     isShowing: boolean;

@@ -17,7 +17,6 @@ export default function WorkHistory() {
     const [startDate, setStartDate] = useState<any>(null)
     const [endDate, setEndDate] = useState<any>(null)
 
-    console.log(startDate, endDate)
     function updateJobTitle(id: string, jobtitle: string){
         const toBeUpdated = workHistory?.find(work=>work.id === id)
         if(toBeUpdated){
