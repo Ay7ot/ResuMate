@@ -45,7 +45,6 @@ export default function ChooseTemplate() {
                 })
             }
         })
-        
     }
 
 
@@ -66,11 +65,11 @@ export default function ChooseTemplate() {
                         return (
                             <div className="flex flex-col gap-3" key={index}>
                                 {width > 768 ?
-                                <div onClick={()=>chooseTemplate(template.name)} className=' shadow-md cursor-pointer blur-load max-w-[270px] min-h-[220px] lg:min-h-[300px] md:min-h-[200px]'  style={{backgroundImage: `url(${image})`}}>
+                                <div onClick={()=>chooseTemplate(template.name)} className=' cursor-pointer blur-load max-w-[270px] min-h-[220px] lg:min-h-[300px] md:min-h-[200px]'  style={{backgroundImage: `url(${image})`}}>
                                     <img
                                         src={template.image}
                                         loading="lazy"
-                                        className={`${template.isSelected ? 'selected' : 'imageOutline'} w-full max-w-[270px] lazy-image object-cover object-center`}
+                                        className={`${template.isSelected ? 'selected' : 'imageOutline'} shadow-md w-full max-w-[270px] lazy-image object-cover object-center`}
                                     />
                                 </div> :
                                 <Link to='/edit-template' state={template}>

@@ -5,7 +5,7 @@ import { useUserDetails } from '../../Functions/useUserDetails'
 
 export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
-    const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state } = useUserDetails()
+    const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     
     return (
         <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
@@ -13,34 +13,49 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                 <h1 className="text-xl pt-6 px-6 font-semibold">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
                 <h2 className='px-6 font-semibold text-xs pt-3'>{profession}</h2>
                 <section className="flex flex-col gap-3 pt-6 px-6">
+                    {phoneNumber!==''&&
                     <div className="flex gap-3 items-center ">
                         <i className="text-[1.2rem]"><FiPhoneCall /></i>
                         <p className="text-[10px]">{phoneNumber}</p>
                     </div>
+                    }
+                    {email!=='' && 
                     <div className="flex gap-3 items-center ">
                         <i className="text-[1.2rem]"><GoMail /></i>
                         <p className="text-[10px] w-full break-all">{email}</p>
                     </div>
+                    }
+                    {state!=='' && 
                     <div className="flex gap-3 items-center ">
                         <i className="text-[1.2rem]"><IoLocationOutline /></i>
                         <p className="text-[10px] break-words">{`${state}, ${country}`}</p>
                     </div>
+                    }
                 </section>
-                <section className="mt-6">
+                {skills[0].skill !=='' && 
+                    <section className="mt-6">
                     <h2 className="bg-[#00000033] px-6 py-3 font-semibold text-xs">SKILLS</h2>
                     <ul className="px-10 list-disc mt-3">
-                        <li className="text-[10px] mt-2">Executive team leadership</li>
-                        <li className="text-[10px] mt-2">Sales Management</li>
-                        <li className="text-[10px] mt-2">Inventory report generation</li>
+                        {skills.map((skill, index)=>{
+                            return (
+                                <li key={index} className="text-[10px] mt-2">{skill.skill}</li>
+                            )
+                        })}
                     </ul>
                 </section>
+                }
+                {languages[0].language!=='' &&
                 <section className="mt-6">
                     <h2 className="bg-[#00000033] px-6 py-3 font-semibold text-xs">LANGUAGE</h2>
                     <ul className="px-10 list-disc mt-3">
-                        <li className="text-[10px] mt-2">English</li>
-                        <li className="text-[10px] mt-2">Yoruba</li>
+                        {languages.map((language, index)=>{
+                            return (
+                                <li key={index} className="text-[10px] mt-2">{language.language}</li>
+                            )
+                        })}
                     </ul>
                 </section>
+                }
             </div>
 
             <div className='w-[70%] px-4 py-6'>
@@ -50,6 +65,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                     <p className="text-[#7D7D7D] text-[10px] mt-2">{professionalSummary}</p>
                 </section>
                 }
+
                 {workHistory.length > 0 && workHistory[0].jobTitle!=='' &&
                 <section className="mt-4">
                     <h2 className="text-[#0E9FC1] text-xs font-semibold">WORK EXPERIENCE</h2>
@@ -73,12 +89,21 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                     
                 </section>
                 }
-                {education.length > 0 &&
-                <section className="m t-4">
+                {education.length > 0 && education[0].degree!=='' &&
+                <section className="mt-4">
                     <h2 className="text-[#0E9FC1] text-xs font-semibold">EDUCATION</h2>
-                    <h3 className="text-[#0E9FC1] text-[10px] mt-2">DEGREE  Month 20xx-20xx</h3>
-                    <h4 className="text-[10px] text-[#7D7D7D] mt-2">School Name</h4>
-                    <p className="text-[10px] text-[#7D7D7D] mt-2">Location</p>
+                    {education.map((edu, index)=>{
+                        const {degree, course, month, location, schoolName} = edu
+                        const {start, end} = month
+                        return (
+                            <div key={index}>
+                                <h3 className="text-[#0E9FC1] text-[10px] mt-2">{`${degree.toUpperCase()} ${course}`}</h3>
+                                <h3 className="text-[#0E9FC1] text-[10px] mt-2">{`${start} - ${end}`}</h3>
+                                <h4 className="text-[10px] text-[#7D7D7D] mt-2">{schoolName}</h4>
+                                <p className="text-[10px] text-[#7D7D7D] mt-2">{location}</p>
+                            </div>
+                        )
+                    })}
                 </section>
                 }
             </div>

@@ -81,20 +81,6 @@ export default function PersonalInfo(){
                     />
                     <input 
                         type="text"
-                        value={country} 
-                        placeholder='Country'
-                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
-                        onChange={(e)=>{
-                            userDispatch({
-                                type: 'setCountry',
-                                payload: {
-                                    countryPayload: e.target.value
-                                }
-                            })
-                        }}
-                    />
-                    <input 
-                        type="text"
                         value={state} 
                         placeholder='State/City'
                         className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
@@ -103,6 +89,20 @@ export default function PersonalInfo(){
                                 type: 'setState',
                                 payload: {
                                     statePayload: e.target.value
+                                }
+                            })
+                        }}
+                    />
+                    <input 
+                        type="text"
+                        value={country} 
+                        placeholder='Country'
+                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        onChange={(e)=>{
+                            userDispatch({
+                                type: 'setCountry',
+                                payload: {
+                                    countryPayload: e.target.value
                                 }
                             })
                         }}
