@@ -17,6 +17,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
             </div>
             <div className="flex">
                 <div className="w-[30%] min-h-[734px] p-6 bg-[#3780C333]">
+                    <h2 className='text-[#333333] font-semibold text-xs mb-4'>{profession.toUpperCase()}</h2>
                     {skills[0].skill!=='' && 
                     <section>
                         <h2 className="text-xs font-semibold text-[#333333]">SKILLS</h2>
@@ -92,7 +93,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                             const {degree, schoolName, course, month, location} = education
                             const {start, end} = month
                             return (
-                                <div className='flex gap-4 mt-3'>
+                                <div key={index} className='flex gap-4 mt-3'>
                                     <div className=" w-[18%]">
                                             <p className="text-[10px] text-[#333333]">{`${start} -`}</p>
                                             <p className="text-[10px] text-[#333333]">{`${end}`}</p>
