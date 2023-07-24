@@ -40,7 +40,6 @@ export const UserDetails = createContext<UserDetailContextType>({
             id: nanoid(),
             isShowing: true
         }
-
     ],
     education: [
         {
@@ -55,7 +54,40 @@ export const UserDetails = createContext<UserDetailContextType>({
             id: nanoid(),
             isShowing: true
         }
-    ]
+    ],
+    colors: [
+        {
+            color: 'bg-[#00AB44]',
+            isActive: false,
+            id: nanoid()
+        },
+        {
+            color: 'bg-[#FF3D00]',
+            isActive: false,
+            id: nanoid()
+        },
+        {
+            color: 'bg-[#9747FF]',
+            isActive: false,
+            id: nanoid()
+        },
+        {
+            color: 'bg-[#FFC107]',
+            isActive: false,
+            id: nanoid()
+        },
+        {
+            color: 'bg-[#666666]',
+            isActive: false,
+            id: nanoid()
+        },
+        {
+            color: 'bg-[#1976D2]',
+            isActive: false,
+            id: nanoid()
+        }
+    ],
+    currentColor: ''
 })
 
 export function UserDetailsProvider({children}: {children : ReactNode}){

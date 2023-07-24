@@ -20,6 +20,8 @@ export type UserDetailContextType = {
     }[];
     workHistory: jobInformation[];
     education: school[];
+    colors: color[];
+    currentColor: string
 }
 
 export type jobInformation = {
@@ -45,10 +47,16 @@ export type school = {
         start: string;
         end: string;
     };
-    course?: string;
+    course: string;
     location: string;
     id: string;
     isShowing: boolean
+} 
+
+export type color = {
+    color: string;
+    isActive: boolean;
+    id: string
 }
 
 export type userActionType = {
@@ -66,5 +74,7 @@ export type userActionType = {
         languagesPayload?: {language: string, id: string, isShowing: boolean}[];
         workHistoryPayload?: jobInformation[];
         educationPayload?: school[];
+        colorsPayload?: color[],
+        currentColor?: string
     }
 }

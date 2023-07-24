@@ -1,3 +1,4 @@
+import { capitalizeFirstLetter } from "../../Functions/capitalize"
 import { useUserDetails } from "../../Functions/useUserDetails"
 
 export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDivElement | null>}) {
@@ -13,7 +14,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
     return (
         <div className=' min-h-[841px] w-[595px] bg-[#ffffff]' ref={itemref}>
             <section className="bg-[#4FC133] p-6 min-h-[97px]">
-                <h1 className="text-[2rem] text-white font-semibold">{`${firstName} ${lastName}`}</h1>
+                <h1 className="text-[2rem] text-white font-semibold">{`${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}`}</h1>
             </section>
             <div className="flex min-h-[744px]">
                 <div className="w-[70%] p-6">
@@ -33,7 +34,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                                     </div>
                                     <div className="w-[78%]">
                                         <h3 className='text-[#4FC133] text-[10px]'>{jobTitle.toUpperCase()}</h3>
-                                        <h4 className="text-[10px] text-[#333333]">{companyName}</h4>
+                                        <h4 className="text-[10px] text-[#333333]">{capitalizeFirstLetter(companyName)}</h4>
                                         {jobItems[0].jobDetail !== '' &&
                                             <ul className="list-disc pl-6">
                                                 {jobItems.map((jobInfo, index)=>{
@@ -63,9 +64,9 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                                         <p className="text-[10px] text-[#333333]">{`${end}`}</p>
                                     </div>
                                     <div>
-                                        <h3 className='text-[#4FC133] text-[10px]'>{`${degree.toUpperCase()} ${course}`}</h3>
+                                        <h3 className='text-[#4FC133] text-[10px]'>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
                                         <h4 className="text-[10px] text-[#333333]">{schoolName}</h4>
-                                        <h5 className="text-[10px] italic text-[#7D7D7D] mt-3">{location}</h5>
+                                        <h5 className="text-[10px] italic text-[#7D7D7D] mt-3">{capitalizeFirstLetter(location)}</h5>
                                     </div>
                                 </div>
                             )
@@ -81,7 +82,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                         {state!=='' && 
                         <div className="mt-2">
                             <h3 className="text-[10px] font-semibold text-[#333333]">Address</h3>
-                            <p className="text-[10px] text-[#7D7D7D]">{`${state}, ${country}`}</p>
+                            <p className="text-[10px] text-[#7D7D7D]">{`${capitalizeFirstLetter(state)}, ${capitalizeFirstLetter(country)}`}</p>
                         </div>
                         }
                         {phoneNumber!=='' &&
@@ -103,7 +104,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                         <ul className="px-4 list-disc mt-3">
                             {skills.map((skill, index)=>{
                                 return (
-                                    <li key={index} className="text-[10px] mt-2 text-[#7D7D7D]">{skill.skill}</li>
+                                    <li key={index} className="text-[10px] mt-2 text-[#7D7D7D]">{capitalizeFirstLetter(skill.skill)}</li>
                                 )
                             })}
                         </ul>
@@ -115,7 +116,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                         <ul className="px-4 list-disc mt-3">
                             {languages.map((language, index)=>{
                                 return (
-                                    <li key={index} className="text-[10px] mt-2 text-[#7D7D7D]">{language.language}</li>
+                                    <li key={index} className="text-[10px] mt-2 text-[#7D7D7D]">{capitalizeFirstLetter(language.language)}</li>
                                 )
                             })}
                         </ul>

@@ -2,6 +2,7 @@ import { FiPhoneCall } from 'react-icons/fi'
 import { GoMail } from 'react-icons/go'
 import { IoLocationOutline } from 'react-icons/io5'
 import { useUserDetails } from '../../Functions/useUserDetails'
+import { capitalizeFirstLetter } from '../../Functions/capitalize'
 
 export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
@@ -11,7 +12,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
         <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
             <div className='w-[30%]  bg-[#0E9FC1] min-h-full text-[#ffffff]'>
                 <h1 className="text-xl pt-6 px-6 font-semibold">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
-                <h2 className='px-6 font-semibold text-xs pt-3'>{profession}</h2>
+                <h2 className='px-6 font-semibold text-xs pt-3'>{capitalizeFirstLetter(profession)}</h2>
                 <section className="flex flex-col gap-3 pt-6 px-6">
                     {phoneNumber!==''&&
                     <div className="flex gap-3 items-center ">
@@ -28,7 +29,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                     {state!=='' && 
                     <div className="flex gap-3 items-center ">
                         <i className="text-[1.2rem]"><IoLocationOutline /></i>
-                        <p className="text-[10px] break-words">{`${state}, ${country}`}</p>
+                        <p className="text-[10px] break-words">{`${capitalizeFirstLetter(state)}, ${capitalizeFirstLetter(country)}`}</p>
                     </div>
                     }
                 </section>
@@ -38,7 +39,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                     <ul className="px-10 list-disc mt-3">
                         {skills.map((skill, index)=>{
                             return (
-                                <li key={index} className="text-[10px] mt-2">{skill.skill}</li>
+                                <li key={index} className="text-[10px] mt-2">{capitalizeFirstLetter(skill.skill)}</li>
                             )
                         })}
                     </ul>
@@ -50,7 +51,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                     <ul className="px-10 list-disc mt-3">
                         {languages.map((language, index)=>{
                             return (
-                                <li key={index} className="text-[10px] mt-2">{language.language}</li>
+                                <li key={index} className="text-[10px] mt-2">{capitalizeFirstLetter(language.language)}</li>
                             )
                         })}
                     </ul>
@@ -73,8 +74,8 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                         return (
                             <div key={index} className="mt-2">
                                 <h3 className="text-[10px] text-[#0E9FC1]">{work.jobTitle.toUpperCase()}</h3>
-                                <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">{work.companyName}</h4>
-                                <h5 className="text-[10px] mt-1 text-[#7D7D7D]">{work.month.start} - {work.month.end}</h5>
+                                <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">{capitalizeFirstLetter(work.companyName)}</h4>
+                                <h5 className="text-[10px] mt-1 text-[#7D7D7D]">{`${work.month.start} ${work.month.end!=='' ? '-' : ''} ${work.month.end}`}</h5>
                                 
                                 <ul className="list-disc pl-8">
                                     {work.jobItems.map((workItem)=>{
@@ -97,10 +98,10 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                         const {start, end} = month
                         return (
                             <div key={index}>
-                                <h3 className="text-[#0E9FC1] text-[10px] mt-2">{`${degree.toUpperCase()} ${course}`}</h3>
+                                <h3 className="text-[#0E9FC1] text-[10px] mt-2">{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
                                 <h3 className="text-[#0E9FC1] text-[10px] mt-2">{`${start} - ${end}`}</h3>
-                                <h4 className="text-[10px] text-[#7D7D7D] mt-2">{schoolName}</h4>
-                                <p className="text-[10px] text-[#7D7D7D] mt-2">{location}</p>
+                                <h4 className="text-[10px] text-[#7D7D7D] mt-2">{capitalizeFirstLetter(schoolName)}</h4>
+                                <p className="text-[10px] text-[#7D7D7D] mt-2">{(capitalizeFirstLetter(location))}</p>
                             </div>
                         )
                     })}

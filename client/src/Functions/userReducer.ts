@@ -62,6 +62,11 @@ export function userReducer(state: UserDetailContextType, action: userActionType
                 ...state,
                 languages: action.payload?.languagesPayload ?? []
             }
+        case 'setColors':
+            return {
+              ...state,
+              colors: action.payload?.colorsPayload ?? []  
+            }
         default:
             return state
     }

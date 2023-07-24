@@ -101,11 +101,11 @@ export default function Landing() {
 
   return (
     <>
-      <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-1000 ease-linear darken' : ''} min-h-[100dvh]`}>
+      <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-1000 ease-linear darken' : ''} dynamicHeight flex flex-col items-center`}>
         <Navlanding />
         <LandingBody />
       </div>
-      <div ref={navref} className={`${navShown ? 'flex' : 'hidden'} md:hidden py-4 px-8 transition-all duration-150  flex-col ease-in z-[999999] top-0 right-0 fixed h-[100dvh] bg-[#f4f5fd] min-w-[250px]`}>
+      <div ref={navref} className={`${navShown ? 'flex' : 'hidden'} md:hidden py-4 px-8 transition-all duration-150  flex-col ease-in z-[999999] top-0 right-0 fixed dynamicHeight bg-[#f4f5fd] min-w-[250px]`}>
         <i className='self-end text-[1.9rem]' onClick={hideNavBar}><RxCross1 /></i>
         <div className='self-end flex flex-col gap-6 mt-6'>
           <button className="text-end px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); showLoginPage()}}>Login</button>

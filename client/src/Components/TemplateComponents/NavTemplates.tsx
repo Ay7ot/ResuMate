@@ -5,7 +5,6 @@ export default function NavTemplates() {
 
   const {resumeTemplates} = useGeneralAppContext()
   const state = resumeTemplates.find(res=>res.isSelected===true)
-  console.log(state)
 
   return (
     <div className="bg-[#ffffff] w-full z-[999999] sticky top-0 landingShadow py-[1rem] px-8 md:px-[3rem] lg:px-[6rem] flex justify-between items-center">

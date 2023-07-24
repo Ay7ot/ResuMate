@@ -104,7 +104,7 @@ export default function Login() {
     }
 
     return (
-        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] h-[100dvh]">
+        <div className="absolute md:rounded-md flex flex-col justify-between top-0 md:left-[15%] lg:left-[25%] bg-white p-6 md:px-10 md:w-[70%] lg:w-[50%] w-full z-[999999999] dynamicHeight">
             <div>
                 <div className="flex items-center md:px-3 justify-between">
                     <div></div>
@@ -121,7 +121,7 @@ export default function Login() {
                 <h2 className="text-center mt-9 text-[#192657] text-[1.5rem] font-semibold">Login to Create Resume</h2>
                 <form onSubmit={(e)=>{e.preventDefault(); loginUser(email, password)}} className="flex flex-col gap-3 mt-6">
                     <div>
-                        <p className={`text-[#192657] text-sm ${emailShown ? 'block' : 'hidden'}`}>Email Address</p>
+                        <p className={`text-[#192657] text-sm ${emailShown ? 'block pb-3' : 'hidden'}`}>Email Address</p>
                         <input 
                             type="email"
                             className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
@@ -150,7 +150,7 @@ export default function Login() {
                     </div>
 
                     <div>
-                        <p className={`text-[#192657] text-sm ${passwordShown ? 'block' : 'hidden'}`}>Password</p>
+                        <p className={`text-[#192657] text-sm ${passwordShown ? 'block pb-3' : 'hidden'}`}>Password</p>
                         <input 
                             type="password"
                             className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"

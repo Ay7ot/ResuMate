@@ -1,9 +1,20 @@
 import html2pdf from "html2pdf.js";
 import {BsDownload} from 'react-icons/bs'
 import {BiChevronDown} from 'react-icons/bi'
+import { useEffect } from "react";
+import { useUserDetails } from "../../Functions/useUserDetails";
 
-export default function TemplateStyles({itemRef}: {itemRef: React.MutableRefObject<HTMLDivElement | null>}) {
+export default function TemplateStyles({itemRef, template}: {itemRef: React.MutableRefObject<HTMLDivElement | null>, template: string}) {
   
+
+  const {colors, userDispatch} = useUserDetails()
+
+  useEffect(()=>{
+    const allFalse = colors.every(color=>color.isActive===false)
+    console.log(allFalse)
+
+  },[template])
+
   async function generatePdf(){
     const toDownload = itemRef.current
     console.log('...is downloading')
@@ -21,41 +32,8 @@ export default function TemplateStyles({itemRef}: {itemRef: React.MutableRefObje
 
     }
     console.log('has downloaded')
-
   }
 
-  const colors = [
-    {
-      name: 'green',
-      color: 'bg-[#00AB44]',
-      isActive: true
-    },
-    {
-      name: 'red',
-      color: 'bg-[#FF3D00]',
-      isActive: false
-    },
-    {
-      name: 'purple',
-      color: 'bg-[#9747FF]',
-      isActive: false
-    },
-    {
-      name: 'yellow',
-      color: 'bg-[#666666]',
-      isActive: false
-    },
-    {
-      name: 'grey',
-      color: 'bg-[#1976D2]',
-      isActive: false
-    },
-    {
-      name: 'blue',
-      color: 'bg-[#00AB44]',
-      isActive: false
-    }
-  ]
 
   return (
     <div className='px-[7.9rem] flex justify-between items-center gap-6'>

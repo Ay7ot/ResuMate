@@ -8,8 +8,8 @@ export default function ChooseTemplate() {
 
     const scrollRef = useRef<HTMLDivElement | null>(null)
 
-    const {resumeTemplates, dispatch} = useGeneralAppContext()
-    const {width} = useWindowDimensions()
+    const { resumeTemplates, dispatch } = useGeneralAppContext()
+    const { width } = useWindowDimensions()
 
     useEffect(()=>{
         const blurDivs = document.querySelectorAll('.blur-load')
@@ -56,7 +56,7 @@ export default function ChooseTemplate() {
                 alt="A desk pencil holder with two pencils and a brush"
                 className="w-[50px] mb-8 mt-12"
             />
-            <div ref={scrollRef} className="mx-5 md:mx-14 lg:mx-24">
+            <div ref={scrollRef} className="mx-5 md:mx-14 lg:mx-24 max-w-[800px]">
                 <h2 className="text-center text-[1.5rem] lg:text-[2rem] text-[#192657] font-medium">Choose a resume template to start</h2>
                 <p className="text-center text-[#444444] text-sm lg:text-base">Once you've selected your preferred template, our user-friendly resume builder will guide you through the customization process. Personalize the template with your own information, such as your contact details, work history, education, and skills.</p>
                 <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
@@ -65,7 +65,7 @@ export default function ChooseTemplate() {
                         return (
                             <div className="flex flex-col gap-3" key={index}>
                                 {width > 768 ?
-                                <div onClick={()=>chooseTemplate(template.name)} className=' cursor-pointer blur-load max-w-[270px] min-h-[220px] lg:min-h-[300px] md:min-h-[200px]'  style={{backgroundImage: `url(${image})`}}>
+                                <div onClick={()=>chooseTemplate(template.name)} className=' cursor-pointer blur-load max-w-[270px] min-h-[220px] lg:min-h-[200px] md:min-h-[200px]'  style={{backgroundImage: `url(${image})`}}>
                                     <img
                                         src={template.image}
                                         loading="lazy"

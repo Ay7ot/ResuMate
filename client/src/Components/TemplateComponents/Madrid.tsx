@@ -1,17 +1,18 @@
+import { capitalizeFirstLetter } from "../../Functions/capitalize"
 import { useUserDetails } from "../../Functions/useUserDetails"
 
 export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
-
+    
     return (
         <div className='flex flex-col min-h-[841px] w-[595px] relative' ref={itemref}>
             <div className="flex h-[107px]">
                 <div className="w-[30%] bg-[#3780c366]"></div>
                 <div className="w-[70%]  p-6 bg-[#3780C333]">
                     <h1 className="text-[#444444] text-[2rem] font-medium ">
-                        <span className="border-t-[2px] border-[#3780C3]">{firstName}</span>
-                        <span> {lastName}</span>
+                        <span className="border-t-[2px] border-[#3780C3]">{capitalizeFirstLetter(firstName)}</span>
+                        <span> {capitalizeFirstLetter(lastName)}</span>
                     </h1>
                 </div>
             </div>
@@ -24,7 +25,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                         <ul className="px-4 list-disc mt-3">
                             {skills.map((skill, index)=>{
                                 return (
-                                    <li key={index} className="text-[10px] text-[#7D7D7D]">{skill.skill}</li>
+                                    <li key={index} className="text-[10px] text-[#7D7D7D]">{capitalizeFirstLetter(skill.skill)}</li>
                                 )
                             })}
                         </ul>
@@ -36,7 +37,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                         <ul className="px-4 list-disc mt-3">
                             {languages.map((language, index)=>{
                                 return (
-                                    <li key={index} className="text-[10px] text-[#7D7D7D]">{language.language}</li>
+                                    <li key={index} className="text-[10px] text-[#7D7D7D]">{capitalizeFirstLetter(language.language)}</li>
                                 )
                             })}
                         </ul>
@@ -68,7 +69,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                                     </div>
                                     <div className="w-[82%]">
                                         <h3 className='text-[#3780C3] text-[10px]'>{jobTitle.toUpperCase()}</h3>
-                                        <h4 className="text-[10px] text-[#333333]">{companyName}</h4>
+                                        <h4 className="text-[10px] text-[#333333]">{capitalizeFirstLetter(companyName)}</h4>
                                         {jobItems[0].jobDetail!==''&&
                                         <ul className="list-disc pl-6">
                                             {jobItems.map((item, index)=>{
@@ -99,9 +100,9 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                                             <p className="text-[10px] text-[#333333]">{`${end}`}</p>
                                         </div>
                                     <div>
-                                        <h3 className='text-[#3780C3] text-[10px]'>{`${degree.toUpperCase()} ${course}`}</h3>
-                                        <h4 className="text-[10px] text-[#333333] mt-2">{schoolName}</h4>
-                                        <h5 className="text-[10px] italic text-[#7D7D7D]">{location}</h5>
+                                        <h3 className='text-[#3780C3] text-[10px]'>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
+                                        <h4 className="text-[10px] text-[#333333] mt-2">{capitalizeFirstLetter(schoolName)}</h4>
+                                        <h5 className="text-[10px] italic text-[#7D7D7D]">{capitalizeFirstLetter(location)}</h5>
                                     </div>
                                 </div>
                             )
@@ -113,7 +114,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
             <div className="min-h-[30px] absolute flex justify-around px-6 w-full text-[10px] text-white py-[10px] top-[9%] bg-[#3780C3]">
                 <p>{phoneNumber}</p>
                 <p>{email}</p>
-                <p>{`${state} ${country===''? '': ','} ${country}`}</p>
+                <p>{`${capitalizeFirstLetter(state)} ${country===''? '': ','} ${capitalizeFirstLetter(country)}`}</p>
             </div>
         </div>
     )
