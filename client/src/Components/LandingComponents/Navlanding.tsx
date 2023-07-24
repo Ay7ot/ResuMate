@@ -1,10 +1,12 @@
 import { HiOutlineBars3BottomRight } from 'react-icons/hi2'
 import { useGeneralAppContext } from '../../Functions/useGeneralAppContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Navlanding() {
 
-  const {  dispatch, navShown, showLogin, showSignup } = useGeneralAppContext()
+  const {  dispatch, navShown, showLogin, showSignup, currentUser } = useGeneralAppContext()
+
+  const navigateTo = useNavigate()
 
   function showNavBar(){
     dispatch({
@@ -19,9 +21,8 @@ export default function Navlanding() {
             showLoginPayload: true
         }
     })
-    
-    
   }
+
   function showSignupPage(){
     dispatch({
         type: 'setShowSignup',
@@ -30,6 +31,24 @@ export default function Navlanding() {
         }
     })
   }
+
+  function createResumeButtonFunction(){
+    if(currentUser !== null){
+      navigateTo('/templates')
+    } else {
+      showSignupPage()
+    }
+  }
+
+  function loginResumeButtonFunction(){
+    if(currentUser !== null){
+      navigateTo('/templates')
+    } else {
+      showLoginPage()
+    }
+  }
+
+
 
   return (
     <>
@@ -41,8 +60,8 @@ export default function Navlanding() {
           </div>
         </Link>
         <div className='hidden md:block'>
-            <button className="w-[10rem] px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); showLoginPage()}}>Login</button>
-            <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); showSignupPage()}}>Create Resume</button>
+            <button className="w-[10rem] px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); createResumeButtonFunction()}}>Login</button>
+            <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); loginResumeButtonFunction()}}>Create Resume</button>
         </div>
         <div className='flex md:hidden items-center text-[1.9rem]'>
           <i onClick={(e)=>{e.stopPropagation(); showNavBar()}}><HiOutlineBars3BottomRight /></i>

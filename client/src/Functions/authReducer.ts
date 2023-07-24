@@ -2,7 +2,17 @@ import { AuthActionType, AuthContextType } from "../Types/AuthTypes";
 
 export function authReducer(state: AuthContextType, action: AuthActionType){
     switch(action.type){
-
+        case 'resetAll':
+            return {
+                ...state,
+                email: '',
+                password: '',
+                passwordConfirm: '',
+                errorMessage: {
+                    type: null,
+                    message: ''
+                }
+            }
         case 'setEmail':
             return {
                 ...state,

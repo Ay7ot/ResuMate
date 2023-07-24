@@ -1,25 +1,27 @@
 import html2pdf from "html2pdf.js";
 import {BsDownload} from 'react-icons/bs'
 import {BiChevronDown} from 'react-icons/bi'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUserDetails } from "../../Functions/useUserDetails";
+import Loader from "../Loader";
 
 export default function TemplateStyles({itemRef, template}: {itemRef: React.MutableRefObject<HTMLDivElement | null>, template: string}) {
   
+  const [loading, setLoading] = useState(false)
 
-  const {colors, userDispatch} = useUserDetails()
+  const {colors} = useUserDetails()
 
   useEffect(()=>{
     const allFalse = colors.every(color=>color.isActive===false)
     console.log(allFalse)
 
-  },[template])
+  },[template, colors])
 
   async function generatePdf(){
     const toDownload = itemRef.current
-    console.log('...is downloading')
+    
     if(toDownload){
-
+      setLoading(true)
       const opt = {
         margin:       0,
         filename:     'myfile.pdf',
@@ -28,8 +30,8 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
         jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' }
       };
 
-      html2pdf().from(toDownload).set(opt).save('document.pdf')
-
+     await html2pdf().from(toDownload).set(opt).save('document.pdf')
+      setLoading(false)
     }
     console.log('has downloaded')
   }
@@ -61,7 +63,7 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
           </div> 
         </div>
       </div>
-      <button onClick={generatePdf} className="py-3 px-4 bg-[#192657] text-white text-semibold text-[1.2rem] rounded-md"><BsDownload /></button>
+      <button onClick={generatePdf} className="py-3 px-4 bg-[#192657] text-white text-semibold text-[1.2rem] rounded-md">{loading ? <Loader /> : <BsDownload />}</button>
     </div>
   )
 }

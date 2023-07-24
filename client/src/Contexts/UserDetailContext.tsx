@@ -95,8 +95,6 @@ export function UserDetailsProvider({children}: {children : ReactNode}){
     const value = useUserDetails() 
 
     const [userState, userDispatch] = useReducer(userReducer, value)
-    
-    console.log(userState)
 
     return (
         <UserDetails.Provider value={{...userState, userDispatch}}>

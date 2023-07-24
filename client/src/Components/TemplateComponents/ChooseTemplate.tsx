@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import NavTemplates from "./NavTemplates"
 import { useEffect, useRef } from 'react'
 import useWindowDimensions from "../../windowDimensions"
@@ -10,6 +10,7 @@ export default function ChooseTemplate() {
 
     const { resumeTemplates, dispatch } = useGeneralAppContext()
     const { width } = useWindowDimensions()
+    const navigateTo = useNavigate()
 
     useEffect(()=>{
         const blurDivs = document.querySelectorAll('.blur-load')
@@ -45,8 +46,12 @@ export default function ChooseTemplate() {
                 })
             }
         })
+        const selectedTemplate = resumeTemplates.find(template=>template.name===name)
+        console.log(selectedTemplate)
+        if(selectedTemplate?.isSelected===true && selectedTemplate.name===name){
+            navigateTo('/edit-template', {state: selectedTemplate})
+        }
     }
-
 
     return (
         <div className="flex flex-col items-center justify-center pb-[5rem]">
@@ -69,7 +74,7 @@ export default function ChooseTemplate() {
                                     <img
                                         src={template.image}
                                         loading="lazy"
-                                        className={`${template.isSelected ? 'selected' : 'imageOutline'} shadow-md w-full max-w-[270px] lazy-image object-cover object-center`}
+                                        className={`${template.isSelected ? 'selected' : 'imageOutline'} border-[2px] shadow-md w-full max-w-[270px] lazy-image object-cover object-center`}
                                     />
                                 </div> :
                                 <Link to='/edit-template' state={template}>

@@ -21,8 +21,8 @@ export default function Signup() {
 
     useEffect(()=>{
         authDispatch({
-            type: 'setNoErrorMessage'
-        })
+            type: 'resetAll'
+        });
     },[authDispatch])
 
     function showEmail(){
@@ -131,12 +131,22 @@ export default function Signup() {
                         currentUserPayload: user.user
                     }
                 })
+                navigateTo('/templates')
+                
             })
             .catch((error)=>{
                 console.error(error)
+                authDispatch({
+                    type:'setEmailEmptyErrorMessage',
+                    payload: {
+                        errorMessagePayload:{
+                            type: 'email', 
+                            message: 'Email or Password Incorrect'
+                        }
+                    }
+                })
             })
             setLoading(false)
-            navigateTo('/templates')
         } 
     }
     
