@@ -7,10 +7,36 @@ import { useGeneralAppContext } from "../../Functions/useGeneralAppContext"
 export default function ChooseTemplate() {
 
     const scrollRef = useRef<HTMLDivElement | null>(null)
+    const modalRef = useRef<HTMLDivElement | null>(null)
+
 
     const { resumeTemplates, dispatch } = useGeneralAppContext()
     const { width } = useWindowDimensions()
     const navigateTo = useNavigate()
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            event.stopPropagation()
+            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+                dispatch({
+                    type: 'setResumeTemplates',
+                    payload: {
+                        resumeTemplatesPayload: resumeTemplates.map(template=>{
+                            return {
+                                ...template,
+                                isSelected: false
+                            }
+                        })
+                    }
+                })
+            }
+        }
+
+        window.addEventListener("click", handleClickOutside);
+        return () => {
+        window.removeEventListener("click", handleClickOutside);
+        };
+    }, [resumeTemplates, dispatch]);
 
     useEffect(()=>{
         const blurDivs = document.querySelectorAll('.blur-load')
@@ -47,7 +73,7 @@ export default function ChooseTemplate() {
             }
         })
         const selectedTemplate = resumeTemplates.find(template=>template.name===name)
-        console.log(selectedTemplate)
+
         if(selectedTemplate?.isSelected===true && selectedTemplate.name===name){
             navigateTo('/edit-template', {state: selectedTemplate})
         }
@@ -64,7 +90,7 @@ export default function ChooseTemplate() {
             <div ref={scrollRef} className="mx-5 md:mx-14 lg:mx-24 max-w-[800px]">
                 <h2 className="text-center text-[1.5rem] lg:text-[2rem] text-[#192657] font-medium">Choose a resume template to start</h2>
                 <p className="text-center text-[#444444] text-sm lg:text-base">Once you've selected your preferred template, our user-friendly resume builder will guide you through the customization process. Personalize the template with your own information, such as your contact details, work history, education, and skills.</p>
-                <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div ref={modalRef} className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                     {resumeTemplates.map((template, index)=>{
                         const image = `${template.name}-small.png`
                         return (

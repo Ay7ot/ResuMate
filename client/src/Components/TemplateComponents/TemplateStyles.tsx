@@ -1,25 +1,40 @@
 import html2pdf from "html2pdf.js";
-import {BsDownload} from 'react-icons/bs'
-import {BiChevronDown} from 'react-icons/bi'
+import { BsDownload } from 'react-icons/bs'
+import { BiChevronDown } from 'react-icons/bi'
 import { useEffect, useState } from "react";
-import { useUserDetails } from "../../Functions/useUserDetails";
 import Loader from "../Loader";
+import { color } from "../../Types/ColorTypes";
+import { useColorContext } from "../../Functions/useColorContext";
 
 export default function TemplateStyles({itemRef, template}: {itemRef: React.MutableRefObject<HTMLDivElement | null>, template: string}) {
   
   const [loading, setLoading] = useState(false)
-
-  const {colors} = useUserDetails()
-
+  const [colors, setColors] = useState<color[]>([])
+  const { colorDispatch, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
+ 
   useEffect(()=>{
-    const allFalse = colors.every(color=>color.isActive===false)
-    console.log(allFalse)
-
-  },[template, colors])
-
+    if(template === 'Istanbul'){
+      setColors(Istanbul)
+    } else if (template === 'Porto'){
+      setColors(Porto)
+    } else if (template === 'Lisbon'){
+      setColors(Lisbon)
+    } else if (template === 'Madrid'){
+      setColors(Madrid)
+    } else if (template === 'Kyiv'){
+      setColors(Kyiv)
+    } else if (template === 'Cardiff'){
+      setColors(Cardiff)
+    } else if (template === 'Milan'){
+      setColors(Milan)
+    } else if (template === 'Berlin'){
+      setColors(Berlin)
+    }
+  },[template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
+  
   async function generatePdf(){
     const toDownload = itemRef.current
-    
+
     if(toDownload){
       setLoading(true)
       const opt = {
@@ -33,7 +48,147 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
      await html2pdf().from(toDownload).set(opt).save('document.pdf')
       setLoading(false)
     }
-    console.log('has downloaded')
+  }
+
+  function changeColor(template: string, color: string){
+    if(template === 'Istanbul'){
+      colorDispatch({
+        type: 'setIstanbulColors',
+        payload: {
+          istanbulPayload : Istanbul.map(colors=>{
+            if(colors.color === color){
+              return {
+                ...colors,
+                isActive: true
+              }
+            } else return {
+              ...colors,
+              isActive: false
+            }
+          })
+        }
+      })
+    } else if (template === 'Porto'){
+      colorDispatch({
+        type: 'setPortoColors',
+        payload: {
+          portoPayload : Porto.map(colors=>{
+            if(colors.color === color){
+              return {
+                ...colors,
+                isActive: true
+              }
+            } else return {
+              ...colors,
+              isActive: false
+            }
+          })
+        }
+      })
+    } else if (template === 'Lisbon'){
+      colorDispatch({
+        type: 'setLisbonColors',
+        payload: {
+          lisbonPayload : Lisbon.map(colors=>{
+            if(colors.color === color){
+              return {
+                ...colors,
+                isActive: true
+              }
+            } else return {
+              ...colors,
+              isActive: false
+            }
+          })
+        }
+      })
+    } else if (template === 'Madrid'){
+      colorDispatch({
+        type: 'setMadridColors',
+        payload: {
+          madridPayload : Madrid.map(colors=>{
+            if(colors.color === color){
+              return {
+                ...colors,
+                isActive: true
+              }
+            } else return {
+              ...colors,
+              isActive: false
+            }
+          })
+        }
+      })
+    } else if (template === 'Kyiv'){
+      colorDispatch({
+        type: 'setKyivColors',
+        payload: {
+          kyivPayload : Kyiv.map(colors=>{
+            if(colors.color === color){
+              return {
+                ...colors,
+                isActive: true
+              }
+            } else return {
+              ...colors,
+              isActive: false
+            }
+          })
+        }
+      })
+    } else if (template === 'Cardiff'){
+      colorDispatch({
+        type: 'setCardiffColors',
+        payload: {
+          cardiffPayload : Cardiff.map(colors=>{
+            if(colors.color === color){
+              return {
+                ...colors,
+                isActive: true
+              }
+            } else return {
+              ...colors,
+              isActive: false
+            }
+          })
+        }
+      })
+
+    } else if (template === 'Milan'){
+      colorDispatch({
+        type: 'setMilanColors',
+        payload: {
+          milanPayload : Milan.map(colors=>{
+            if(colors.color === color){
+              return {
+                ...colors,
+                isActive: true
+              }
+            } else return {
+              ...colors,
+              isActive: false
+            }
+          })
+        }
+      })
+    } else if (template === 'Berlin'){
+      colorDispatch({
+        type: 'setBerlinColors',
+        payload: {
+          berlinPayload : Berlin.map(colors=>{
+            if(colors.color === color){
+              return {
+                ...colors,
+                isActive: true
+              }
+            } else return {
+              ...colors,
+              isActive: false
+            }
+          })
+        }
+      })
+    }
   }
 
 
@@ -46,7 +201,7 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
             {colors.map((color, index)=>{
               return (
                 <div key={index} className={`${color.isActive ? 'templateColor' : ''} rounded-full border-[2px] p-[1px]`}>
-                  <div className={`${color.color} rounded-full h-[24px] w-[24px]`}>
+                  <div onClick={()=>changeColor(template, color.color)} className={`${color.color} rounded-full h-[24px] w-[24px] cursor-pointer`}>
 
                   </div>
                 </div>

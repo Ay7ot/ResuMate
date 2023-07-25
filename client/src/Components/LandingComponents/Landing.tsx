@@ -6,14 +6,16 @@ import {RxCross1} from 'react-icons/rx';
 import Login from '../AuthComponents/Login';
 import Signup from '../AuthComponents/Signup';
 import { AuthProvider } from '../../Contexts/AuthContexts';
+import { useNavigate } from 'react-router-dom';
 
 export default function Landing() {
 
-  const {navShown, dispatch, showLogin, showSignup} = useGeneralAppContext()
+  const {navShown, currentUser, dispatch, showLogin, showSignup} = useGeneralAppContext()
 
   const navref = useRef<HTMLDivElement>(null)
   const SignupRef = useRef<HTMLDivElement>(null)
   const loginRef = useRef<HTMLDivElement>(null)
+  const navigateTo = useNavigate()
 
   useEffect(()=>{
     dispatch({
@@ -99,6 +101,22 @@ export default function Landing() {
     })
   }
 
+  function createResumeButtonFunction(){
+    if(currentUser !== null){
+      navigateTo('/templates')
+    } else {
+      showSignupPage()
+    }
+  }
+
+  function loginResumeButtonFunction(){
+    if(currentUser !== null){
+      navigateTo('/templates')
+    } else {
+      showLoginPage()
+    }
+  }
+
   return (
     <>
       <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-1000 ease-linear darken' : ''} dynamicHeight flex flex-col items-center`}>
@@ -108,8 +126,8 @@ export default function Landing() {
       <div ref={navref} className={`${navShown ? 'flex' : 'hidden'} md:hidden py-4 px-8 transition-all duration-150  flex-col ease-in z-[999999] top-0 right-0 fixed dynamicHeight bg-[#f4f5fd] min-w-[250px]`}>
         <i className='self-end text-[1.9rem]' onClick={hideNavBar}><RxCross1 /></i>
         <div className='self-end flex flex-col gap-6 mt-6'>
-          <button className="text-end px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); showLoginPage()}}>Login</button>
-          <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); showSignupPage()}}>Create Resume</button>
+          <button className="text-end px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); loginResumeButtonFunction()}}>Login</button>
+          <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); createResumeButtonFunction()}}>Create Resume</button>
         </div>
       </div>
       <AuthProvider>
