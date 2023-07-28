@@ -40,7 +40,7 @@ We welcome contributions from the community to improve ResuMate. If you'd like t
 5. Push to the branch: `git push origin feature/your-feature-name.`.
 6. Submit a pull request describing your changes.
 
-Please ensure that your code adheres to the project's coding conventions and includes appropriate documentation where necessary.
+Please ensure that your code adheres to the project's coding conventions and includes appropriate documentation where necessary
 
 ## License
 
