@@ -15,22 +15,94 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
   useEffect(()=>{
     if(template === 'Istanbul'){
       setColors(Istanbul)
+      const currentColor = Istanbul.find(colors=>colors.isActive===true)
+      if(currentColor){
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColor
+          }
+        })
+      }
     } else if (template === 'Porto'){
       setColors(Porto)
+      const currentColor = Porto.find(colors=>colors.isActive===true)
+      if(currentColor){
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColor
+          }
+        })
+      }
     } else if (template === 'Lisbon'){
       setColors(Lisbon)
+      const currentColor = Lisbon.find(colors=>colors.isActive===true)
+      if(currentColor){
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColor
+          }
+        })
+      }
     } else if (template === 'Madrid'){
       setColors(Madrid)
+      const currentColor = Madrid.find(colors=>colors.isActive===true)
+      if(currentColor){
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColor
+          }
+        })
+      }
     } else if (template === 'Kyiv'){
       setColors(Kyiv)
+      const currentColor = Kyiv.find(colors=>colors.isActive===true)
+      if(currentColor){
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColor
+          }
+        })
+      }
     } else if (template === 'Cardiff'){
       setColors(Cardiff)
+      const currentColor = Cardiff.find(colors=>colors.isActive===true)
+      if(currentColor){
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColor
+          }
+        })
+      }
     } else if (template === 'Milan'){
       setColors(Milan)
+      const currentColor = Milan.find(colors=>colors.isActive===true)
+      if(currentColor){
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColor
+          }
+        })
+      }
     } else if (template === 'Berlin'){
       setColors(Berlin)
+      const currentColor = Berlin.find(colors=>colors.isActive===true)
+      if(currentColor){
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColor
+          }
+        })
+      }
     }
-  },[template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
+  },[colorDispatch, template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
   
   async function generatePdf(){
     const toDownload = itemRef.current
@@ -153,7 +225,6 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
           })
         }
       })
-
     } else if (template === 'Milan'){
       colorDispatch({
         type: 'setMilanColors',
@@ -199,9 +270,10 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
           <h3 className="text-[#444444] font-medium">Color:</h3>
           <div className="flex items-center gap-2">
             {colors.map((color, index)=>{
+              const bgColor = `bg-${color.color}`
               return (
                 <div key={index} className={`${color.isActive ? 'templateColor' : ''} rounded-full border-[2px] p-[1px]`}>
-                  <div onClick={()=>changeColor(template, color.color)} className={`${color.color} rounded-full h-[24px] w-[24px] cursor-pointer`}>
+                  <div onClick={()=>changeColor(template, color.color)} className={`${bgColor} rounded-full h-[24px] w-[24px] cursor-pointer`}>
 
                   </div>
                 </div>

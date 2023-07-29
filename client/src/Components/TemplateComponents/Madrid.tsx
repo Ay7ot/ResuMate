@@ -1,15 +1,20 @@
 import { capitalizeFirstLetter } from "../../Functions/capitalize"
+import { useColorContext } from "../../Functions/useColorContext"
 import { useUserDetails } from "../../Functions/useUserDetails"
 
 export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
+    const { currentColor } = useColorContext()
+
+    const bgColor = `bg-${currentColor.color}`
+    const textColor = `text-${currentColor.color}`
     
     return (
         <div className='flex flex-col min-h-[841px] w-[595px] relative' ref={itemref}>
             <div className="flex h-[107px]">
-                <div className="w-[30%] bg-[#3780c366]"></div>
-                <div className="w-[70%]  p-6 bg-[#3780C333]">
+                <div className={`w-[30%] ${bgColor}`}></div>
+                <div className={`w-[70%]  p-6 ${bgColor}`}>
                     <h1 className="text-[#444444] text-[2rem] font-medium ">
                         <span className="border-t-[2px] border-[#3780C3]">{capitalizeFirstLetter(firstName)}</span>
                         <span> {capitalizeFirstLetter(lastName)}</span>
@@ -17,7 +22,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                 </div>
             </div>
             <div className="flex">
-                <div className="w-[30%] min-h-[734px] p-6 bg-[#3780C333]">
+                <div className={`w-[30%] min-h-[734px] p-6 ${bgColor}`}>
                     <h2 className='text-[#333333] font-semibold text-xs mb-4'>{profession.toUpperCase()}</h2>
                     {skills[0].skill!=='' && 
                     <section>
@@ -47,7 +52,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                 <div className="w-[70%] p-6 bg-[#ffffff]">
                     {professionalSummary!=='' &&
                     <section>
-                        <h2 className="text-xs font-semibold text-[#3780C3]">PROFESSIONAL SUMMARY</h2>
+                        <h2 className={`text-xs font-semibold ${textColor}`}>PROFESSIONAL SUMMARY</h2>
                         <hr  className="border-t-[1px] border-[#C4C4C4] mt-1"/>
                         <p className="mt-3 text-[10px] text-[#333333] ">
                         {professionalSummary}
@@ -56,7 +61,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                     }
                     {workHistory[0].jobTitle !== '' &&
                     <section className="mt-5">
-                        <h2 className="text-xs font-semibold text-[#3780C3]">WORK EXPERIENCE</h2>
+                        <h2 className={`text-xs font-semibold ${textColor}`}>WORK EXPERIENCE</h2>
                         <hr  className="border-t-[1px] border-[#C4C4C4] mt-1"/>
                         {workHistory.map((job, index)=>{
                             const {jobTitle, companyName, jobItems, month} = job
@@ -68,7 +73,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                                         <p className="text-[10px] text-[#333333]">{`${end}`}</p>
                                     </div>
                                     <div className="w-[82%]">
-                                        <h3 className='text-[#3780C3] text-[10px]'>{jobTitle.toUpperCase()}</h3>
+                                        <h3 className={`${textColor} text-[10px]`}>{jobTitle.toUpperCase()}</h3>
                                         <h4 className="text-[10px] text-[#333333]">{capitalizeFirstLetter(companyName)}</h4>
                                         {jobItems[0].jobDetail!==''&&
                                         <ul className="list-disc pl-6">
@@ -88,7 +93,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
 
                     {education[0].degree!=='' &&
                     <section className="mt-5">
-                        <h2 className="text-xs font-semibold text-[#3780C3]">EDUCATION</h2>
+                        <h2 className={`text-xs font-semibold ${textColor}`}>EDUCATION</h2>
                         <hr  className="border-t-[1px] border-[#C4C4C4] mt-1"/>
                         {education.map((education, index)=>{
                             const {degree, schoolName, course, month, location} = education
@@ -100,7 +105,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                                             <p className="text-[10px] text-[#333333]">{`${end}`}</p>
                                         </div>
                                     <div>
-                                        <h3 className='text-[#3780C3] text-[10px]'>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
+                                        <h3 className={`${textColor} text-[10px]`}>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
                                         <h4 className="text-[10px] text-[#333333] mt-2">{capitalizeFirstLetter(schoolName)}</h4>
                                         <h5 className="text-[10px] italic text-[#7D7D7D]">{capitalizeFirstLetter(location)}</h5>
                                     </div>
@@ -111,7 +116,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                     }
                 </div>
             </div>
-            <div className="min-h-[30px] absolute flex justify-around px-6 w-full text-[10px] text-white py-[10px] top-[9%] bg-[#3780C3]">
+            <div className="min-h-[30px] absolute flex justify-around px-6 w-full text-[10px] text-white py-[10px] top-[10%] bg-[#3780C3]">
                 <p>{phoneNumber}</p>
                 <p>{email}</p>
                 <p>{`${capitalizeFirstLetter(state)} ${country===''? '': ','} ${capitalizeFirstLetter(country)}`}</p>

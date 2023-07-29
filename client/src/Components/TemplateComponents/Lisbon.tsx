@@ -1,13 +1,18 @@
 import { capitalizeFirstLetter } from "../../Functions/capitalize";
+import { useColorContext } from "../../Functions/useColorContext";
 import { useUserDetails } from "../../Functions/useUserDetails";
 
 export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
-    
+    const {currentColor} = useColorContext()
+
+    const bgColor = `bg-${currentColor.color}`
+    const textColor = `text-${currentColor.color}`
+
     return (
         <div className=' min-h-[841px] w-[595px] bg-[#f4f5fd] relative' ref={itemref}>
-            <div className="bg-[#EFB153] p-6 text-[#ffffff]">
+            <div className={`${bgColor} p-6 text-[#ffffff]`}>
                 <h1 className="text-[2rem] font-semibold">{`${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}`}</h1>
                 <h2 className="text-xs font-semibold text-[#ffffff] mt-2">{capitalizeFirstLetter(profession)}</h2>
                 <div className="mt-3">
@@ -23,7 +28,7 @@ export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLD
                <div className="grid grid-cols-2 gap-6">
                     {skills[0].skill!=='' &&
                     <section className="mt-2">
-                        <h2 className="text-[#EFB153] text-xs font-semibold mb-1">SKILLS</h2>
+                        <h2 className={`${textColor} text-xs font-semibold mb-1`}>SKILLS</h2>
                         <hr className="border-t-[1px] border-[#C4C4C4]"/>
                         <div className="flex justify-between gap-3 mt-2">
                             <div className="w-[20%]">
@@ -41,7 +46,7 @@ export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLD
                     }
                     {languages[0].language!=='' &&
                     <section className="mt-2">
-                        <h2 className="text-[#EFB153] text-xs font-semibold mb-1">LANGUAGES</h2>
+                        <h2 className={`${textColor} text-xs font-semibold mb-1`}>LANGUAGES</h2>
                         <hr className="border-t-[1px] border-[#C4C4C4]"/>
                         <div className="flex justify-between gap-3 mt-2">
                             <div className="w-[20%]">
@@ -49,9 +54,9 @@ export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLD
                             </div>
                             <ul className="w-[80%] pl-4 list-disc text-[#333333]">
                             {languages.map((language, index)=>{
-                                    return (
-                                        <li key={index} className="text-[10px] mt-1">{capitalizeFirstLetter(language.language)}</li>
-                                    )
+                                return (
+                                    <li key={index} className="text-[10px] mt-1">{capitalizeFirstLetter(language.language)}</li>
+                                )
                             })}
                             </ul>
                         </div>
@@ -61,7 +66,7 @@ export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLD
                </div>
                 {workHistory[0].jobTitle !== '' && 
                 <section className="mt-2">
-                    <h2 className="text-[#EFB153] text-xs font-semibold mb-1">WORK EXPERIENCE</h2>
+                    <h2 className={`${textColor} text-xs font-semibold mb-1`}>WORK EXPERIENCE</h2>
                     <hr className="border-t-[1px] border-[#C4C4C4]"/>
                     {workHistory.map((work, index)=>{
                         const {jobItems, jobTitle, companyName, month} = work
@@ -72,7 +77,7 @@ export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLD
                                     <p className="text-[#333333] text-[10px]">{`${start} ${end===''?'': '-'}`}<br />{`${end}`}</p>
                                 </div>
                                 <div className="w-[80%]">
-                                    <h3 className="text-[10px] text-[#EFB153]">{jobTitle.toUpperCase()}</h3>
+                                    <h3 className={`text-[10px] ${textColor}`}>{jobTitle.toUpperCase()}</h3>
                                     <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">{capitalizeFirstLetter(companyName)}</h4>
                                     <ul className="list-disc pl-4 text-[#333333]">
                                         {jobItems.map((item, index)=>{
@@ -91,7 +96,7 @@ export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLD
                 }
                 {education[0].degree!=='' && 
                 <section className="mt-2">
-                    <h2 className="text-[#EFB153] text-xs font-semibold mb-1">EDUCATION</h2>
+                    <h2 className={`${textColor} text-xs font-semibold mb-1`}>EDUCATION</h2>
                     <hr className="border-t-[1px] border-[#C4C4C4]"/>
                     {education.map((education, index)=>{
                         const {course, degree, schoolName, location, month} = education
@@ -103,7 +108,7 @@ export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLD
                                     {end}
                                 </p>
                                 <div className="w-[80%]">
-                                    <h3 className='text-[#EFB153] text-[10px]'>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
+                                    <h3 className={`${textColor} text-[10px]`}>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
                                     <h4 className="text-[10px] text-[#333333]">{capitalizeFirstLetter(schoolName)}</h4>
                                     <h5 className="text-[10px] italic text-[#7D7D7D]">{capitalizeFirstLetter(location)}</h5>
                                 </div>

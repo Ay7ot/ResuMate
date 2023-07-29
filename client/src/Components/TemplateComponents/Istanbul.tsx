@@ -3,14 +3,18 @@ import { GoMail } from 'react-icons/go'
 import { IoLocationOutline } from 'react-icons/io5'
 import { useUserDetails } from '../../Functions/useUserDetails'
 import { capitalizeFirstLetter } from '../../Functions/capitalize'
+import { useColorContext } from '../../Functions/useColorContext'
 
 export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
-    
+    const { currentColor } = useColorContext()
+    const bgColor = `bg-${currentColor.color}`
+    const textColor = `text-${currentColor.color}`
+
     return (
         <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
-            <div className='w-[30%]  bg-[#0E9FC1] min-h-full text-[#ffffff]'>
+            <div className={`w-[30%]  ${bgColor} min-h-full text-[#ffffff]`}>
                 <h1 className="text-xl pt-6 px-6 font-semibold">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
                 <h2 className='px-6 font-semibold text-xs pt-3'>{capitalizeFirstLetter(profession)}</h2>
                 <section className="flex flex-col gap-3 pt-6 px-6">
@@ -62,18 +66,18 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
             <div className='w-[70%] px-4 py-6'>
                 {professionalSummary!=='' && 
                 <section>
-                    <h2 className="text-[#0E9FC1] text-xs font-semibold">PROFESSIONAL SUMMARY</h2>
+                    <h2 className={`${textColor} text-xs font-semibold`}>PROFESSIONAL SUMMARY</h2>
                     <p className="text-[#7D7D7D] text-[10px] mt-2">{professionalSummary}</p>
                 </section>
                 }
 
                 {workHistory.length > 0 && workHistory[0].jobTitle!=='' &&
                 <section className="mt-4">
-                    <h2 className="text-[#0E9FC1] text-xs font-semibold">WORK EXPERIENCE</h2>
+                    <h2 className={`${textColor} text-xs font-semibold`}>WORK EXPERIENCE</h2>
                     {workHistory.map((work, index)=>{
                         return (
                             <div key={index} className="mt-2">
-                                <h3 className="text-[10px] text-[#0E9FC1]">{work.jobTitle.toUpperCase()}</h3>
+                                <h3 className={`text-[10px] ${textColor}`}>{work.jobTitle.toUpperCase()}</h3>
                                 <h4 className="text-[10px] mt-1 text-[#7D7D7D] italic">{capitalizeFirstLetter(work.companyName)}</h4>
                                 <h5 className="text-[10px] mt-1 text-[#7D7D7D]">{`${work.month.start} ${work.month.end!=='' ? '-' : ''} ${work.month.end}`}</h5>
                                 
@@ -92,14 +96,14 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
                 }
                 {education.length > 0 && education[0].degree!=='' &&
                 <section className="mt-4">
-                    <h2 className="text-[#0E9FC1] text-xs font-semibold">EDUCATION</h2>
+                    <h2 className={`${textColor} text-xs font-semibold`}>EDUCATION</h2>
                     {education.map((edu, index)=>{
                         const {degree, course, month, location, schoolName} = edu
                         const {start, end} = month
                         return (
                             <div key={index}>
-                                <h3 className="text-[#0E9FC1] text-[10px] mt-2">{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
-                                <h3 className="text-[#0E9FC1] text-[10px] mt-2">{`${start} - ${end}`}</h3>
+                                <h3 className={`${textColor} text-[10px] mt-2`}>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
+                                <h3 className={`${textColor} text-[10px] mt-2`}>{`${start} - ${end}`}</h3>
                                 <h4 className="text-[10px] text-[#7D7D7D] mt-2">{capitalizeFirstLetter(schoolName)}</h4>
                                 <p className="text-[10px] text-[#7D7D7D] mt-2">{(capitalizeFirstLetter(location))}</p>
                             </div>

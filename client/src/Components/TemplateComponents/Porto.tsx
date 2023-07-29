@@ -1,9 +1,13 @@
 import { capitalizeFirstLetter } from "../../Functions/capitalize"
+import { useColorContext } from "../../Functions/useColorContext"
 import { useUserDetails } from "../../Functions/useUserDetails"
 
 export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
+    const {currentColor} = useColorContext()
+    const bgColor = `bg-${currentColor.color}`
+    const textColor = `text-${currentColor.color}`
 
     function useComponent(){
         if(email!==''||phoneNumber!==''||state!=='' || country!==''){
@@ -13,7 +17,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
 
     return (
         <div className=' min-h-[841px] w-[595px] bg-[#ffffff]' ref={itemref}>
-            <section className="bg-[#4FC133] p-6 min-h-[97px]">
+            <section className={`${bgColor} p-6 min-h-[97px]`}>
                 <h1 className="text-[2rem] text-white font-semibold">{`${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}`}</h1>
             </section>
             <div className="flex min-h-[744px]">
@@ -21,7 +25,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                     {professionalSummary!=='' &&  <p className='text-[#333333] text-[10px]'>{professionalSummary} </p>}
                     {workHistory.length > 0 && workHistory[0].jobTitle!=='' &&
                     <section className='mt-6'>
-                        <h2 className='text-[#4FC133] text-xs font-semibold'>WORK EXPERIENCE</h2>
+                        <h2 className={`${textColor} text-xs font-semibold`}>WORK EXPERIENCE</h2>
                         <hr />
                         {workHistory.map((work, index)=>{
                             const {jobItems, jobTitle, companyName, month} = work
@@ -33,7 +37,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                                         <p className="text-[10px] text-[#333333]">{`${end}`}</p>
                                     </div>
                                     <div className="w-[78%]">
-                                        <h3 className='text-[#4FC133] text-[10px]'>{jobTitle.toUpperCase()}</h3>
+                                        <h3 className={`${textColor} text-[10px]`}>{jobTitle.toUpperCase()}</h3>
                                         <h4 className="text-[10px] text-[#333333]">{capitalizeFirstLetter(companyName)}</h4>
                                         {jobItems[0].jobDetail !== '' &&
                                             <ul className="list-disc pl-6">
@@ -52,7 +56,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                     }
                     {education[0].degree!==''&&
                     <section className='mt-6'>
-                        <h2 className='text-[#4FC133] text-xs font-semibold'>EDUCATION</h2>
+                        <h2 className={`${textColor} text-xs font-semibold`}>EDUCATION</h2>
                         <hr />
                         {education.map((edu, index)=>{
                             const {schoolName, month, degree, course, location} = edu
@@ -64,7 +68,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
                                         <p className="text-[10px] text-[#333333]">{`${end}`}</p>
                                     </div>
                                     <div>
-                                        <h3 className='text-[#4FC133] text-[10px]'>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
+                                        <h3 className={`${textColor} text-[10px]`}>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
                                         <h4 className="text-[10px] text-[#333333]">{schoolName}</h4>
                                         <h5 className="text-[10px] italic text-[#7D7D7D] mt-3">{capitalizeFirstLetter(location)}</h5>
                                     </div>

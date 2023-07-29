@@ -13,256 +13,256 @@ export const ColorContext = createContext<colorContext>({
     },
     Istanbul: [
         {
-            color: 'bg-[#00AB44]',
+            color: '[#00AB44]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FF3D00]',
+            color: '[#FF3D00]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#3780C333]',
+            color: '[#3780C333]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FFC107]',
+            color: '[#FFC107]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#666666]',
+            color: '[#666666]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#1976D2]',
+            color: '[#1976D2]',
             id: nanoid(),
             isActive: true
         }
     ],
     Porto: [
         {
-            color: 'bg-[#00AB44]',
+            color: '[#00AB44]',
             id: nanoid(),
             isActive: true
         },
         {
-            color: 'bg-[#FF3D00]',
+            color: '[#FF3D00]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#3780C333]',
+            color: '[#3780C333]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FFC107]',
+            color: '[#FFC107]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#666666]',
+            color: '[#666666]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#1976D2]',
+            color: '[#1976D2]',
             id: nanoid(),
             isActive: false
         }
     ],
     Lisbon: [
         {
-            color: 'bg-[#00AB44]',
+            color: '[#00AB44]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FF3D00]',
+            color: '[#FF3D00]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#3780C333]',
+            color: '[#3780C333]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FFC107]',
+            color: '[#FFC107]',
             id: nanoid(),
             isActive: true
         },
         {
-            color: 'bg-[#666666]',
+            color: '[#666666]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#1976D2]',
+            color: '[#1976D2]',
             id: nanoid(),
             isActive: false
         }
     ],
     Madrid: [
         {
-            color: 'bg-[#00AB44]',
+            color: '[#00AB44]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FF3D00]',
+            color: '[#FF3D00]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#3780C333]',
+            color: '[#3780C333]',
             id: nanoid(),
             isActive: true
         },
         {
-            color: 'bg-[#FFC107]',
+            color: '[#FFC107]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#666666]',
+            color: '[#666666]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#1976D2]',
+            color: '[#1976D2]',
             id: nanoid(),
             isActive: false
         }
     ],
     Kyiv: [
         {
-            color: 'bg-[#00AB44]',
+            color: '[#00AB44]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FF3D00]',
+            color: '[#FF3D00]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#3780C333]',
+            color: '[#3780C333]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FFC107]',
+            color: '[#FFC107]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#666666]',
+            color: '[#666666]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#1976D2]',
+            color: '[#1976D2]',
             id: nanoid(),
             isActive: true
         }
     ],
     Cardiff: [
         {
-            color: 'bg-[#00AB44]',
+            color: '[#00AB44]',
             id: nanoid(),
             isActive: true
         },
         {
-            color: 'bg-[#FF3D00]',
+            color: '[#FF3D00]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#3780C333]',
+            color: '[#3780C333]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FFC107]',
+            color: '[#FFC107]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#666666]',
+            color: '[#666666]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#1976D2]',
+            color: '[#1976D2]',
             id: nanoid(),
             isActive: false
         }
     ],
     Milan: [
         {
-            color: 'bg-[#00AB44]',
+            color: '[#00AB44]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FF3D00]',
+            color: '[#FF3D00]',
             id: nanoid(),
             isActive: true
         },
         {
-            color: 'bg-[#3780C333]',
+            color: '[#3780C333]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FFC107]',
+            color: '[#FFC107]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#666666]',
+            color: '[#666666]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#1976D2]',
+            color: '[#1976D2]',
             id: nanoid(),
             isActive: false
         }
     ],
     Berlin: [
         {
-            color: 'bg-[#00AB44]',
+            color: '[#00AB44]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FF3D00]',
+            color: '[#FF3D00]',
             id: nanoid(),
             isActive: true
         },
         {
-            color: 'bg-[#3780C333]',
+            color: '[#3780C333]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#FFC107]',
+            color: '[#FFC107]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#666666]',
+            color: '[#666666]',
             id: nanoid(),
             isActive: false
         },
         {
-            color: 'bg-[#1976D2]',
+            color: '[#1976D2]',
             id: nanoid(),
             isActive: false
         }
