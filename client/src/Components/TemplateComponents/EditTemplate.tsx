@@ -7,6 +7,7 @@ import Madrid from "./Madrid"
 import TemplateDetails from "./TemplateDetails"
 import TemplateStyles from "./TemplateStyles"
 import Kyiv from "./Kyiv"
+import Milan from "./Milan"
 
 export default function EditTemplate() {
 
@@ -17,7 +18,7 @@ export default function EditTemplate() {
 
   useEffect(()=>{
     window.scrollTo(0,0)  
-  })
+  },[])
     
   return (
     <div className='flex lg:w-screen h-[100dvh] relative'>
@@ -32,6 +33,7 @@ export default function EditTemplate() {
             :template.name === 'Lisbon' ? <Lisbon itemref={itemref}/>
             :template.name === 'Madrid' ? <Madrid itemref={itemref}/>
             :template.name === 'Kyiv' ? <Kyiv itemref={itemref}/>
+            :template.name === 'Milan' ? <Milan itemref={itemref}/>
             : <Istanbul itemref={itemref}/>
           }
         </div>
