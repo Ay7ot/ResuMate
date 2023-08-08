@@ -17,8 +17,8 @@ export default function TemplateDetails() {
     }
     
     return (
-        <div>
-            <div className='flex items-center justify-between'>
+        <div className="grid place-content-center max-w-[600px] mx-auto">
+            <div className='flex justify-between w-full'>
                 <button onClick={goBack} className='w-[10%] flex items-center gap-1 text-[#192657] font-medium'>
                     <i className='text-[#444444] '><IoChevronBack /></i>
                     <p>Back</p>

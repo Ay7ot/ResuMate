@@ -6,6 +6,7 @@ import Lisbon from "./Lisbon"
 import Madrid from "./Madrid"
 import TemplateDetails from "./TemplateDetails"
 import TemplateStyles from "./TemplateStyles"
+import Kyiv from "./Kyiv"
 
 export default function EditTemplate() {
 
@@ -30,6 +31,7 @@ export default function EditTemplate() {
             :template.name === 'Porto' ? <Porto itemref={itemref}/>
             :template.name === 'Lisbon' ? <Lisbon itemref={itemref}/>
             :template.name === 'Madrid' ? <Madrid itemref={itemref}/>
+            :template.name === 'Kyiv' ? <Kyiv itemref={itemref}/>
             : <Istanbul itemref={itemref}/>
           }
         </div>
