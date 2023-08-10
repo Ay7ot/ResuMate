@@ -9,6 +9,7 @@ import TemplateStyles from "./TemplateStyles"
 import Kyiv from "./Kyiv"
 import Milan from "./Milan"
 import Cardiff from "./Cardiff"
+import Berlin from "./Berlin"
 
 export default function EditTemplate() {
 
@@ -36,6 +37,7 @@ export default function EditTemplate() {
             :template.name === 'Kyiv' ? <Kyiv itemref={itemref}/>
             :template.name === 'Milan' ? <Milan itemref={itemref}/>
             :template.name === 'Cardiff' ? <Cardiff itemref={itemref}/>
+            :template.name === 'Berlin' ? <Berlin itemref={itemref}/>
             : <Istanbul itemref={itemref}/>
           }
         </div>
