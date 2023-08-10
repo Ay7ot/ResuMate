@@ -70,7 +70,7 @@ export default function Berlin({itemref}: {itemref: React.MutableRefObject<HTMLD
                         <div className='w-[30px] border-t-4 border-black'></div>
                         <h3 className='uppercase font-bold text-xs mt-2'>experience</h3>
                     </div>
-                    <div className={`w-[65%] border-t-4 pt-2 text-[10px] ${borderColor}`}>
+                    <div className={`w-[65%] border-t-4 pt-2 text-[10px] flex flex-col gap-4 ${borderColor}`}>
                         {workHistory.map((work, index)=>{
                             const {companyName, jobTitle, jobItems, location, month} = work
                             const {start, end} = month
@@ -99,7 +99,7 @@ export default function Berlin({itemref}: {itemref: React.MutableRefObject<HTMLD
                         <div className='w-[30px] border-t-4 border-black'></div>
                         <h3 className='uppercase font-bold text-xs mt-2'>education</h3>
                     </div>
-                    <div className={`w-[65%] border-t-4 pt-2 text-[10px] ${borderColor}`}>
+                    <div className={`w-[65%] border-t-4 pt-2 text-[10px] flex flex-col gap-4 ${borderColor}`}>
                         {education.map((edu, index)=>{
                             const {schoolName, degree, course, location, month} = edu
                             const {start, end} = month
