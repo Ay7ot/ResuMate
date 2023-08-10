@@ -26,7 +26,7 @@ export default function LandingBody() {
   }
   
   return (
-    <div className='pb-4 min-h-[85vh] flex items-center justify-center flex-col mx-10 max-w-[700px] landing-bg relative'>
+    <div className='pb-4 min-h-[85vh] flex items-center justify-center flex-col mx-10 max-w-[600px] lg:max-w-[800px] landing-bg relative'>
       <div className='z-[99999] flex text-[#192657] gap-2 items-center rounded-full py-[10px] px-[12px] bg-[#1926571a]'>
         <i className='text-[1.2rem]'><RiCompassFill /></i>
         <p className='text-[0.9rem]'>The easiest way to build a resume</p>

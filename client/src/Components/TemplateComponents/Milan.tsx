@@ -10,6 +10,7 @@ export default function Milan({itemref}: {itemref: React.MutableRefObject<HTMLDi
     
     return (
         <div className='min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-8' ref={itemref}>
+            
             <div className="grid grid-cols-2 gap-3">
                 <div className="text-[10px]">
                     <p className="text-[#999999] ">{`${capitalizeFirstLetter(state)}${country===''?'':'-'} ${capitalizeFirstLetter(country)}`}</p>
@@ -22,10 +23,10 @@ export default function Milan({itemref}: {itemref: React.MutableRefObject<HTMLDi
             {firstName!==''&&  <h2 className="border-b-4 mt-6 border-[#292828] uppercase text-[2rem]">{`${firstName} ${lastName}`}</h2>}
             
             {professionalSummary!==''&& 
-            <div className="mt-8">
-                <h3 className="uppercase text-xs text-[#424242]">professional summary</h3>
-                <p className="text-[10px] mt-2 text-[#666666]">{professionalSummary}</p>
-            </div>
+                <div className="mt-8">
+                    <h3 className="uppercase text-xs text-[#424242]">professional summary</h3>
+                    <p className="text-[10px] mt-2 text-[#666666]">{professionalSummary}</p>
+                </div>
             }
             
             <div className="grid grid-cols-2 mt-8 gap-3">
@@ -81,6 +82,7 @@ export default function Milan({itemref}: {itemref: React.MutableRefObject<HTMLDi
                     </div>
                 </div>
             }
+           
             {education[0].degree!==''&&
                 <div className="mt-8">
                     <h3 className="uppercase text-xs text-[#424242]">education</h3>

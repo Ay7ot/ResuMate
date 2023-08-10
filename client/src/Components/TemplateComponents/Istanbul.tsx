@@ -15,7 +15,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
     return (
         <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
             <div className={`w-[30%]  ${bgColor} min-h-full text-[#ffffff]`}>
-                <h1 className="text-xl pt-6 px-6 font-semibold">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
+                <h1 className="text-xl pt-6 px-6 font-semibold break-all">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
                 <h2 className='px-6 font-semibold text-xs pt-3'>{capitalizeFirstLetter(profession)}</h2>
                 <section className="flex flex-col gap-3 pt-6 px-6">
                     {phoneNumber!==''&&
