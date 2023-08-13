@@ -1,6 +1,6 @@
-import { capitalizeFirstLetter } from "../../Functions/capitalize"
-import { useColorContext } from "../../Functions/useColorContext"
-import { useUserDetails } from "../../Functions/useUserDetails"
+import { capitalizeFirstLetter } from "../../../Functions/capitalize"
+import { useColorContext } from "../../../Functions/useColorContext"
+import { useUserDetails } from "../../../Functions/useUserDetails"
 
 export default function Kyiv({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 

@@ -1,6 +1,6 @@
-import { useColorContext } from "../../Functions/useColorContext"
-import { capitalizeFirstLetter } from '../../Functions/capitalize'
-import { useUserDetails } from "../../Functions/useUserDetails"
+import { useColorContext } from "../../../Functions/useColorContext"
+import { capitalizeFirstLetter } from '../../../Functions/capitalize'
+import { useUserDetails } from "../../../Functions/useUserDetails"
 
 export default function Berlin({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
@@ -31,7 +31,7 @@ export default function Berlin({itemref}: {itemref: React.MutableRefObject<HTMLD
                 {skills[0].skill!==''&&
                 <div>
                     <h3 className='uppercase font-bold text-xs'>skills</h3>
-                    <ul className={`list-disc pl-8 border-t-4  ${borderColor} mt-2 pt-3`}>
+                    <ul className={`list-disc pl-8 border-t-4 text-[10px] ${borderColor} mt-2 pt-3`}>
                         {skills.map((skill, index)=>{
                             return (
                                 <li key={index}>{capitalizeFirstLetter(skill.skill)}</li>
@@ -43,7 +43,7 @@ export default function Berlin({itemref}: {itemref: React.MutableRefObject<HTMLD
                 {languages[0].language!==''&&
                 <div>
                     <h3 className='uppercase font-bold text-xs'>languages</h3>
-                    <ul className={`list-disc pl-8 border-t-4  ${borderColor} mt-2 pt-3`}>
+                    <ul className={`list-disc pl-8 border-t-4 text-[10px] ${borderColor} mt-2 pt-3`}>
                         {languages.map((language, index)=>{
                             return (
                                 <li key={index}>{capitalizeFirstLetter(language.language)}</li>

@@ -1,15 +1,16 @@
 import { useLocation } from "react-router-dom"
-import Istanbul from "./Istanbul"
+import Istanbul from "./TemplateItems/Istanbul"
 import { useRef, useEffect } from "react"
-import Porto from "./Porto"
-import Lisbon from "./Lisbon"
-import Madrid from "./Madrid"
+import Porto from "./TemplateItems/Porto"
+import Lisbon from "./TemplateItems/Lisbon"
+import Madrid from "./TemplateItems/Madrid"
 import TemplateDetails from "./TemplateDetails"
 import TemplateStyles from "./TemplateStyles"
-import Kyiv from "./Kyiv"
-import Milan from "./Milan"
-import Cardiff from "./Cardiff"
-import Berlin from "./Berlin"
+import Kyiv from "./TemplateItems/Kyiv"
+import Milan from "./TemplateItems/Milan"
+import Cardiff from "./TemplateItems/Cardiff"
+import Berlin from "./TemplateItems/Berlin"
+import PreviewButton from "./PreviewButton"
 
 export default function EditTemplate() {
 
@@ -21,11 +22,14 @@ export default function EditTemplate() {
   useEffect(()=>{
     window.scrollTo(0,0)  
   },[])
-    
+
   return (
     <div className='flex lg:w-screen h-[100dvh] relative'>
-      <div className='pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
+      <div className='relative pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
         <TemplateDetails />
+        <div className='right-10 fixed bottom-3 lg:hidden flex items-center'>
+          <PreviewButton />
+        </div>
       </div>
       <div className='hidden lg:block bg-[#FAFAFA] h-[100dvh]'>
         <div className='chosenTemplate shadow-lg w-[595px] mt-[-8rem] mb-[-10rem]'>

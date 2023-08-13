@@ -1,6 +1,6 @@
-import { capitalizeFirstLetter } from "../../Functions/capitalize"
-import { useColorContext } from "../../Functions/useColorContext"
-import { useUserDetails } from "../../Functions/useUserDetails"
+import { capitalizeFirstLetter } from "../../../Functions/capitalize"
+import { useColorContext } from "../../../Functions/useColorContext"
+import { useUserDetails } from "../../../Functions/useUserDetails"
 
 export default function Milan({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
@@ -20,7 +20,7 @@ export default function Milan({itemref}: {itemref: React.MutableRefObject<HTMLDi
                 {profession!==''&&<h3 className="text-sm">{capitalizeFirstLetter(profession)}</h3>}
             </div>
             
-            {firstName!==''&&  <h2 className="border-b-4 mt-6 border-[#292828] uppercase text-[2rem]">{`${firstName} ${lastName}`}</h2>}
+            {firstName!==''&&  <h2 className="border-b-4 mt-6 border-[#292828] uppercase text-[2rem] break-all">{`${firstName} ${lastName}`}</h2>}
             
             {professionalSummary!==''&& 
                 <div className="mt-8">

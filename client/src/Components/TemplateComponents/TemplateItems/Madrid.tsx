@@ -1,6 +1,6 @@
-import { capitalizeFirstLetter } from "../../Functions/capitalize"
-import { useColorContext } from "../../Functions/useColorContext"
-import { useUserDetails } from "../../Functions/useUserDetails"
+import { capitalizeFirstLetter } from "../../../Functions/capitalize"
+import { useColorContext } from "../../../Functions/useColorContext"
+import { useUserDetails } from "../../../Functions/useUserDetails"
 
 export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
@@ -13,8 +13,8 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
     return (
         <div className='flex flex-col min-h-[841px] w-[595px] relative' ref={itemref}>
             <div className="flex h-[107px]">
-                <div className={`w-[30%] ${bgColor}`}></div>
-                <div className={`w-[70%]  p-6 ${bgColor}`}>
+                <div className={`w-[30%] ${bgColor} transition-all duration-200 ease-in`}></div>
+                <div className={`w-[70%]  p-6 ${bgColor} transition-all duration-200 ease-in`}>
                     <h1 className="text-[#444444] text-[2rem] font-medium ">
                         <span className="border-t-[2px] border-[#3780C3]">{capitalizeFirstLetter(firstName)}</span>
                         <span> {capitalizeFirstLetter(lastName)}</span>
@@ -22,7 +22,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                 </div>
             </div>
             <div className="flex">
-                <div className={`w-[30%] min-h-[734px] p-6 ${bgColor}`}>
+                <div className={`w-[30%] min-h-[734px] p-6 ${bgColor} transition-all duration-200 ease-in`}>
                     <h2 className='text-[#333333] font-semibold text-xs mb-4'>{profession.toUpperCase()}</h2>
                     {skills[0].skill!=='' && 
                     <section>
@@ -30,7 +30,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                         <ul className="px-4 list-disc mt-3">
                             {skills.map((skill, index)=>{
                                 return (
-                                    <li key={index} className="text-[10px] text-[#7D7D7D]">{capitalizeFirstLetter(skill.skill)}</li>
+                                    <li key={index} className="text-[10px] text-white">{capitalizeFirstLetter(skill.skill)}</li>
                                 )
                             })}
                         </ul>
@@ -42,7 +42,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
                         <ul className="px-4 list-disc mt-3">
                             {languages.map((language, index)=>{
                                 return (
-                                    <li key={index} className="text-[10px] text-[#7D7D7D]">{capitalizeFirstLetter(language.language)}</li>
+                                    <li key={index} className="text-[10px] text-white">{capitalizeFirstLetter(language.language)}</li>
                                 )
                             })}
                         </ul>

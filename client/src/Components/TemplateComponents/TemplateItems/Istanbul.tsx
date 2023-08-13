@@ -1,9 +1,9 @@
 import { FiPhoneCall } from 'react-icons/fi'
 import { GoMail } from 'react-icons/go'
 import { IoLocationOutline } from 'react-icons/io5'
-import { useUserDetails } from '../../Functions/useUserDetails'
-import { capitalizeFirstLetter } from '../../Functions/capitalize'
-import { useColorContext } from '../../Functions/useColorContext'
+import { useUserDetails } from '../../../Functions/useUserDetails'
+import { capitalizeFirstLetter } from '../../../Functions/capitalize'
+import { useColorContext } from '../../../Functions/useColorContext'
 
 export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
@@ -14,7 +14,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
 
     return (
         <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
-            <div className={`w-[30%]  ${bgColor} min-h-full text-[#ffffff]`}>
+            <div className={`w-[30%] transition-all duration-200 ease-in ${bgColor} min-h-full text-[#ffffff]`}>
                 <h1 className="text-xl pt-6 px-6 font-semibold break-all">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
                 <h2 className='px-6 font-semibold text-xs pt-3'>{capitalizeFirstLetter(profession)}</h2>
                 <section className="flex flex-col gap-3 pt-6 px-6">

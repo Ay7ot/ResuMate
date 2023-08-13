@@ -1,6 +1,6 @@
-import { useColorContext } from "../../Functions/useColorContext"
-import { capitalizeFirstLetter } from '../../Functions/capitalize'
-import { useUserDetails } from "../../Functions/useUserDetails"
+import { useColorContext } from "../../../Functions/useColorContext"
+import { capitalizeFirstLetter } from '../../../Functions/capitalize'
+import { useUserDetails } from "../../../Functions/useUserDetails"
 
 export default function Cardiff({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
     const {  firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()

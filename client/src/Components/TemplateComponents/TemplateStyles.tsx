@@ -10,8 +10,10 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
   
   const [loading, setLoading] = useState(false)
   const [colors, setColors] = useState<color[]>([])
-  const { colorDispatch, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
+  const { colorDispatch, currentColor, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
  
+  const  backgroundColor = `bg-${currentColor.color}`
+
   useEffect(()=>{
     if(template === 'Istanbul'){
       setColors(Istanbul)
@@ -104,6 +106,7 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
     }
   },[colorDispatch, template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
   
+  //download dunction
   async function generatePdf(){
     const toDownload = itemRef.current
 
@@ -121,6 +124,7 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
       setLoading(false)
     }
   }
+  
 
   function changeColor(template: string, color: string){
     if(template === 'Istanbul'){
@@ -290,7 +294,7 @@ export default function TemplateStyles({itemRef, template}: {itemRef: React.Muta
           </div> 
         </div>
       </div>
-      <button onClick={generatePdf} className="py-3 px-4 bg-[#192657] text-white text-semibold text-[1.2rem] rounded-md">{loading ? <Loader /> : <BsDownload />}</button>
+      <button onClick={generatePdf} className={`${backgroundColor} py-3 px-4 text-white text-semibold text-[1.2rem] transition-all duration-200 ease-in rounded-md`}>{loading ? <Loader /> : <BsDownload />}</button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
-import { capitalizeFirstLetter } from "../../Functions/capitalize";
-import { useColorContext } from "../../Functions/useColorContext";
-import { useUserDetails } from "../../Functions/useUserDetails";
+import { capitalizeFirstLetter } from "../../../Functions/capitalize";
+import { useColorContext } from "../../../Functions/useColorContext";
+import { useUserDetails } from "../../../Functions/useUserDetails";
 
 export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
 
@@ -12,7 +12,7 @@ export default function Lisbon({itemref}: {itemref: React.MutableRefObject<HTMLD
 
     return (
         <div className=' min-h-[841px] w-[595px] bg-[#f4f5fd] relative' ref={itemref}>
-            <div className={`${bgColor} p-6 text-[#ffffff]`}>
+            <div className={`${bgColor} p-6 text-[#ffffff] transition-all duration-200 ease-in`}>
                 <h1 className="text-[2rem] font-semibold">{`${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}`}</h1>
                 <h2 className="text-xs font-semibold text-[#ffffff] mt-2">{capitalizeFirstLetter(profession)}</h2>
                 <div className="mt-3">

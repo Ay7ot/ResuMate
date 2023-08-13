@@ -6,6 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { UserDetailsProvider } from "../Contexts/UserDetailContext";
 import { ColorProvider } from "../Contexts/ColorContext";
+import PreviewResume from "./TemplateComponents/PreviewResume";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/templates" element={<ChooseTemplate />} />
               <Route path="/edit-template" element={<EditTemplate />} />
+              <Route path="/preview" element={<PreviewResume />} />
             </Routes>
           </ColorProvider>
         </UserDetailsProvider>
