@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import Loader from "../Loader";
 import { color } from "../../Types/ColorTypes";
 import { useColorContext } from "../../Functions/useColorContext";
+import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 
-export default function TemplateStyles({itemRef, template}: {itemRef: React.MutableRefObject<HTMLDivElement | null>, template: string}) {
+export default function TemplateStyles({template}: { template: string}) {
   
+  const { itemRef } = useGeneralAppContext();
   const [loading, setLoading] = useState(false)
   const [colors, setColors] = useState<color[]>([])
   const { colorDispatch, currentColor, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()

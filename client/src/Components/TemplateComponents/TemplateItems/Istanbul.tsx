@@ -4,8 +4,11 @@ import { IoLocationOutline } from 'react-icons/io5'
 import { useUserDetails } from '../../../Functions/useUserDetails'
 import { capitalizeFirstLetter } from '../../../Functions/capitalize'
 import { useColorContext } from '../../../Functions/useColorContext'
+import { useGeneralAppContext } from '../../../Functions/useGeneralAppContext'
 
-export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
+export default function Istanbul() {
+
+    const { itemRef } = useGeneralAppContext()
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const { currentColor } = useColorContext()
@@ -13,7 +16,7 @@ export default function Istanbul({itemref}: {itemref: React.MutableRefObject<HTM
     const textColor = `text-${currentColor.color}`
 
     return (
-        <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemref }>
+        <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative' ref={itemRef}>
             <div className={`w-[30%] transition-all duration-200 ease-in ${bgColor} min-h-full text-[#ffffff]`}>
                 <h1 className="text-xl pt-6 px-6 font-semibold break-all">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
                 <h2 className='px-6 font-semibold text-xs pt-3'>{capitalizeFirstLetter(profession)}</h2>

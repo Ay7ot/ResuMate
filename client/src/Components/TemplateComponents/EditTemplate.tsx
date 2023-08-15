@@ -11,17 +11,28 @@ import Milan from "./TemplateItems/Milan"
 import Cardiff from "./TemplateItems/Cardiff"
 import Berlin from "./TemplateItems/Berlin"
 import PreviewButton from "./PreviewButton"
+import { useGeneralAppContext } from "../../Functions/useGeneralAppContext"
 
 export default function EditTemplate() {
 
   const location = useLocation()
   const template = location.state
 
-  const itemref = useRef<HTMLDivElement | null>(null)
+  const { dispatch } = useGeneralAppContext()
+
+  const divref = useRef<HTMLDivElement | null>(null)
 
   useEffect(()=>{
-    window.scrollTo(0,0)  
-  },[])
+
+    window.scrollTo(0,0);
+    dispatch({
+      type: 'setItemRef',
+      payload: {
+        itemRefPayload: divref
+      }
+    })
+
+  },[divref, dispatch])
 
   return (
     <div className='flex lg:w-screen h-[100dvh] relative'>
@@ -34,18 +45,18 @@ export default function EditTemplate() {
       <div className='hidden lg:block bg-[#FAFAFA] h-[100dvh]'>
         <div className='chosenTemplate shadow-lg w-[595px] mt-[-8rem] mb-[-10rem]'>
           {
-            template.name === 'Istanbul' ? <Istanbul itemref={itemref}/> 
-            :template.name === 'Porto' ? <Porto itemref={itemref}/>
-            :template.name === 'Lisbon' ? <Lisbon itemref={itemref}/>
-            :template.name === 'Madrid' ? <Madrid itemref={itemref}/>
-            :template.name === 'Kyiv' ? <Kyiv itemref={itemref}/>
-            :template.name === 'Milan' ? <Milan itemref={itemref}/>
-            :template.name === 'Cardiff' ? <Cardiff itemref={itemref}/>
-            :template.name === 'Berlin' ? <Berlin itemref={itemref}/>
-            : <Istanbul itemref={itemref}/>
+            template.name === 'Istanbul' ? <Istanbul /> 
+            :template.name === 'Porto' ? <Porto />
+            :template.name === 'Lisbon' ? <Lisbon />
+            :template.name === 'Madrid' ? <Madrid />
+            :template.name === 'Kyiv' ? <Kyiv />
+            :template.name === 'Milan' ? <Milan />
+            :template.name === 'Cardiff' ? <Cardiff />
+            :template.name === 'Berlin' ? <Berlin />
+            : <Istanbul />
           }
         </div>
-        <TemplateStyles itemRef={itemref} template={template.name}/>
+        <TemplateStyles template={template.name}/>
       </div>
     </div>
   )

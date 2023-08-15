@@ -39,6 +39,12 @@ export function generalAppReducer(state: GeneralAppContextType, action: GeneralA
                 ...state,
                 resumeTemplates : action.payload?.resumeTemplatesPayload ?? []
             }
+        case 'setItemRef':
+            return {
+                ...state,
+                itemRef: action.payload?.itemRefPayload ?? { current: null}
+            }
+
         default:
             return state
     }

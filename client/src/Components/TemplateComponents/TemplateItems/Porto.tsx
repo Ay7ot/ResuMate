@@ -1,8 +1,11 @@
 import { capitalizeFirstLetter } from "../../../Functions/capitalize"
 import { useColorContext } from "../../../Functions/useColorContext"
+import { useGeneralAppContext } from "../../../Functions/useGeneralAppContext"
 import { useUserDetails } from "../../../Functions/useUserDetails"
 
-export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDivElement | null>}) {
+export default function Porto() {
+
+    const { itemRef } = useGeneralAppContext()
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const {currentColor} = useColorContext()
@@ -16,7 +19,7 @@ export default function Porto({itemref}:{itemref: React.MutableRefObject<HTMLDiv
     }
 
     return (
-        <div className=' min-h-[841px] w-[595px] bg-[#ffffff]' ref={itemref}>
+        <div className=' min-h-[841px] w-[595px] bg-[#ffffff]' ref={itemRef}>
             <section className={`${bgColor} p-6 min-h-[97px] transition-all duration-200 ease-in`}>
                 <h1 className="text-[2rem] text-white font-semibold">{`${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}`}</h1>
             </section>
