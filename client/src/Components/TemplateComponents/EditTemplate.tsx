@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom"
 import Istanbul from "./TemplateItems/Istanbul"
-import { useRef, useEffect } from "react"
 import Porto from "./TemplateItems/Porto"
 import Lisbon from "./TemplateItems/Lisbon"
 import Madrid from "./TemplateItems/Madrid"
@@ -11,35 +10,18 @@ import Milan from "./TemplateItems/Milan"
 import Cardiff from "./TemplateItems/Cardiff"
 import Berlin from "./TemplateItems/Berlin"
 import PreviewButton from "./PreviewButton"
-import { useGeneralAppContext } from "../../Functions/useGeneralAppContext"
 
 export default function EditTemplate() {
 
   const location = useLocation()
   const template = location.state
 
-  const { dispatch } = useGeneralAppContext()
-
-  const divref = useRef<HTMLDivElement | null>(null)
-
-  useEffect(()=>{
-
-    window.scrollTo(0,0);
-    dispatch({
-      type: 'setItemRef',
-      payload: {
-        itemRefPayload: divref
-      }
-    })
-
-  },[divref, dispatch])
-
   return (
     <div className='flex lg:w-screen h-[100dvh] relative'>
       <div className='relative pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
         <TemplateDetails />
         <div className='right-10 fixed bottom-3 lg:hidden flex items-center'>
-          <PreviewButton />
+          <PreviewButton template={template.name}/>
         </div>
       </div>
       <div className='hidden lg:block bg-[#FAFAFA] h-[100dvh]'>

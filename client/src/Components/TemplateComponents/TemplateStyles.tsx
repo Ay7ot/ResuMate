@@ -270,7 +270,7 @@ export default function TemplateStyles({template}: { template: string}) {
 
 
   return (
-    <div className='px-[7.9rem] flex justify-between items-center gap-6'>
+    <div className='lg:px-[7.9rem] px-[2.5rem] flex justify-between items-center gap-6'>
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2">
           <h3 className="text-[#444444] font-medium">Color:</h3>
@@ -279,7 +279,7 @@ export default function TemplateStyles({template}: { template: string}) {
               const bgColor = `bg-${color.color}`
               return (
                 <div key={index} className={`${color.isActive ? 'templateColor' : ''} rounded-full border-[2px] p-[1px]`}>
-                  <div onClick={()=>changeColor(template, color.color)} className={`${bgColor} rounded-full h-[24px] w-[24px] cursor-pointer`}>
+                  <div onClick={()=>changeColor(template, color.color)} className={`${bgColor} rounded-full h-[15px] w-[15px] lg:h-[24px] lg:w-[24px] cursor-pointer`}>
 
                   </div>
                 </div>
