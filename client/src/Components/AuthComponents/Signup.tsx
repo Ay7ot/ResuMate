@@ -163,7 +163,7 @@ export default function Signup() {
                         />
                         <p className="text-[#192657] font-bold  text-lg md:text-[1.3rem]">ResuMate</p>
                     </div>
-                    <i className='self-end text-[1.9rem]' onClick={hideSignupPage}><RxCross1 /></i>
+                    <button className='self-end text-[1.9rem]' onClick={hideSignupPage}><RxCross1 /></button>
                 </div>
                 <hr  className="mt-6"/>
                 <h2 className="text-center mt-9 text-[#192657] text-[1.5rem] font-semibold">Sign up to Create Resume</h2>

@@ -94,9 +94,9 @@ export default function Landing() {
 
   function showSignupPage(){
     dispatch({
-        type: 'setShowLogin',
+        type: 'setShowSignup',
         payload: {
-            showLoginPayload: true
+            showSignupPayload: true
         }
     })
   }

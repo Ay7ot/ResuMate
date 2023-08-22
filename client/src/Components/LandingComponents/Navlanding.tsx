@@ -60,8 +60,8 @@ export default function Navlanding() {
           </div>
         </Link>
         <div className='hidden md:block'>
-            <button className="w-[10rem] px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); createResumeButtonFunction()}}>Login</button>
-            <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); loginResumeButtonFunction()}}>Create Resume</button>
+            <button className="w-[10rem] px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); loginResumeButtonFunction()}}>Login</button>
+            <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); createResumeButtonFunction()}}>Create Resume</button>
         </div>
         <div className='flex md:hidden items-center text-[1.9rem]'>
           <i onClick={(e)=>{e.stopPropagation(); showNavBar()}}><HiOutlineBars3BottomRight /></i>
