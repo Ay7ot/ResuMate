@@ -1,15 +1,17 @@
 import { capitalizeFirstLetter } from "../../../Functions/capitalize"
 import { useColorContext } from "../../../Functions/useColorContext"
+import { useGeneralAppContext } from "../../../Functions/useGeneralAppContext"
 import { useUserDetails } from "../../../Functions/useUserDetails"
 
-export default function Milan({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
+export default function Milan() {
 
+    const { itemRef } = useGeneralAppContext()
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const { currentColor } = useColorContext()
     const textColor = `text-${currentColor.color}`
     
     return (
-        <div className='min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-8' ref={itemref}>
+        <div className='min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-8' ref={itemRef}>
             
             <div className="grid grid-cols-2 gap-3">
                 <div className="text-[10px]">

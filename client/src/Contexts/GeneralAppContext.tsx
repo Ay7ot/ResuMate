@@ -12,6 +12,7 @@ export const GeneralAppContext = createContext<GeneralAppContextType>({
     showSignup: false,
     showLogin: false,
     currentUser: null,
+    itemRef: { current: null },
     resumeTemplates: [
         
         {
@@ -57,12 +58,14 @@ export const GeneralAppContext = createContext<GeneralAppContextType>({
     ]
 })
 
-export function GeneralAppProvider({children}: {children: ReactNode}){
+export function GeneralAppProvider({ children }: { children: ReactNode }){
     
     const value = useGeneralAppContext()
 
     const [mainstate, dispatch] = useReducer(generalAppReducer, value)
 
+    console.log(mainstate);
+    
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, user=>{
             dispatch({

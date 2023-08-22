@@ -12,6 +12,7 @@ export type GeneralAppContextType = {
         image: string;
         isSelected: boolean
     }[]
+    itemRef: React.MutableRefObject<HTMLDivElement | null>
 }
 
 export type GeneralAppActionType = {
@@ -20,11 +21,12 @@ export type GeneralAppActionType = {
         navShownPayload?: boolean;
         showLoginPayload?: boolean;
         showSignupPayload?: boolean;
-        currentUserPayload?: User | null,
+        currentUserPayload?: User | null;
+        itemRefPayload?: React.MutableRefObject<HTMLDivElement | null>
         resumeTemplatesPayload?:  {
             name: string;
             image: string;
             isSelected: boolean
-        }[]
+        }[];
     }
 }

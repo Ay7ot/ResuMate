@@ -1,9 +1,11 @@
 import { capitalizeFirstLetter } from "../../../Functions/capitalize"
 import { useColorContext } from "../../../Functions/useColorContext"
+import { useGeneralAppContext } from "../../../Functions/useGeneralAppContext"
 import { useUserDetails } from "../../../Functions/useUserDetails"
 
-export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
+export default function Madrid() {
 
+    const { itemRef } = useGeneralAppContext();
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const { currentColor } = useColorContext()
 
@@ -11,7 +13,7 @@ export default function Madrid({itemref}: {itemref: React.MutableRefObject<HTMLD
     const textColor = `text-${currentColor.color}`
     
     return (
-        <div className='flex flex-col min-h-[841px] w-[595px] relative' ref={itemref}>
+        <div className='flex flex-col min-h-[841px] w-[595px] relative' ref={itemRef}>
             <div className="flex h-[107px]">
                 <div className={`w-[30%] ${bgColor} transition-all duration-200 ease-in`}></div>
                 <div className={`w-[70%]  p-6 ${bgColor} transition-all duration-200 ease-in`}>

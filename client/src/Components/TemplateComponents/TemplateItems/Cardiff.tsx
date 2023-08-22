@@ -1,8 +1,11 @@
 import { useColorContext } from "../../../Functions/useColorContext"
 import { capitalizeFirstLetter } from '../../../Functions/capitalize'
 import { useUserDetails } from "../../../Functions/useUserDetails"
+import { useGeneralAppContext } from "../../../Functions/useGeneralAppContext"
 
-export default function Cardiff({itemref}: {itemref: React.MutableRefObject<HTMLDivElement | null>}) {
+export default function Cardiff() {
+
+    const { itemRef } = useGeneralAppContext();
     const {  firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     
     const { currentColor } = useColorContext()
@@ -11,7 +14,7 @@ export default function Cardiff({itemref}: {itemref: React.MutableRefObject<HTML
 
 
     return (
-        <div className='min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-12' ref={itemref}>
+        <div className='min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-12' ref={itemRef}>
             {firstName!==''&& 
             <div className={`${borderColor} border-t-4`}>
                <h2 className='text-[2rem] font-semibold pt-1 text-[#353744]`'>{`${capitalizeFirstLetter(firstName)} ${ capitalizeFirstLetter(lastName)}`}</h2> 
