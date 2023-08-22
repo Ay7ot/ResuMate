@@ -57,7 +57,7 @@ export default function PreviewResume() {
 
     return (
 
-        <div className="min-h-screen flex flex-col items-center pt-16 px-6 bg-[#FAFAFA] pb-[5rem] w-full">
+        <div className="min-h-screen flex flex-col items-center pt-16 px-6 bg-[#FAFAFA] pb-[6rem] w-full">
            <div className='flex justify-between w-full max-w-[400px]'>
                 <button onClick={goBack} className='w-[10%] flex items-center gap-1 text-[#192657] font-medium'>
                     <i className='text-[#444444] '><IoChevronBack /></i>
@@ -66,7 +66,7 @@ export default function PreviewResume() {
                 <p className='self-center px-6 py-2 border-b-[1px] border-[#9D9D9D] text-[#444444] text-lg lg:text-xl font-medium'>Untitled Resume</p>
                 <div className='w-[10%] '></div>
             </div>
-           <div className="scale-[58%] w-[595px] md:scale-[70%] mt-[-5rem] shadow-lg">
+           <div className="scale-[57%] w-[595px] md:scale-[70%] mt-[-5rem] shadow-lg">
                 {
                 name === 'Istanbul' ? <Istanbul /> 
                 :name === 'Porto' ? <Porto />
