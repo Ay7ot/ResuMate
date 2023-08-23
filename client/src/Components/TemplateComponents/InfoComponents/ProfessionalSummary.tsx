@@ -28,7 +28,7 @@ export default function ProfessionalSummary() {
               }}
               className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] w-full text-sm md:text-base bg-[#FAFAFA] placeholder:italic mt-3'
               rows={6}
-              placeholder='e.g. I am a highly motivated and experienced language model with a knack for learning new things ...'
+              placeholder='e.g. I am a highly motivated and experienced web developer with a knack for learning new things ...'
             />
         </div>
     </section>
