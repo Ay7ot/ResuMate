@@ -113,7 +113,7 @@ export default function Language() {
                                     }}
                                     type="text" 
                                     placeholder='Language'
-                                    className={`${isShowing ? '' : 'hidden'} outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]`}
+                                    className={`${isShowing ? '' : 'hidden'} outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                                 <div className='flex items-center justify-end text-[#9D9D9D] gap-3 mt-4'>
                                     <i onClick={()=>editLanguage(id)}><LuEdit /></i>

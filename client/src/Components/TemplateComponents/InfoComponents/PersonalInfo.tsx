@@ -13,7 +13,7 @@ export default function PersonalInfo(){
                         type="text"
                         value={firstName} 
                         placeholder='First Name'
-                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                         onChange={(e)=>{
                             userDispatch({
                                 type: 'setFirstName',
@@ -27,7 +27,7 @@ export default function PersonalInfo(){
                         type="text"
                         value={lastName} 
                         placeholder='Last Name'
-                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                         onChange={(e)=>{
                             userDispatch({
                                 type: 'setLastName',
@@ -41,7 +41,7 @@ export default function PersonalInfo(){
                         type="text"
                         value={profession} 
                         placeholder='Profession'
-                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                         onChange={(e)=>{
                             userDispatch({
                                 type: 'setProfession',
@@ -55,7 +55,7 @@ export default function PersonalInfo(){
                         type="text"
                         value={phoneNumber} 
                         placeholder='Phone Number'
-                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                         onChange={(e)=>{
                             userDispatch({
                                 type: 'setPhone',
@@ -69,7 +69,7 @@ export default function PersonalInfo(){
                         type="email" 
                         value={email}
                         placeholder='Email'
-                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                         onChange={(e)=>{
                             userDispatch({
                                 type: 'setEmail',
@@ -83,7 +83,7 @@ export default function PersonalInfo(){
                         type="text"
                         value={state} 
                         placeholder='State/City'
-                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                         onChange={(e)=>{
                             userDispatch({
                                 type: 'setState',
@@ -97,7 +97,7 @@ export default function PersonalInfo(){
                         type="text"
                         value={country} 
                         placeholder='Country'
-                        className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                        className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                         onChange={(e)=>{
                             userDispatch({
                                 type: 'setCountry',

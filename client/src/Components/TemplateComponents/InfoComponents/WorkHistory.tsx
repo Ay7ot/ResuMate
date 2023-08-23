@@ -227,7 +227,7 @@ export default function WorkHistory() {
                                         updateJobTitle(work.id, e.target.value)
                                     }}
                                     placeholder='Job Title'
-                                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                                 />
                                 <input 
                                     type="text" 
@@ -236,7 +236,7 @@ export default function WorkHistory() {
                                         updateCompanyName(work.id, e.target.value)
                                     }}
                                     placeholder='Company Name'
-                                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                                 />
                             </div>
                             <div className='grid grid-cols-2 gap-6 mt-6'>
@@ -271,7 +271,7 @@ export default function WorkHistory() {
                                         updateCompanyLocation(work.id, e.target.value)
                                     }}
                                     placeholder='Location'
-                                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                                 />
                             </div>
                             <div className='mt-6'>
@@ -292,7 +292,7 @@ export default function WorkHistory() {
                                                         <input
                                                             style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
                                                             autoFocus={index > 0 && jobItems.length-1===index ? true : false}
-                                                            className='outline-none bg-[#fafafa] min-h-[1rem] w-[90%]'
+                                                            className='outline-none bg-[#fafafa] text-[#192657] min-h-[1rem] w-[90%]'
                                                             value={item.jobDetail} 
                                                             onChange={(e)=>{
                                                                 const newWorkHistory = workHistory.map(newwork=>{

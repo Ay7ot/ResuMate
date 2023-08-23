@@ -243,7 +243,7 @@ export default function Education() {
                                     }}
                                     type="text" 
                                     placeholder='Degree'
-                                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                                 />
                                 <input 
                                     value={course}
@@ -252,7 +252,7 @@ export default function Education() {
                                     }}
                                     type="text" 
                                     placeholder='Course'
-                                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                                 />
                             </div>
                             <div className='grid grid-cols-2 gap-6 mt-6'>
@@ -288,7 +288,7 @@ export default function Education() {
                                     }}
                                     type="text" 
                                     placeholder='School'
-                                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                                 />
                                 <input 
                                     value={location}
@@ -297,7 +297,7 @@ export default function Education() {
                                     }}
                                     type="text" 
                                     placeholder='Location'
-                                    className='outline-none rounded-none text-[#444444] placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
                                 />
                             </div>
                         </div>
