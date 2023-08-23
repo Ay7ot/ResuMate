@@ -9,11 +9,12 @@ import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 
 export default function TemplateStyles({template}: { template: string}) {
   
-  const { itemRef } = useGeneralAppContext();
+  const { itemRef, resumeFont, dispatch } = useGeneralAppContext();
   const [loading, setLoading] = useState(false)
   const [colors, setColors] = useState<color[]>([])
+  const [showFontBox, setShowFontBox] = useState(false)
   const { colorDispatch, currentColor, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
- 
+  
   const  backgroundColor = `bg-${currentColor.color}`
 
   useEffect(()=>{
@@ -268,6 +269,20 @@ export default function TemplateStyles({template}: { template: string}) {
     }
   }
 
+  function openandCloseFontBox(){
+    setShowFontBox(prevValue=>!prevValue)
+  }
+
+  function pickFont(font: 'Public' | 'Poppins' | 'Inter' | 'Bricolage'){
+    dispatch({
+      type: 'setResumeFont',
+      payload:{
+        resumeFontPayload: font
+      }
+    })
+    setShowFontBox(false)
+  }
+
 
   return (
     <div className='lg:px-[7.9rem] px-[2rem] flex justify-between items-center gap-6'>
@@ -288,12 +303,21 @@ export default function TemplateStyles({template}: { template: string}) {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 relative">
           <h3 className="text-[#444444] font-medium">Text:</h3>
-          <div className="border-b-[1px] border-[#9D9D9D] w-full flex justify-between">
-            <p className="text-[#9D9D9D]">Public Sans</p>
+          <div onClick={openandCloseFontBox} className="border-b-[1px] border-[#9D9D9D] w-full flex justify-between">
+            <p className="text-[#9D9D9D]">{`${resumeFont}`}</p>
             <button><BiChevronDown /></button>
           </div> 
+          {
+            showFontBox && 
+            <div className={`z-[9999] absolute bottom-8 flex flex-col gap-2 items-start p-2 w-[77%] lg:w-[82%] text-white font-semibold left-[3.2rem] ${backgroundColor} rounded-lg shadow-xl`}>
+              <button onClick={()=>pickFont('Public')}>Public Sans</button>
+              <button onClick={()=>pickFont('Poppins')}>Poppins</button>
+              <button onClick={()=>pickFont('Inter')}>Inter</button>
+              <button onClick={()=>pickFont('Bricolage')}>Bricolage</button>
+            </div>
+          } 
         </div>
       </div>
       <button onClick={generatePdf} className={`${backgroundColor} py-3 px-4 text-white text-semibold text-[1.2rem] transition-all duration-200 ease-in rounded-md`}>{loading ? <Loader /> : <BsDownload />}</button>

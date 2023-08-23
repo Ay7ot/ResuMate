@@ -5,12 +5,13 @@ import { useUserDetails } from "../../../Functions/useUserDetails"
 
 export default function Porto() {
 
-    const { itemRef } = useGeneralAppContext()
+    const { itemRef, resumeFont } = useGeneralAppContext()
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const {currentColor} = useColorContext()
     const bgColor = `bg-${currentColor.color}`
     const textColor = `text-${currentColor.color}`
+    const fontStyle = `font-${resumeFont}`
 
     function useComponent(){
         if(email!==''||phoneNumber!==''||state!=='' || country!==''){
@@ -19,7 +20,7 @@ export default function Porto() {
     }
 
     return (
-        <div className=' min-h-[841px] w-[595px] bg-[#ffffff]' ref={itemRef}>
+        <div className={`${fontStyle} min-h-[841px] w-[595px] bg-[#ffffff]`} ref={itemRef}>
             <section className={`${bgColor} p-6 min-h-[97px] transition-all duration-200 ease-in`}>
                 <h1 className="text-[2rem] text-white font-semibold">{`${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}`}</h1>
             </section>

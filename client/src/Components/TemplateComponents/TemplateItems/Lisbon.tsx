@@ -5,16 +5,17 @@ import { useUserDetails } from "../../../Functions/useUserDetails";
 
 export default function Lisbon() {
 
-    const { itemRef } = useGeneralAppContext();
+    const { itemRef, resumeFont } = useGeneralAppContext();
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const {currentColor} = useColorContext()
 
     const bgColor = `bg-${currentColor.color}`
     const textColor = `text-${currentColor.color}`
+    const fontStyle = `font-${resumeFont}`
 
     return (
-        <div className=' min-h-[841px] w-[595px] bg-[#f4f5fd] relative' ref={itemRef}>
+        <div className={`${fontStyle} min-h-[841px] w-[595px] bg-[#f4f5fd] relative`} ref={itemRef}>
             <div className={`${bgColor} p-6 text-[#ffffff] transition-all duration-200 ease-in`}>
                 <h1 className="text-[2rem] font-semibold">{`${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}`}</h1>
                 <h2 className="text-xs font-semibold text-[#ffffff] mt-2">{capitalizeFirstLetter(profession)}</h2>

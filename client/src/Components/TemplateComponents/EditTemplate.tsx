@@ -17,7 +17,7 @@ export default function EditTemplate() {
   const template = location.state
 
   return (
-    <div className='flex lg:w-screen h-[100dvh] relative'>
+    <div className='flex lg:w-screen h-[100dvh] relative overflow-x-hidden'>
       <div className='relative pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
         <TemplateDetails />
         <div className='right-10 fixed bottom-3 lg:hidden flex items-center'>

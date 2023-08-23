@@ -5,16 +5,16 @@ import { useGeneralAppContext } from "../../../Functions/useGeneralAppContext"
 
 export default function Cardiff() {
 
-    const { itemRef } = useGeneralAppContext();
+    const { itemRef, resumeFont } = useGeneralAppContext();
     const {  firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     
     const { currentColor } = useColorContext()
     const textColor = `text-${currentColor.color}`
     const borderColor = `border-${currentColor.color}`
-
+    const fontStyle = `font-${resumeFont}`
 
     return (
-        <div className='min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-12' ref={itemRef}>
+        <div className={`${fontStyle} min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-12`} ref={itemRef}>
             {firstName!==''&& 
             <div className={`${borderColor} border-t-4`}>
                <h2 className='text-[2rem] font-semibold pt-1 text-[#353744]`'>{`${capitalizeFirstLetter(firstName)} ${ capitalizeFirstLetter(lastName)}`}</h2> 

@@ -5,13 +5,14 @@ import { useUserDetails } from "../../../Functions/useUserDetails"
 
 export default function Milan() {
 
-    const { itemRef } = useGeneralAppContext()
+    const { itemRef, resumeFont } = useGeneralAppContext()
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const { currentColor } = useColorContext()
     const textColor = `text-${currentColor.color}`
+    const fontStyle = `font-${resumeFont}`
     
     return (
-        <div className='min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-8' ref={itemRef}>
+        <div className={`${fontStyle} min-h-[841px] w-[595px] bg-[#ffffff] px-[5rem] pt-8`} ref={itemRef}>
             
             <div className="grid grid-cols-2 gap-3">
                 <div className="text-[10px]">

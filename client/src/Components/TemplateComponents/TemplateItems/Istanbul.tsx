@@ -8,15 +8,17 @@ import { useGeneralAppContext } from '../../../Functions/useGeneralAppContext'
 
 export default function Istanbul() {
 
-    const { itemRef } = useGeneralAppContext()
+    const { itemRef, resumeFont } = useGeneralAppContext()
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const { currentColor } = useColorContext()
     const bgColor = `bg-${currentColor.color}`
     const textColor = `text-${currentColor.color}`
+    const fontStyle = `font-${resumeFont}`
+
 
     return (
-        <div className='flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative font-Poppins' ref={itemRef}>
+        <div className={`flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative ${fontStyle}`} ref={itemRef}>
             <div className={`w-[30%] transition-all duration-200 ease-in ${bgColor} min-h-full text-[#ffffff]`}>
                 <h1 className="text-xl pt-6 px-6 font-semibold break-all">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
                 <h2 className='px-6 font-semibold text-xs pt-3'>{capitalizeFirstLetter(profession)}</h2>

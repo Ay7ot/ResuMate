@@ -44,7 +44,11 @@ export function generalAppReducer(state: GeneralAppContextType, action: GeneralA
                 ...state,
                 itemRef: action.payload?.itemRefPayload ?? { current: null}
             }
-
+        case 'setResumeFont':
+            return {
+                ...state,
+                resumeFont: action.payload?.resumeFontPayload ?? 'Public'
+            }
         default:
             return state
     }

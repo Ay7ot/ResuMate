@@ -14,7 +14,6 @@ export const GeneralAppContext = createContext<GeneralAppContextType>({
     currentUser: null,
     itemRef: { current: null },
     resumeTemplates: [
-        
         {
             name: 'Kyiv',
             image: 'Kyiv.png',
@@ -55,7 +54,8 @@ export const GeneralAppContext = createContext<GeneralAppContextType>({
             image: 'Madrid.png',
             isSelected: false
         }
-    ]
+    ],
+    resumeFont: 'Public'
 })
 
 export function GeneralAppProvider({ children }: { children: ReactNode }){

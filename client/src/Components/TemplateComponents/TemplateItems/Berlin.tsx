@@ -5,16 +5,17 @@ import { useGeneralAppContext } from "../../../Functions/useGeneralAppContext"
 
 export default function Berlin() {
 
-    const { itemRef } = useGeneralAppContext();
+    const { itemRef, resumeFont } = useGeneralAppContext();
 
     const {  firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     
     const { currentColor } = useColorContext()
     const textColor = `text-${currentColor.color}`
     const borderColor = `border-${currentColor.color}`
+    const fontStyle = `font-${resumeFont}`
 
     return (
-        <div className='flex flex-col gap-6 min-h-[841px] w-[595px] bg-[#ffffff] pt-12 px-6' ref={itemRef}>
+        <div className={`${fontStyle} flex flex-col gap-6 min-h-[841px] w-[595px] bg-[#ffffff] pt-12 px-6`} ref={itemRef}>
             <div className='flex gap-[5%]'>
                 <div className='w-[30%]'>
                     <h2 className='text-[1.5rem] text-black font-bold'>

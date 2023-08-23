@@ -5,14 +5,15 @@ import { useUserDetails } from "../../../Functions/useUserDetails"
 
 export default function Kyiv() {
 
-    const { itemRef } = useGeneralAppContext()
+    const { itemRef, resumeFont } = useGeneralAppContext()
 
     const { firstName, lastName, phoneNumber, email, profession, professionalSummary, workHistory, education, country, state, skills, languages } = useUserDetails()
     const { currentColor } = useColorContext()
     const textColor = `text-${currentColor.color}`
+     const fontStyle = `font-${resumeFont}`
 
     return (
-        <div className='flex justify-between gap-[10%] min-h-[841px] px-[3rem] pt-[3rem] w-[595px] bg-[#ffffff]' ref={itemRef}>
+        <div className={`${fontStyle} flex justify-between gap-[10%] min-h-[841px] px-[3rem] pt-[3rem] w-[595px] bg-[#ffffff]`} ref={itemRef}>
             <div className="w-[60%]">
                 <div>
                     {firstName!==''&& <h2 className="font-bold text-[2rem]">{`${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}`}</h2>}

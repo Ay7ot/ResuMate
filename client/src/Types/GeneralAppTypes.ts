@@ -6,13 +6,14 @@ export type GeneralAppContextType = {
     navShown: boolean;
     showLogin: boolean;
     showSignup: boolean;
-    currentUser: User | null,
+    currentUser: User | null;
     resumeTemplates: {
         name: string;
         image: string;
         isSelected: boolean
-    }[]
-    itemRef: React.MutableRefObject<HTMLDivElement | null>
+    }[];
+    itemRef: React.MutableRefObject<HTMLDivElement | null>;
+    resumeFont: 'Public' | 'Poppins' | 'Inter' | 'Bricolage'
 }
 
 export type GeneralAppActionType = {
@@ -28,5 +29,6 @@ export type GeneralAppActionType = {
             image: string;
             isSelected: boolean
         }[];
+        resumeFontPayload?: 'Public' | 'Poppins' | 'Inter' | 'Bricolage'
     }
 }
