@@ -278,10 +278,10 @@ export default function TemplateStyles({template}: { template: string}) {
             {colors.map((color, index)=>{
               const bgColor = `bg-${color.color}`
               return (
-                <div key={index} className={`${color.isActive ? 'templateColor' : ''} rounded-full border-[2px] p-[1px]`}>
-                  <div onClick={()=>changeColor(template, color.color)} className={`${bgColor} rounded-full h-[15px] w-[15px] lg:h-[24px] lg:w-[24px] cursor-pointer`}>
+                <div key={index} className={`${color.isActive ? 'templateColor' : ''} rounded-full border-[2px] flex items-center p-[1px]`}>
+                  <button onClick={()=>changeColor(template, color.color)} className={`${bgColor} rounded-full h-[15px] w-[15px] lg:h-[24px] lg:w-[24px] cursor-pointer`}>
 
-                  </div>
+                  </button>
                 </div>
               )
             })}

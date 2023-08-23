@@ -21,7 +21,7 @@ export default function PersonalInfo(){
                 <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Personal Details</h2>
                 <div className='mt-8 grid grid-cols-2 gap-6'>
                     <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.firstName ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>FirstName</p>
+                        <p className={`text-[#192657] text-sm ${shownDetails.firstName ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>First Name</p>
                         <input 
                             type="text"
                             value={firstName} 
@@ -46,7 +46,7 @@ export default function PersonalInfo(){
                         />
                     </div>
                     <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.lastName ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>LastName</p>
+                        <p className={`text-[#192657] text-sm ${shownDetails.lastName ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Last Name</p>
                         <input 
                             type="text"
                             value={lastName} 

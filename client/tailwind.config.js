@@ -7,7 +7,10 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      'Public': ['Public Sans', 'sans-serif']
+      'Public': ['Public Sans', 'sans-serif'],
+      'Poppins': ['Poppins', 'sans-serif'],
+      'Inter': ['Inter', 'sans-serif'],
+      'Bricolage': ['Bricolage Grotesque', 'sans-serif']
     }
   },
   safelist: [
