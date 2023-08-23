@@ -1,4 +1,5 @@
 export type UserDetailContextType = {
+    resumeName: string;
     userDispatch: React.Dispatch<userActionType>;
     firstName: string;
     lastName: string;
@@ -54,6 +55,7 @@ export type school = {
 export type userActionType = {
     type: string;
     payload?: {
+        resumeNamePayload: string;
         firstNamePayload?: string;
         lastNamePayload?: string;
         professionPayload?: string;

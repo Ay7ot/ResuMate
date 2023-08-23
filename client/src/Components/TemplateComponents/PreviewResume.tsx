@@ -12,42 +12,14 @@ import Cardiff from "./TemplateItems/Cardiff"
 import Berlin from "./TemplateItems/Berlin"
 import TemplateStyles from "./TemplateStyles"
 import { IoChevronBack } from "react-icons/io5"
+import { useUserDetails } from "../../Functions/useUserDetails"
 
 export default function PreviewResume() {
 
-    // const { itemRef } = useGeneralAppContext()
+    const { resumeName, userDispatch } = useUserDetails()
 
     const location = useLocation()
     const name = location.state
-    //   download dunction
-    // async function generatePdf(){
-    //     const toDownload = itemRef.current
-    //     console.log(toDownload)
-
-    //     if(toDownload){
-    //         // setLoading(true)
-    //         const opt = {
-    //             margin:       0,
-    //             filename:     'myfile.pdf',
-    //             image:        { type: 'png', quality: 1 },
-    //             html2canvas:  { scale: 2, useCORS: true },
-    //             jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' }
-    //         };
-
-           
-    //         // setLoading(false)
-    //         try {
-    //             const blob =  await html2pdf().from(toDownload).set(opt).outputPdf('blob', 'document.pdf')
-    //             console.log(blob)
-    //         } catch (error){
-    //             console.error(error)
-    //         }
-    //     }
-    // }
-
-    // useEffect(()=>{
-    //     generatePdf()
-    // })
 
     const history = useNavigate()
     
@@ -63,7 +35,19 @@ export default function PreviewResume() {
                     <i className='text-[#444444] '><IoChevronBack /></i>
                     <p>Back</p>
                 </button>
-                <p className='self-center px-6 py-2 border-b-[1px] border-[#9D9D9D] text-[#444444] text-lg lg:text-xl font-medium'>Untitled Resume</p>
+                <input 
+                    value={resumeName}
+                    type='text'
+                    onChange={(e)=>{
+                        userDispatch({
+                            type: 'setResumeName',
+                            payload: {
+                                resumeNamePayload: e.target.value
+                            }
+                        })
+                    }}
+                    className='max-w-[220px] bg-[#fafafa] self-center px-6 py-2 border-b-[1px] text-center border-[#9D9D9D] text-[#444444] text-lg lg:text-xl font-medium'
+                />
                 <div className='w-[10%] '></div>
             </div>
            <div className="scale-[57%] w-[595px] md:scale-[70%] mt-[-5rem] shadow-lg">

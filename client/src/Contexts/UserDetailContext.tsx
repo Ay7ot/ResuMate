@@ -5,6 +5,7 @@ import { userReducer } from "../Functions/userReducer";
 import { nanoid } from 'nanoid'
 
 export const UserDetails = createContext<UserDetailContextType>({
+    resumeName: 'Untitled Resume',
     userDispatch: ()=>{return},
     firstName: '',
     lastName: '',

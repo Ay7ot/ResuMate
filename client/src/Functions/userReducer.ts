@@ -2,6 +2,11 @@ import { UserDetailContextType, userActionType } from "../Types/UserTypes";
 
 export function userReducer(state: UserDetailContextType, action: userActionType){
     switch(action.type){
+        case 'setResumeName':
+            return {
+                ...state,
+                resumeName: action.payload?.resumeNamePayload ?? ''
+            }
         case 'setFirstName':
             return {
                 ...state,

@@ -7,9 +7,11 @@ import WorkHistory from './InfoComponents/WorkHistory'
 import Education from './InfoComponents/Education'
 import Language from './InfoComponents/Language'
 import Skill from './InfoComponents/Skill'
+import { useUserDetails } from '../../Functions/useUserDetails'
 
 export default function TemplateDetails() {
     
+    const {resumeName, userDispatch} = useUserDetails()
     const history = useNavigate()
     
     function goBack(){
@@ -23,7 +25,19 @@ export default function TemplateDetails() {
                     <i className='text-[#444444] '><IoChevronBack /></i>
                     <p>Back</p>
                 </button>
-                <p className='self-center px-6 py-2 border-b-[1px] border-[#9D9D9D] text-[#444444] text-lg lg:text-xl font-medium'>Untitled Resume</p>
+                <input 
+                    value={resumeName}
+                    type='text'
+                    onChange={(e)=>{
+                        userDispatch({
+                            type: 'setResumeName',
+                            payload: {
+                                resumeNamePayload: e.target.value
+                            }
+                        })
+                    }}
+                    className='max-w-[220px] self-center text-center px-6 py-2 border-b-[1px] border-[#9D9D9D] text-[#444444] text-lg lg:text-xl font-medium'
+                />
                 <div className='w-[10%] '></div>
             </div>
             <PersonalInfo />
