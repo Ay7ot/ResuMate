@@ -14,6 +14,10 @@ export default function ChooseTemplate() {
     const { width } = useWindowDimensions()
     const navigateTo = useNavigate()
 
+    useEffect(()=>{
+        window.screenTop
+    },[])
+
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             event.stopPropagation()

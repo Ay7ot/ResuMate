@@ -32,6 +32,10 @@ export default {
     'border-[#FFC107]',
     'border-[#666666]',
     'border-[#1976D2]',
+    'font-Public',
+    'font-Poppins',
+    'font-Inter',
+    'font-Bricolage'
   ], 
 
   plugins: [],

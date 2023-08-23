@@ -10,11 +10,16 @@ import Milan from "./TemplateItems/Milan"
 import Cardiff from "./TemplateItems/Cardiff"
 import Berlin from "./TemplateItems/Berlin"
 import PreviewButton from "./PreviewButton"
+import { useEffect } from "react"
 
 export default function EditTemplate() {
 
   const location = useLocation()
   const template = location.state
+
+  useEffect(()=>{
+    window.screenTop
+  },[])
 
   return (
     <div className='flex lg:w-screen h-[100dvh] relative overflow-x-hidden'>
