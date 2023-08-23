@@ -55,7 +55,7 @@ export type school = {
 export type userActionType = {
     type: string;
     payload?: {
-        resumeNamePayload: string;
+        resumeNamePayload?: string;
         firstNamePayload?: string;
         lastNamePayload?: string;
         professionPayload?: string;
