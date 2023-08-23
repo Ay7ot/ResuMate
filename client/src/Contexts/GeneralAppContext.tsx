@@ -63,8 +63,6 @@ export function GeneralAppProvider({ children }: { children: ReactNode }){
     const value = useGeneralAppContext()
 
     const [mainstate, dispatch] = useReducer(generalAppReducer, value)
-
-    console.log(mainstate);
     
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, user=>{

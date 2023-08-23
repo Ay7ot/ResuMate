@@ -1,0 +1,26 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\tolu\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add firebase
+
+PATH: 
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Common Files\Autodesk Shared\;C:\Users\tolu\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\tolu\AppData\Local\Programs\Python\Python311\;C:\Users\tolu\AppData\Local\Microsoft\WindowsApps;C:\Users\tolu\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\tolu\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.12.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\tolu\AppData\Local\Yarn\Cache\v6\npm-@protobufjs-codegen-2.0.4-7ef37f0d010fb028ad1ad59722e506d9262815cb-integrity\node_modules\@protobufjs\codegen\tests\index.js' -> 'C:\Users\tolu\Desktop\Aydot\Resumate\node_modules\@protobufjs\codegen\tests\index.js'
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
