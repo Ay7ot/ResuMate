@@ -15,17 +15,22 @@ export default function Madrid() {
     
     return (
         <div className={`${fontStyle} flex flex-col min-h-[841px] w-[595px] relative`} ref={itemRef}>
-            <div className="flex h-[107px]">
+            <div className="flex min-h-[107px] relative pb-4">
                 <div className={`w-[30%] ${bgColor} transition-all duration-200 ease-in`}></div>
                 <div className={`w-[70%]  p-6 ${bgColor} transition-all duration-200 ease-in`}>
                     <h1 className="text-[#444444] text-[2rem] font-medium ">
-                        <span className="border-t-[2px] border-[#3780C3]">{capitalizeFirstLetter(firstName)}</span>
-                        <span> {capitalizeFirstLetter(lastName)}</span>
+                        <span className="break-all border-t-[2px] border-[#3780C3]">{capitalizeFirstLetter(firstName)}</span>
+                        <span className="break-all"> {capitalizeFirstLetter(lastName)}</span>
                     </h1>
+                </div>
+                <div className="min-h-[30px] absolute flex justify-around px-6 w-full text-[10px] text-white py-[10px] bottom-[0] bg-[#3780C3]">
+                    <p>{phoneNumber}</p>
+                    <p>{email}</p>
+                    <p>{`${capitalizeFirstLetter(state)} ${country===''? '': ','} ${capitalizeFirstLetter(country)}`}</p>
                 </div>
             </div>
             <div className="flex">
-                <div className={`w-[30%] min-h-[734px] p-6 ${bgColor} transition-all duration-200 ease-in`}>
+                <div className={`w-[30%] min-h-[728px] p-6 ${bgColor} transition-all duration-200 ease-in`}>
                     <h2 className='text-[#333333] font-semibold text-xs mb-4'>{profession.toUpperCase()}</h2>
                     {skills[0].skill!=='' && 
                     <section>
@@ -33,7 +38,7 @@ export default function Madrid() {
                         <ul className="px-4 list-disc mt-3">
                             {skills.map((skill, index)=>{
                                 return (
-                                    <li key={index} className="text-[10px] text-white">{capitalizeFirstLetter(skill.skill)}</li>
+                                    <li key={index} className="text-[10px] text-white break-all">{capitalizeFirstLetter(skill.skill)}</li>
                                 )
                             })}
                         </ul>
@@ -45,7 +50,7 @@ export default function Madrid() {
                         <ul className="px-4 list-disc mt-3">
                             {languages.map((language, index)=>{
                                 return (
-                                    <li key={index} className="text-[10px] text-white">{capitalizeFirstLetter(language.language)}</li>
+                                    <li key={index} className="text-[10px] text-white break-all">{capitalizeFirstLetter(language.language)}</li>
                                 )
                             })}
                         </ul>
@@ -108,8 +113,8 @@ export default function Madrid() {
                                             <p className="text-[10px] text-[#333333]">{`${end}`}</p>
                                         </div>
                                     <div>
-                                        <h3 className={`${textColor} text-[10px]`}>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
-                                        <h4 className="text-[10px] text-[#333333] mt-2">{capitalizeFirstLetter(schoolName)}</h4>
+                                        <h3 className={`${textColor} text-[10px] break-all`}>{`${degree.toUpperCase()} ${capitalizeFirstLetter(course)}`}</h3>
+                                        <h4 className="text-[10px] text-[#333333] mt-2 break-all">{capitalizeFirstLetter(schoolName)}</h4>
                                         <h5 className="text-[10px] italic text-[#7D7D7D]">{capitalizeFirstLetter(location)}</h5>
                                     </div>
                                 </div>
@@ -119,11 +124,7 @@ export default function Madrid() {
                     }
                 </div>
             </div>
-            <div className="min-h-[30px] absolute flex justify-around px-6 w-full text-[10px] text-white py-[10px] top-[10%] bg-[#3780C3]">
-                <p>{phoneNumber}</p>
-                <p>{email}</p>
-                <p>{`${capitalizeFirstLetter(state)} ${country===''? '': ','} ${capitalizeFirstLetter(country)}`}</p>
-            </div>
+                    
         </div>
     )
 }

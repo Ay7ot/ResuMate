@@ -19,7 +19,7 @@ export default function Istanbul() {
 
     return (
         <div className={`flex justify-between min-h-[841px] w-full bg-[#f4f5fd] relative ${fontStyle}`} ref={itemRef}>
-            <div className={`w-[30%] transition-all duration-200 ease-in ${bgColor} min-h-full text-[#ffffff]`}>
+            <div className={`min-w-[30%] max-w-[35%] transition-all duration-200 ease-in ${bgColor} min-h-full text-[#ffffff]`}>
                 <h1 className="text-xl pt-6 px-6 font-semibold break-all">{firstName.toUpperCase()} <br /> {lastName.toUpperCase()}</h1>
                 <h2 className='px-6 font-semibold text-xs pt-3'>{capitalizeFirstLetter(profession)}</h2>
                 <section className="flex flex-col gap-3 pt-6 px-6">
@@ -48,7 +48,7 @@ export default function Istanbul() {
                     <ul className="px-10 list-disc mt-3">
                         {skills.map((skill, index)=>{
                             return (
-                                <li key={index} className="text-[10px] mt-2">{capitalizeFirstLetter(skill.skill)}</li>
+                                <li key={index} className="text-[10px] mt-2 break-all">{capitalizeFirstLetter(skill.skill)}</li>
                             )
                         })}
                     </ul>
@@ -60,7 +60,7 @@ export default function Istanbul() {
                     <ul className="px-10 list-disc mt-3">
                         {languages.map((language, index)=>{
                             return (
-                                <li key={index} className="text-[10px] mt-2">{capitalizeFirstLetter(language.language)}</li>
+                                <li key={index} className="text-[10px] mt-2 break-all">{capitalizeFirstLetter(language.language)}</li>
                             )
                         })}
                     </ul>
@@ -68,7 +68,7 @@ export default function Istanbul() {
                 }
             </div>
 
-            <div className='w-[70%] px-4 py-6'>
+            <div className='min-w-[65%] px-4 py-6'>
                 {professionalSummary!=='' && 
                 <section>
                     <h2 className={`${textColor} text-xs font-semibold`}>PROFESSIONAL SUMMARY</h2>
