@@ -8,7 +8,6 @@ const cors = require("cors");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const testAPIRouter = require("./routes/testAPI");
-require('dotenv').config();
 
 const app = express();
 

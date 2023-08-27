@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+require('dotenv').config();
 /**
  * Module dependencies.
  */
@@ -27,7 +28,7 @@ var server = http.createServer(app);
 
 const db = require("../models");
 db.mongoose
-  .connect('mongodb+srv://ayomidotzee:Aydotzee110@cluster0.cfcxw5k.mongodb.net/resumate_db?retryWrites=true&w=majority', {
+  .connect(db.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
