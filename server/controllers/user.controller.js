@@ -3,8 +3,8 @@ const User = db.users;
 
 // Create and Save a new User
 exports.create = async (req, res) => {
-    const { firstName, lastName, profession} = req.body
-    await User.create({firstName, lastName, profession})
+    const { firstName, lastName, profession, experience} = req.body
+    await User.create({firstName, lastName, profession, experience})
     res.json({msg: `User ${firstName} successfully created`})
 };
 

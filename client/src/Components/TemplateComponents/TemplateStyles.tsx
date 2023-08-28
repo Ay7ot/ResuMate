@@ -6,6 +6,8 @@ import Loader from "../Loader";
 import { color } from "../../Types/ColorTypes";
 import { useColorContext } from "../../Functions/useColorContext";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
+import { useUserDetails } from "../../Functions/useUserDetails";
+import axios from 'axios'
 
 export default function TemplateStyles({template}: { template: string}) {
   
@@ -14,105 +16,58 @@ export default function TemplateStyles({template}: { template: string}) {
   const [colors, setColors] = useState<color[]>([])
   const [showFontBox, setShowFontBox] = useState(false)
   const { colorDispatch, currentColor, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
+  const { firstName, lastName, workHistory, profession } = useUserDetails()
   
   const  backgroundColor = `bg-${currentColor.color}`
 
   useEffect(()=>{
-    if(template === 'Istanbul'){
-      setColors(Istanbul)
-      const currentColor = Istanbul.find(colors=>colors.isActive===true)
-      if(currentColor){
-        colorDispatch({
-          type: 'setCurrentColor',
-          payload: {
-            currentColorPayload: currentColor
-          }
-        })
-      }
-    } else if (template === 'Porto'){
-      setColors(Porto)
-      const currentColor = Porto.find(colors=>colors.isActive===true)
-      if(currentColor){
-        colorDispatch({
-          type: 'setCurrentColor',
-          payload: {
-            currentColorPayload: currentColor
-          }
-        })
-      }
-    } else if (template === 'Lisbon'){
-      setColors(Lisbon)
-      const currentColor = Lisbon.find(colors=>colors.isActive===true)
-      if(currentColor){
-        colorDispatch({
-          type: 'setCurrentColor',
-          payload: {
-            currentColorPayload: currentColor
-          }
-        })
-      }
-    } else if (template === 'Madrid'){
-      setColors(Madrid)
-      const currentColor = Madrid.find(colors=>colors.isActive===true)
-      if(currentColor){
-        colorDispatch({
-          type: 'setCurrentColor',
-          payload: {
-            currentColorPayload: currentColor
-          }
-        })
-      }
-    } else if (template === 'Kyiv'){
-      setColors(Kyiv)
-      const currentColor = Kyiv.find(colors=>colors.isActive===true)
-      if(currentColor){
-        colorDispatch({
-          type: 'setCurrentColor',
-          payload: {
-            currentColorPayload: currentColor
-          }
-        })
-      }
-    } else if (template === 'Cardiff'){
-      setColors(Cardiff)
-      const currentColor = Cardiff.find(colors=>colors.isActive===true)
-      if(currentColor){
-        colorDispatch({
-          type: 'setCurrentColor',
-          payload: {
-            currentColorPayload: currentColor
-          }
-        })
-      }
-    } else if (template === 'Milan'){
-      setColors(Milan)
-      const currentColor = Milan.find(colors=>colors.isActive===true)
-      if(currentColor){
-        colorDispatch({
-          type: 'setCurrentColor',
-          payload: {
-            currentColorPayload: currentColor
-          }
-        })
-      }
-    } else if (template === 'Berlin'){
-      setColors(Berlin)
-      const currentColor = Berlin.find(colors=>colors.isActive===true)
-      if(currentColor){
-        colorDispatch({
-          type: 'setCurrentColor',
-          payload: {
-            currentColorPayload: currentColor
-          }
-        })
-      }
-    }
+    const templates: { [key: string]: color[] } = {
+    Istanbul,
+    Porto,
+    Lisbon,
+    Madrid,
+    Kyiv,
+    Cardiff,
+    Milan,
+    Berlin,
+};
+
+if (template in templates) {
+  const currentColors = templates[template].find((colors) => colors.isActive === true);
+  if (currentColors) {
+    setColors(templates[template]);
+    colorDispatch({
+      type: 'setCurrentColor',
+      payload: {
+        currentColorPayload: currentColors,
+      },
+    });
+  }
+}
+
+    
   },[colorDispatch, template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
   
+  async function sendUserDetailstoServer(){
+    const data = {
+      'firstName': firstName,
+      'lastName': lastName,
+      'profession': profession,
+      'experience': workHistory
+    }
+    try {
+      await axios.post('http://localhost:3000/users/user', data)
+    } catch(err){
+      console.error(err)
+    }
+  }
   //download dunction
   async function generatePdf(){
+    
+    sendUserDetailstoServer()
+    
     const toDownload = itemRef.current
-
+  
     if(toDownload){
       setLoading(true)
       const opt = {

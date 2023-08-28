@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 require('dotenv').config();
+require('express-async-error');
 /**
  * Module dependencies.
  */
