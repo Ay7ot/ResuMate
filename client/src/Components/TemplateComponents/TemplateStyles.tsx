@@ -16,34 +16,34 @@ export default function TemplateStyles({template}: { template: string}) {
   const [colors, setColors] = useState<color[]>([])
   const [showFontBox, setShowFontBox] = useState(false)
   const { colorDispatch, currentColor, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
-  const { firstName, lastName, workHistory, profession } = useUserDetails()
+  const { firstName, lastName, workHistory, profession, phoneNumber, professionalSummary, country, state, email, skills, education, languages } = useUserDetails()
   
   const  backgroundColor = `bg-${currentColor.color}`
 
   useEffect(()=>{
     const templates: { [key: string]: color[] } = {
-    Istanbul,
-    Porto,
-    Lisbon,
-    Madrid,
-    Kyiv,
-    Cardiff,
-    Milan,
-    Berlin,
-};
+      Istanbul,
+      Porto,
+      Lisbon,
+      Madrid,
+      Kyiv,
+      Cardiff,
+      Milan,
+      Berlin,
+    };
 
-if (template in templates) {
-  const currentColors = templates[template].find((colors) => colors.isActive === true);
-  if (currentColors) {
-    setColors(templates[template]);
-    colorDispatch({
-      type: 'setCurrentColor',
-      payload: {
-        currentColorPayload: currentColors,
-      },
-    });
-  }
-}
+    if (template in templates) {
+      const currentColors = templates[template].find((colors) => colors.isActive === true);
+      if (currentColors) {
+        setColors(templates[template]);
+        colorDispatch({
+          type: 'setCurrentColor',
+          payload: {
+            currentColorPayload: currentColors,
+          },
+        });
+      }
+    }
 
     
   },[colorDispatch, template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
@@ -53,7 +53,25 @@ if (template in templates) {
       'firstName': firstName,
       'lastName': lastName,
       'profession': profession,
-      'experience': workHistory
+      'experience': workHistory,
+      "education": education,
+      'phoneNumber': phoneNumber,
+      'professionalSummary': professionalSummary,
+      'country': country,
+      'state': state,
+      'email': email,
+      'skills': skills.map(skill=>{
+        return {
+          skill: skill.skill,
+          id: skill.id
+        }
+      }),
+      'languages': languages.map(language=>{
+        return {
+          language: language.language,
+          id: language.id
+        }
+      })
     }
     try {
       await axios.post('http://localhost:3000/users/user', data)
@@ -61,15 +79,16 @@ if (template in templates) {
       console.error(err)
     }
   }
+
   //download dunction
   async function generatePdf(){
     
-    sendUserDetailstoServer()
+    setLoading(true)
+    await sendUserDetailstoServer()
     
     const toDownload = itemRef.current
   
     if(toDownload){
-      setLoading(true)
       const opt = {
         margin:       0,
         filename:     'myfile.pdf',
@@ -78,151 +97,41 @@ if (template in templates) {
         jsPDF:        { unit: 'in', format: [6.198, 8.77], orientation: 'portrait' }
       };
 
-     await html2pdf().from(toDownload).set(opt).save('document.pdf')
-      setLoading(false)
+      await html2pdf().from(toDownload).set(opt).save('document.pdf')
     }
+    setLoading(false)
   }
   
 
-  function changeColor(template: string, color: string){
-    if(template === 'Istanbul'){
-      colorDispatch({
-        type: 'setIstanbulColors',
-        payload: {
-          istanbulPayload : Istanbul.map(colors=>{
-            if(colors.color === color){
-              return {
-                ...colors,
-                isActive: true
-              }
-            } else return {
-              ...colors,
-              isActive: false
-            }
-          })
-        }
-      })
-    } else if (template === 'Porto'){
-      colorDispatch({
-        type: 'setPortoColors',
-        payload: {
-          portoPayload : Porto.map(colors=>{
-            if(colors.color === color){
-              return {
-                ...colors,
-                isActive: true
-              }
-            } else return {
-              ...colors,
-              isActive: false
-            }
-          })
-        }
-      })
-    } else if (template === 'Lisbon'){
-      colorDispatch({
-        type: 'setLisbonColors',
-        payload: {
-          lisbonPayload : Lisbon.map(colors=>{
-            if(colors.color === color){
-              return {
-                ...colors,
-                isActive: true
-              }
-            } else return {
-              ...colors,
-              isActive: false
-            }
-          })
-        }
-      })
-    } else if (template === 'Madrid'){
-      colorDispatch({
-        type: 'setMadridColors',
-        payload: {
-          madridPayload : Madrid.map(colors=>{
-            if(colors.color === color){
-              return {
-                ...colors,
-                isActive: true
-              }
-            } else return {
-              ...colors,
-              isActive: false
-            }
-          })
-        }
-      })
-    } else if (template === 'Kyiv'){
-      colorDispatch({
-        type: 'setKyivColors',
-        payload: {
-          kyivPayload : Kyiv.map(colors=>{
-            if(colors.color === color){
-              return {
-                ...colors,
-                isActive: true
-              }
-            } else return {
-              ...colors,
-              isActive: false
-            }
-          })
-        }
-      })
-    } else if (template === 'Cardiff'){
-      colorDispatch({
-        type: 'setCardiffColors',
-        payload: {
-          cardiffPayload : Cardiff.map(colors=>{
-            if(colors.color === color){
-              return {
-                ...colors,
-                isActive: true
-              }
-            } else return {
-              ...colors,
-              isActive: false
-            }
-          })
-        }
-      })
-    } else if (template === 'Milan'){
-      colorDispatch({
-        type: 'setMilanColors',
-        payload: {
-          milanPayload : Milan.map(colors=>{
-            if(colors.color === color){
-              return {
-                ...colors,
-                isActive: true
-              }
-            } else return {
-              ...colors,
-              isActive: false
-            }
-          })
-        }
-      })
-    } else if (template === 'Berlin'){
-      colorDispatch({
-        type: 'setBerlinColors',
-        payload: {
-          berlinPayload : Berlin.map(colors=>{
-            if(colors.color === color){
-              return {
-                ...colors,
-                isActive: true
-              }
-            } else return {
-              ...colors,
-              isActive: false
-            }
-          })
-        }
-      })
-    }
+  function changeColor(template: string, color: string) {
+    const cityKey = `set${template}Colors`;
+    const payloadKey = `${template.toLowerCase()}Payload`;
+    const templates: { [key: string]: color[] } = {
+      Istanbul,
+      Porto,
+      Lisbon,
+      Madrid,
+      Kyiv,
+      Cardiff,
+      Milan,
+      Berlin,
+    };
+
+    const updatedColors = templates[template].map((cityColor) => ({
+      ...cityColor,
+      isActive: cityColor.color === color,
+    }));
+
+    const payload = {
+      [payloadKey]: updatedColors,
+    };
+
+    colorDispatch({
+      type: cityKey,
+      payload,
+    });
   }
+
 
   function openandCloseFontBox(){
     setShowFontBox(prevValue=>!prevValue)

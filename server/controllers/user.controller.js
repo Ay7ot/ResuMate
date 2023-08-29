@@ -3,9 +3,9 @@ const User = db.users;
 
 // Create and Save a new User
 exports.create = async (req, res) => {
-    const { firstName, lastName, profession, experience} = req.body
-    await User.create({firstName, lastName, profession, experience})
-    res.json({msg: `User ${firstName} successfully created`})
+    const { firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email } = req.body
+    await User.create({firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email})
+    res.json({msg: `User ${firstName}  successfully created`})
 };
 
 // Retrieve all Users from the database.

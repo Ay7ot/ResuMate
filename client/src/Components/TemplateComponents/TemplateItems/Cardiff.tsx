@@ -40,8 +40,8 @@ export default function Cardiff() {
                {skills[0].skill!==''&& 
                     <div>
                         <h4 className={`uppercase font-semibold ${textColor}`}>skills</h4>
-                        <div className='mt-3'>
-                            <ul className='list-disc pl-8 text-[10px] text-[#000000]'>
+                        <div className='mt-1'>
+                            <ul className='list-disc pl-4 text-[10px] text-[#000000]'>
                                 {skills.map((skill, index)=>{
                                     return (
                                         <li key={index}>{skill.skill}</li>
@@ -54,8 +54,8 @@ export default function Cardiff() {
                 {languages[0].language!==''&& 
                     <div>
                         <h4 className={`uppercase font-semibold ${textColor}`}>languages</h4>
-                        <div className='mt-3'>
-                            <ul className='list-disc pl-8 text-[10px] text-[#000000]'>
+                        <div className='mt-1'>
+                            <ul className='list-disc pl-4 text-[10px] text-[#000000]'>
                                 {languages.map((language, index)=>{
                                     return (
                                         <li key={index}>{language.language}</li>
@@ -69,7 +69,7 @@ export default function Cardiff() {
             {workHistory[0].jobTitle!=='' && 
                 <div className='mt-4'>
                     <h4 className={`uppercase font-semibold ${textColor}`}>work history</h4>
-                    <div className='mt-3 flex flex-col gap-4'>
+                    <div className='flex flex-col gap-4'>
                         {workHistory.map((work, index)=>{
                             const {companyName, jobTitle, jobItems, location, month} = work
                             const {start, end} = month
@@ -78,7 +78,7 @@ export default function Cardiff() {
                                 <div key={index}>
                                     <h5 className='font-bold text-xs'>{`${capitalizeFirstLetter(companyName)}${location===''?'':','} ${location}`} <span className='italic font-light'>{` ${capitalizeFirstLetter(jobTitle)}`}</span></h5>
                                     <h6 className="text-[10px] text-[#666666] mt-1">{`${start} ${end!==''?'-':''} ${end}`}</h6>
-                                    <ul className='text-black text-xs pl-8 flex flex-col list-disc'>
+                                    <ul className='text-black text-[10px] pl-8 flex flex-col list-disc'>
                                         {jobItems[0].jobDetail!=='' && jobItems.map((item, index)=>{
                                             return (
                                                 <li key={index}>{item.jobDetail}</li>
@@ -94,7 +94,7 @@ export default function Cardiff() {
             {education[0].degree!=='' && 
                 <div className='mt-4'>
                     <h4 className={`uppercase font-semibold ${textColor}`}>education</h4>
-                    <div className='mt-3 flex flex-col gap-4'>
+                    <div className='flex flex-col gap-4'>
                         {education.map((edu, index)=>{
                             const {schoolName, degree, course, location, month} = edu
                             const {start, end} = month
