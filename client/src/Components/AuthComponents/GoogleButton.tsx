@@ -19,6 +19,7 @@ export default function GoogleButton({buttonName}: {buttonName: string}) {
         setIsLoading(true)
         await signInWithPopup(auth, provider)
         .then(data=>{
+            
             dispatch({
                 type: 'setCurrentUser',
                 payload: {

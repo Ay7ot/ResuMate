@@ -66,4 +66,4 @@ module.exports = mongoose => {
 
   const UserResume = mongoose.model("user", schema);
   return UserResume;
-  };
+};

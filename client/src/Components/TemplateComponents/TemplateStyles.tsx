@@ -74,7 +74,7 @@ export default function TemplateStyles({template}: { template: string}) {
       })
     }
     try {
-      await axios.post('http://localhost:3000/users/user', data)
+      await axios.post('http://localhost:3000/users/userResume', data)
     } catch(err){
       console.error(err)
     }
