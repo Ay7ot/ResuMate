@@ -3,11 +3,12 @@ import { CgDanger } from 'react-icons/cg'
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getIdToken, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useAuthContext } from "../../Functions/useAuthContext";
 import GoogleButton from "./GoogleButton";
 import Loader from "../Loader";
+import axios from 'axios';
 
 export default function Login() {
 
@@ -84,32 +85,48 @@ export default function Login() {
                     }
                 }
             })
-        } else {
-            setLoading(true)
-            await signInWithEmailAndPassword(auth, userEmail, userPassword)
-            .then(user=>{
-                dispatch({
-                    type:'setCurrentUser',
-                    payload: {
-                        currentUserPayload: user.user
+        } else  {
+            setLoading(true);
+            try {
+              // Create the user with Firebase Authentication
+              const userCredential = await signInWithEmailAndPassword(auth, userEmail, userPassword);
+      
+              // Get the Firebase ID token
+              const idToken = await getIdToken(userCredential.user);
+      
+              // Now you have the actual ID token, so you can use it in your Axios request
+                await axios.post('http://localhost:3000/user/createUser', userCredential, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `${idToken}`,
                     }
-                })
-                navigateTo('/templates')
-            })
-            .catch((error)=>{
-                console.error(error)
-                authDispatch({
-                    type:'setEmailEmptyErrorMessage',
-                    payload: {
-                        errorMessagePayload:{
-                            type: 'email', 
-                            message: 'Email or Password Incorrect'
-                        }
-                    }
-                })
-            })
-            setLoading(false)
-        }
+                });
+              
+              dispatch({
+                type: 'setCurrentUser',
+                payload: {
+                  currentUserPayload: userCredential.user
+                }
+              });
+      
+              navigateTo('/templates');
+            } catch (error) {
+
+              console.error(error);
+              authDispatch({
+                type: 'setEmailEmptyErrorMessage',
+                payload: {
+                  errorMessagePayload: {
+                    type: 'email',
+                    message: 'Email or Password Incorrect'
+                  }
+                }
+              });
+              
+            } finally {
+              setLoading(false);
+            }
+          }
     }
 
     return (

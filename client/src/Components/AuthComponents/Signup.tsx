@@ -132,15 +132,12 @@ export default function Signup() {
               const idToken = await getIdToken(userCredential.user);
       
               // Now you have the actual ID token, so you can use it in your Axios request
-                const response = await axios.post('http://localhost:3000/user/createUser', userCredential, {
+                await axios.post('http://localhost:3000/user/createUser', userCredential, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `${idToken}`,
                     }
                 });
-      
-              // Handle the response as needed
-              console.log('Server response:', response.data);
               
               dispatch({
                 type: 'setCurrentUser',
@@ -164,7 +161,7 @@ export default function Signup() {
             } finally {
               setLoading(false);
             }
-          }
+        }
     }
     
     return (
