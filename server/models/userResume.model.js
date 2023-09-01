@@ -42,6 +42,10 @@ module.exports = mongoose => {
   //Resume Schema
   const schema = mongoose.Schema(
     {
+      firebaseUid: {
+        type: String,
+        required: true,
+      },
       firstName: String,
       lastName: String,
       profession: String,
@@ -64,6 +68,6 @@ module.exports = mongoose => {
     return object;
   });
 
-  const UserResume = mongoose.model("user", schema);
+  const UserResume = mongoose.model("Resume", schema);
   return UserResume;
 };

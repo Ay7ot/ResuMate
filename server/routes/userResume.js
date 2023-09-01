@@ -8,6 +8,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/userResume', user.create)
+router.get('/resume', user.findAll)
+
+router.post('/resume', user.create)
 
 module.exports = router;

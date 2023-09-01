@@ -11,7 +11,7 @@ import axios from 'axios'
 
 export default function TemplateStyles({template}: { template: string}) {
   
-  const { itemRef, resumeFont, dispatch } = useGeneralAppContext();
+  const { itemRef, resumeFont, dispatch, currentUser } = useGeneralAppContext();
   const [loading, setLoading] = useState(false)
   const [colors, setColors] = useState<color[]>([])
   const [showFontBox, setShowFontBox] = useState(false)
@@ -50,6 +50,7 @@ export default function TemplateStyles({template}: { template: string}) {
   
   async function sendUserDetailstoServer(){
     const data = {
+      "firebaseUid": currentUser?.uid,
       'firstName': firstName,
       'lastName': lastName,
       'profession': profession,
@@ -74,7 +75,11 @@ export default function TemplateStyles({template}: { template: string}) {
       })
     }
     try {
-      await axios.post('http://localhost:3000/users/userResume', data)
+      await axios.post('http://localhost:3000/userResume/resume', data, {
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
     } catch(err){
       console.error(err)
     }

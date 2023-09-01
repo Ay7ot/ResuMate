@@ -1,16 +1,25 @@
 const db = require("../models");
 const User = db.users;
 
-// Create and Save a new User
+// Create and Save a new User Resume
 exports.create = async (req, res) => {
     const { firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email } = req.body
     await User.create({firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email})
     res.json({msg: `User ${firstName}  successfully created`})
 };
 
-// Retrieve all Users from the database.
-exports.findAll = (req, res) => {
-  
+// Retrieve all User Resume from the database.
+exports.findAll = async (req, res) => {
+    const { firebaseUid } = req.body
+    
+    try {
+        const resumes =  await User.find({firebaseUid: firebaseUid})
+        
+        res.status(200).send({ message: resumes });
+    } catch (error){
+        console.log(error)
+    }
+
 };
 
 // Find a single User with an id
