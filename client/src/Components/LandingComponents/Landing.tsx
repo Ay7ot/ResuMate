@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Landing() {
 
-  const {navShown, currentUser, dispatch, showLogin, showSignup} = useGeneralAppContext()
+  const { darkTheme, navShown, currentUser, dispatch, showLogin, showSignup} = useGeneralAppContext()
 
   const navref = useRef<HTMLDivElement>(null)
   const SignupRef = useRef<HTMLDivElement>(null)
@@ -118,12 +118,12 @@ export default function Landing() {
   }
 
   return (
-    <>
-      <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-1000 ease-linear darken' : ''} dynamicHeight flex flex-col items-center`}>
+    <div className={`${darkTheme ? 'bg-[#121212]' : 'bg-[#ffffff]'}`}>
+      <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-200 ease-linear darken' : ''} dynamicHeight flex flex-col items-center`}>
         <Navlanding />
         <LandingBody />
       </div>
-      <div ref={navref} className={`${navShown ? 'flex' : 'hidden'} md:hidden py-4 px-8 transition-all duration-150  flex-col ease-in z-[999999] top-0 right-0 fixed dynamicHeight bg-[#f4f5fd] min-w-[250px]`}>
+      <div ref={navref} className={`${navShown ? 'flex' : 'hidden'} md:hidden py-4 px-8 transition-all duration-150  flex-col ease-in z-[999999] top-0 right-0 fixed dynamicHeight ${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]':'bg-[#f4f5fd] text-[#192657]'} min-w-[250px]`}>
         <i className='self-end text-[1.9rem]' onClick={hideNavBar}><RxCross1 /></i>
         <div className='self-end flex flex-col gap-6 mt-6'>
           <button className="text-end px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); loginResumeButtonFunction()}}>Login</button>
@@ -134,6 +134,6 @@ export default function Landing() {
         {showLogin && <div ref={loginRef} ><Login /></div>}
         {showSignup && <div ref={SignupRef} ><Signup /></div>}
       </AuthProvider>
-    </>
+    </div>
   )
 }

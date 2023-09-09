@@ -6,7 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 
 export const GeneralAppContext = createContext<GeneralAppContextType>({
-    theme: 'light',
+    darkTheme: true,
     dispatch: ()=>{return},
     navShown: false,
     showSignup: false,

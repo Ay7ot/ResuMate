@@ -8,7 +8,7 @@ import axios from "axios";
 
 export default function GoogleButton({buttonName}: {buttonName: string}) {
     
-    const {dispatch} = useGeneralAppContext()
+    const {dispatch, darkTheme} = useGeneralAppContext()
 
     const [isloading, setIsLoading] = useState(false)
 
@@ -63,7 +63,7 @@ export default function GoogleButton({buttonName}: {buttonName: string}) {
     return (
         <button onClick={signInWithGoogle} disabled={isloading} className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
             <i className="text-[1.7rem]"><FcGoogle /></i>
-            <p>{`${buttonName} with Google`}</p>
+            <p className="text-[#192657]">{`${buttonName} with Google`}</p>
         </button>
     )
 }

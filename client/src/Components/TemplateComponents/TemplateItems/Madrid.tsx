@@ -30,7 +30,7 @@ export default function Madrid() {
                 </div>
             </div>
             <div className="flex">
-                <div className={`w-[30%] min-h-[728px] p-6 ${bgColor} transition-all duration-200 ease-in`}>
+                <div className={`w-[30%] min-h-[735px] p-6 ${bgColor} transition-all duration-200 ease-in`}>
                     <h2 className='text-[#333333] font-semibold text-xs mb-4'>{profession.toUpperCase()}</h2>
                     {skills[0].skill!=='' && 
                     <section>

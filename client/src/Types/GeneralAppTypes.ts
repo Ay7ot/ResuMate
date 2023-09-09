@@ -1,7 +1,7 @@
 import { User } from "firebase/auth";
 
 export type GeneralAppContextType = {
-    theme: string
+    darkTheme: boolean;
     dispatch: React.Dispatch<GeneralAppActionType>;
     navShown: boolean;
     showLogin: boolean;

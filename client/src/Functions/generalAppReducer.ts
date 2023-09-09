@@ -3,6 +3,16 @@ import { GeneralAppActionType, GeneralAppContextType } from "../Types/GeneralApp
 export function generalAppReducer(state: GeneralAppContextType, action: GeneralAppActionType){
     switch(action.type){
 
+        case 'setDarkTheme':
+            return {
+                ...state,
+                darkTheme: true
+            }
+        case 'setLightTheme':
+            return {
+                ...state,
+                darkTheme: false
+            }
         case 'showNavBar':
             return {
                 ...state,

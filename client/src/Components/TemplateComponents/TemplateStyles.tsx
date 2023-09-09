@@ -74,12 +74,15 @@ export default function TemplateStyles({template}: { template: string}) {
         }
       })
     }
+
+    const url = `http://localhost:3000/userResume/resume?firebaseUid=${currentUser?.uid}`
+
     try {
-      await axios.post('http://localhost:3000/userResume/resume', data, {
-        headers: {
-          'content-type': 'application/json'
-        }
-      })
+      await axios.post('http://localhost:3000/userResume/resume', data)
+      
+      //code to get all user resumes
+      const resumes = await axios.get(url)
+      console.log(resumes)
     } catch(err){
       console.error(err)
     }

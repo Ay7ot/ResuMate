@@ -260,6 +260,11 @@ export default function WorkHistory() {
                                             const newDate = `${month} ${value.$y}`
                                             updateEndDate(work.id, newDate)
                                         }}
+                                        slotProps={{
+                                            actionBar: {
+                                              actions: ["today"],
+                                            }
+                                        }}
                                         label="End"
                                         views={['year', 'month']}
                                     />

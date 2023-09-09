@@ -12,7 +12,7 @@ import axios from "axios";
 
 export default function Signup() {
 
-    const { dispatch, showSignup} = useGeneralAppContext()
+    const { dispatch, showSignup, darkTheme } = useGeneralAppContext()
     const [loading, setLoading] = useState(false)
     const [emailShown, setEmailShown] = useState(false)
     const [passwordShown, setPasswordShown] = useState(false)
@@ -167,7 +167,7 @@ export default function Signup() {
     return (
         <>
         {showSignup && 
-        <div className="absolute md:rounded-md flex flex-col justify-between items-center top-0 md:left-[15%] lg:left-[0] bg-white p-6 md:px-10 md:w-[70%] lg:w-full w-full z-[999999999] dynamicHeight">
+        <div className={`${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]':'bg-[#f4f5fd] text-[#192657]'} absolute md:rounded-md flex flex-col justify-between items-center top-0 md:left-[15%] lg:left-[0] bg-white p-6 md:px-10 md:w-[70%] lg:w-full w-full z-[999999999] dynamicHeight`}>
             <div className="w-full lg:max-w-[600px]">
                 <div className="flex items-center  md:px-3 justify-between">
                     <div></div>
@@ -175,18 +175,18 @@ export default function Signup() {
                         <img 
                             src="resumateIcon.png"
                         />
-                        <p className="text-[#192657] font-bold  text-lg md:text-[1.3rem]">ResuMate</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} font-bold  text-lg md:text-[1.3rem]`}>ResuMate</p>
                     </div>
                     <button className='self-end text-[1.9rem]' onClick={hideSignupPage}><RxCross1 /></button>
                 </div>
                 <hr  className="mt-6"/>
-                <h2 className="text-center mt-9 text-[#192657] text-[1.5rem] font-semibold">Sign up to Create Resume</h2>
+                <h2 className={`text-center mt-9 ${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-[1.5rem] font-semibold`}>Login to Create Resume</h2>
                 <form onSubmit={(e)=>{e.preventDefault(); signupUser(email, password)}} className="flex flex-col gap-3 mt-6">
                     <div>
-                        <p className={`text-[#192657] text-sm ${emailShown ? 'block pb-3' : 'hidden'}`}>Email Address</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${emailShown ? 'block pb-3' : 'hidden'}`}>Email Address</p>
                         <input 
                             type="email"
-                            className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
+                            className={`w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] ${darkTheme ? 'bg-[#1a1a1a]' : 'bg-[#ffffff]'} pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500`}
                             placeholder="Email"
                             onClick={showEmail}
                             value={email}
@@ -212,10 +212,10 @@ export default function Signup() {
                     </div>
 
                     <div>
-                        <p className={`text-[#192657] text-sm ${passwordShown ? 'block pb-3' : 'hidden'}`}>Password</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${passwordShown ? 'block pb-3' : 'hidden'}`}>Password</p>
                         <input 
                             type="password"
-                            className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
+                            className={`w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] ${darkTheme ? 'bg-[#1a1a1a]' : 'bg-[#ffffff]'} pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500`}
                             placeholder="Password"
                             onClick={showPassword}
                             value={password}
@@ -241,10 +241,10 @@ export default function Signup() {
                     </div>
 
                     <div>
-                        <p className={`text-[#192657] text-sm ${showConfirm ? 'block pb-3' : 'hidden'}`}>Confirm Password</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${showConfirm ? 'block pb-3' : 'hidden'}`}>Confirm Password</p>
                         <input 
                             type="password"
-                            className="w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500"
+                            className={`w-full outline-none rounded-none border-b-[1px] border-[#9d9d9d] ${darkTheme ? 'bg-[#1a1a1a]' : 'bg-[#ffffff]'} pb-3 mb-1 text-[1rem] focus:pb-6 transition-all duration-500`}
                             placeholder="Confirm Password"
                             onClick={setPasswordShowConfirm}
                             value={passwordConfirm}
@@ -272,12 +272,12 @@ export default function Signup() {
                 </form>
                 <div className="flex items-center justify-between gap-6 mt-8">
                     <div className="h-[1px] w-full border-[1px]"></div>
-                    <p className="text-[#121212] text-[1.125rem]">or</p>
+                    <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-[1.125rem]`}>or</p>
                     <div className="h-[1px] w-full border-[1px]"></div>
                 </div>
                 <GoogleButton buttonName='Sign up'/>
             </div>
-            <footer className="mt-4 text-center text-[1.125rem]">Already have an account? <span onClick={(e)=>{e.stopPropagation(); showLoginPage()}} className="cursor-pointer py-1 border-b-[1px] border-[#192657] text-[#192657]">Login</span> </footer>
+            <footer className="mt-4 text-center text-[1.125rem]">Already have an account? <span onClick={(e)=>{e.stopPropagation(); showLoginPage()}} className={`py-1 border-b-[1px] ${darkTheme ? 'text-[#ffebcd] border-[#ffebcd]':'text-[#192657] border-[#192657]'}] ${darkTheme ? 'text-[#f9f9f9]':'text-[#333333]'} cursor-pointer`}>Login</span> </footer>
         </div>}
         </>
     )
