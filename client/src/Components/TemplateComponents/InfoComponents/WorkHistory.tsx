@@ -1,18 +1,20 @@
 import { FiBold, FiItalic, FiUnderline } from 'react-icons/fi'
-import {useState} from 'react'
+import { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import { LuEdit } from 'react-icons/lu'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { HiBars2 } from 'react-icons/hi2'
 import { useUserDetails } from '../../../Functions/useUserDetails'
-import { DatePicker } from '@mui/x-date-pickers';
+import { DatePicker } from '@mui/x-date-pickers'
 import { getMonth } from '../../../Functions/useMonth'
 import {  BsDot } from 'react-icons/bs'
 import { nanoid } from 'nanoid'
+import { useGeneralAppContext } from '../../../Functions/useGeneralAppContext'
 
 export default function WorkHistory() {
 
     const { userDispatch, workHistory } = useUserDetails()
+    const { darkTheme } = useGeneralAppContext()
 
     const [startDate, setStartDate] = useState<any>(null)
     const [endDate, setEndDate] = useState<any>(null)
@@ -198,8 +200,8 @@ export default function WorkHistory() {
 
     return (
         <section className='mt-[3rem]'>
-            <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Work History</h2>
-            <p className='text-[#444444] text-sm lg:text-base'>Show your relevant work experience</p>
+            <h2 className={`text-[1.5rem] lg:text-[1.8rem] font-medium ${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} `}>Work History</h2>
+            <p className={`${darkTheme ? 'text-[#f9f9f9]':'text-[#333333]'}  text-sm md:text-base`}>Show your relevant work experience</p>
             
             {workHistory.map((work, index)=>{
 
@@ -214,7 +216,7 @@ export default function WorkHistory() {
                             <div className='flex flex-col w-full'> 
                                 <div>
                                     <h3 className='text-[10px] md:text-xs text-[#9D9D9D]'>{`Work History ${index+1}`}</h3>
-                                    <h4 className='text-[#192657] font-medium text-base lg:text-[1.25rem] mt-2'>{`${jobTitle ===''? 'Not Specified' : `${`${jobTitle} ${companyName ==='' ? '' : `at ${companyName}`}`}`}`}</h4>
+                                    <h4 className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} font-medium text-base lg:text-[1.25rem] mt-2`}>{`${jobTitle ===''? 'Not Specified' : `${`${jobTitle} ${companyName ==='' ? '' : `at ${companyName}`}`}`}`}</h4>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +229,7 @@ export default function WorkHistory() {
                                         updateJobTitle(work.id, e.target.value)
                                     }}
                                     placeholder='Job Title'
-                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className={`outline-none rounded-none text-[#192657] ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                                 <input 
                                     type="text" 
@@ -236,12 +238,12 @@ export default function WorkHistory() {
                                         updateCompanyName(work.id, e.target.value)
                                     }}
                                     placeholder='Company Name'
-                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className={`outline-none rounded-none text-[#192657] ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                             </div>
                             <div className='grid grid-cols-2 gap-6 mt-6'>
                                 <div className='grid grid-cols-2 gap-6'>
-                                <DatePicker 
+                                    <DatePicker 
                                         value={startDate}
                                         onChange={(value)=>{
                                             setStartDate(value)
@@ -260,11 +262,6 @@ export default function WorkHistory() {
                                             const newDate = `${month} ${value.$y}`
                                             updateEndDate(work.id, newDate)
                                         }}
-                                        slotProps={{
-                                            actionBar: {
-                                              actions: ["today"],
-                                            }
-                                        }}
                                         label="End"
                                         views={['year', 'month']}
                                     />
@@ -276,12 +273,12 @@ export default function WorkHistory() {
                                         updateCompanyLocation(work.id, e.target.value)
                                     }}
                                     placeholder='Location'
-                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className={`outline-none rounded-none text-[#192657] ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                             </div>
                             <div className='mt-6'>
                                 <h3 className='text-[#444444] text-[14px] font-medium'>Description</h3>
-                                <div className='mt-2 bg-[#fafafa] px-3 md:px-6 py-4'>
+                                <div className={`mt-8 ${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]' : 'bg-[#fafafa] text-[#192657]'} px-3 md:px-6 py-4`}>
                                     <div className='flex gap-3'>
                                         <i><FiBold /></i>
                                         <i><FiItalic /></i>
@@ -297,7 +294,7 @@ export default function WorkHistory() {
                                                         <input
                                                             style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
                                                             autoFocus={index > 0 && jobItems.length-1===index ? true : false}
-                                                            className='outline-none bg-[#fafafa] text-[#192657] min-h-[1rem] w-[90%]'
+                                                            className={`outline-none rounded-none  font-bold placeholder:font-normal placeholder:text-[#444444] w-full text-sm md:text-base ${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]' : 'bg-[#fafafa] text-[#192657]'} placeholder:italic mt-3`}
                                                             value={item.jobDetail} 
                                                             onChange={(e)=>{
                                                                 const newWorkHistory = workHistory.map(newwork=>{
@@ -385,7 +382,7 @@ export default function WorkHistory() {
                 )
             })}
             
-            <button onClick={addNewWorkHistory} className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
+            <button onClick={addNewWorkHistory} className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} gap-3 font-medium flex items-center mt-6`}>
                 <FaPlus />
                 <p>add more work history</p>
             </button>

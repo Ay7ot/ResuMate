@@ -3,14 +3,14 @@ const User = db.users;
 
 // Create and Save a new User Resume
 exports.create = async (req, res) => {
-    const { firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email } = req.body
-    await User.create({firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email})
+    const { firebaseUid, firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email } = req.body
+    await User.create({firebaseUid, firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email})
     res.json({msg: `User ${firstName}  successfully created`})
 };
 
 // Retrieve all User Resume from the database.
 exports.findAll = async (req, res) => {
-    const { firebaseUid } = req.body
+    const { firebaseUid } = req.query
     
     try {
         const resumes =  await User.find({firebaseUid: firebaseUid})
@@ -22,7 +22,7 @@ exports.findAll = async (req, res) => {
 
 };
 
-// Find a single User with an id
+// Find a single User Resume with an id
 exports.findOne = (req, res) => {
   
 };

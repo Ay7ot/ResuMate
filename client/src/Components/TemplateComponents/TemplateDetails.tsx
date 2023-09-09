@@ -8,10 +8,13 @@ import Education from './InfoComponents/Education'
 import Language from './InfoComponents/Language'
 import Skill from './InfoComponents/Skill'
 import { useUserDetails } from '../../Functions/useUserDetails'
+import { useGeneralAppContext } from '../../Functions/useGeneralAppContext'
 
 export default function TemplateDetails() {
     
-    const {resumeName, userDispatch} = useUserDetails()
+    const {resumeName, userDispatch} = useUserDetails();
+    const { darkTheme } = useGeneralAppContext();
+
     const history = useNavigate()
     
     function goBack(){
@@ -21,7 +24,7 @@ export default function TemplateDetails() {
     return (
         <div className="grid place-content-center max-w-[600px] mx-auto">
             <div className='flex justify-between w-full'>
-                <button onClick={goBack} className='w-[10%] flex items-center gap-1 text-[#192657] font-medium'>
+                <button onClick={goBack} className={`w-[10%] flex items-center gap-1 ${darkTheme ? 'text-[#ffebcd]':'text-[#192657]'} font-medium`}>
                     <i className='text-[#444444] '><IoChevronBack /></i>
                     <p>Back</p>
                 </button>
@@ -36,7 +39,7 @@ export default function TemplateDetails() {
                             }
                         })
                     }}
-                    className='max-w-[220px] self-center text-center px-6 py-2 border-b-[1px] border-[#9D9D9D] text-[#444444] text-lg lg:text-xl font-medium'
+                    className={`max-w-[220px] self-center text-center px-6 py-2 border-b-[1px] border-[#9D9D9D]  ${darkTheme ? 'bg-[#121212] text-[#ffffff]' : 'bg-[#ffffff] text-[#444444]'} text-lg lg:text-xl font-medium`}
                 />
                 <div className='w-[10%] '></div>
             </div>

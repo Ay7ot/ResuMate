@@ -4,10 +4,12 @@ import { RiDeleteBinLine } from 'react-icons/ri'
 import { HiBars2 } from 'react-icons/hi2'
 import { useUserDetails } from '../../../Functions/useUserDetails'
 import {nanoid} from 'nanoid'
+import { useGeneralAppContext } from '../../../Functions/useGeneralAppContext'
 
 export default function Language() {
 
     const { userDispatch, languages } = useUserDetails()
+    const { darkTheme } = useGeneralAppContext()
 
     function updateLanguage(id: string, newLanguage: string){
         const toBeUpdated = languages?.find(language=>language.id === id)
@@ -93,7 +95,7 @@ export default function Language() {
 
     return (
         <section className='mt-[3rem]'>
-            <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Language</h2> 
+            <h2 className={`text-[1.5rem] lg:text-[1.8rem] font-medium ${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} `}>Language</h2> 
 
             <div className='mt-8 flex flex-col gap-3'>
                 {languages.map((languageItems, index)=>{
@@ -105,7 +107,7 @@ export default function Language() {
                             </i>
                             <div className='flex flex-col w-full'>
                                 <h3 className='text-[10px] md:text-xs text-[#9D9D9D]'>{`Language ${index+1}`}</h3>
-                                <h4 className='text-[#192657] font-medium text-base lg:text-[1.25rem] mt-2'>{language===''? 'Not Specified' : `${language}`}</h4>
+                                <h4 className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} font-medium text-base lg:text-[1.25rem] mt-2`}>{language===''? 'Not Specified' : `${language}`}</h4>
                                 <input 
                                     value={language}
                                     onChange={(e)=>{
@@ -113,7 +115,7 @@ export default function Language() {
                                     }}
                                     type="text" 
                                     placeholder='Language'
-                                    className={`${isShowing ? '' : 'hidden'} outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]`}
+                                    className={`${isShowing ? '' : 'hidden'} outline-none rounded-none ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal  text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                                 <div className='flex items-center justify-end text-[#9D9D9D] gap-3 mt-4'>
                                     <i onClick={()=>editLanguage(id)}><LuEdit /></i>
@@ -125,7 +127,7 @@ export default function Language() {
                     )
                 })}
             </div>
-            <button onClick={addNewLanguage} className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
+            <button onClick={addNewLanguage} className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} gap-3 font-medium flex items-center mt-6`}>
                 <FaPlus />
                 <p>add new language</p>
             </button>

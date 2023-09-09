@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { useUserDetails } from "../../../Functions/useUserDetails"
+import { useGeneralAppContext } from "../../../Functions/useGeneralAppContext"
 
 
 export default function PersonalInfo(){
 
     const { userDispatch, firstName, lastName, profession, phoneNumber, email, country, state, } = useUserDetails()
+    const { darkTheme } = useGeneralAppContext()
     
     const [shownDetails, setShownDetails] = useState({
         firstName: false,
@@ -18,15 +20,15 @@ export default function PersonalInfo(){
     
     return (
         <section className='mt-[3rem]'>
-                <h2 className='text-[1.5rem] lg:text-[1.8rem] font-medium text-[#192657] '>Personal Details</h2>
+                <h2 className={`text-[1.5rem] lg:text-[1.8rem] font-medium ${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} `}>Personal Details</h2>
                 <div className='mt-8 grid grid-cols-2 gap-6'>
                     <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.firstName ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>First Name</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${shownDetails.firstName ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>First Name</p>
                         <input 
                             type="text"
                             value={firstName} 
                             placeholder='First Name'
-                            className='outline-none w-full rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                            className={`outline-none w-full rounded-none  ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                             onClick={()=>{
                                 setShownDetails(prevDetails=>{
                                     return {
@@ -46,12 +48,12 @@ export default function PersonalInfo(){
                         />
                     </div>
                     <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.lastName ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Last Name</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${shownDetails.lastName ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Last Name</p>
                         <input 
                             type="text"
                             value={lastName} 
                             placeholder='Last Name'
-                            className='outline-none w-full rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                            className={`outline-none w-full rounded-none  ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                             onClick={()=>{
                                 setShownDetails(prevDetails=>{
                                     return {
@@ -71,12 +73,12 @@ export default function PersonalInfo(){
                         />
                     </div>
                    <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.profession ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Profession</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${shownDetails.profession ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Profession</p>
                         <input 
                             type="text"
                             value={profession} 
                             placeholder='Profession'
-                            className='outline-none w-full rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                            className={`outline-none w-full rounded-none  ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                             onClick={()=>{
                                 setShownDetails(prevDetails=>{
                                     return {
@@ -96,12 +98,12 @@ export default function PersonalInfo(){
                         />
                    </div>
                     <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.phoneNumber ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Phone Number</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${shownDetails.phoneNumber ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Phone Number</p>
                         <input 
                             type="text"
                             value={phoneNumber} 
                             placeholder='Phone Number'
-                            className='outline-none w-full rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                            className={`outline-none w-full rounded-none  ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                             onClick={()=>{
                                 setShownDetails(prevDetails=>{
                                     return {
@@ -121,12 +123,12 @@ export default function PersonalInfo(){
                         />
                     </div>
                     <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.email ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Email</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${shownDetails.email ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Email</p>
                         <input 
                             type="email" 
                             value={email}
                             placeholder='Email'
-                            className='outline-none w-full rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                            className={`outline-none w-full rounded-none  ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                             onClick={()=>{
                                 setShownDetails(prevDetails=>{
                                     return {
@@ -146,12 +148,12 @@ export default function PersonalInfo(){
                         />
                     </div>
                     <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.state ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>State/City</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${shownDetails.state ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>State/City</p>
                         <input 
                             type="text"
                             value={state} 
                             placeholder='State/City'
-                            className='outline-none w-full rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                            className={`outline-none w-full rounded-none  ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                             onClick={()=>{
                                 setShownDetails(prevDetails=>{
                                     return {
@@ -171,12 +173,12 @@ export default function PersonalInfo(){
                         />
                     </div>
                     <div>
-                        <p className={`text-[#192657] text-sm ${shownDetails.country ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Country</p>
+                        <p className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} text-sm ${shownDetails.country ? 'block transition-opacity duration-200 ease-in opacity-100' : 'invisible opacity-0'}`}>Country</p>
                         <input 
                             type="text"
                             value={country} 
                             placeholder='Country'
-                            className='outline-none w-full rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                            className={`outline-none w-full rounded-none  ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                             onClick={()=>{
                                 setShownDetails(prevDetails=>{
                                     return {

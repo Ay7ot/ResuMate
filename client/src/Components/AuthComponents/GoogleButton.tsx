@@ -8,7 +8,7 @@ import axios from "axios";
 
 export default function GoogleButton({buttonName}: {buttonName: string}) {
     
-    const {dispatch, darkTheme} = useGeneralAppContext()
+    const {dispatch} = useGeneralAppContext()
 
     const [isloading, setIsLoading] = useState(false)
 

@@ -7,9 +7,11 @@ import { DatePicker } from '@mui/x-date-pickers'
 import { useState } from 'react'
 import { getMonth } from '../../../Functions/useMonth'
 import { nanoid } from 'nanoid'
+import { useGeneralAppContext } from '../../../Functions/useGeneralAppContext'
 
 export default function Education() {
     const { userDispatch, education } = useUserDetails()
+    const { darkTheme } = useGeneralAppContext();
 
     const [startDate, setStartDate] = useState<any>(null)
     const [endDate, setEndDate] = useState<any>(null)
@@ -213,8 +215,8 @@ export default function Education() {
 
     return (
         <section className='mt-[3rem]'>
-            <h2 className='text-[1.5rem] lg:text-[1.8re   m] font-medium text-[#192657] '>Education</h2> 
-            <p className='text-[#444444] text-sm lg:text-base'>Your diverse educational background gives you a unique perspective that will be an asset to the company.</p>
+            <h2 className={`text-[1.5rem] lg:text-[1.8rem] font-medium ${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} `}>Education</h2> 
+            <p className={`${darkTheme ? 'text-[#f9f9f9]':'text-[#333333]'}  text-sm md:text-base`}>Your diverse educational background gives you a unique perspective that will be an asset to the company.</p>
             
             {education.map((education, index) => {
 
@@ -229,7 +231,7 @@ export default function Education() {
                             <div className='flex flex-col w-full'> 
                                 <div>
                                 <h3 className='text-[10px] md:text-xs text-[#9D9D9D]'>{`Education ${index+1}`}</h3>
-                                <h4 className='text-[#192657] font-medium text-base lg:text-[1.25rem] mt-2'>{`${ degree === '' ? 'Not Specified' : `${`${degree} ${course}`}`}`}</h4>
+                                <h4 className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} font-medium text-base lg:text-[1.25rem] mt-2`}>{`${ degree === '' ? 'Not Specified' : `${`${degree} ${course}`}`}`}</h4>
                                 <p className='text-[#444444] text-xs md:text-sm'>{schoolName}</p>
                                 </div>
                             </div>
@@ -243,7 +245,7 @@ export default function Education() {
                                     }}
                                     type="text" 
                                     placeholder='Degree'
-                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className={`outline-none rounded-none text-[#192657] ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                                 <input 
                                     value={course}
@@ -252,7 +254,7 @@ export default function Education() {
                                     }}
                                     type="text" 
                                     placeholder='Course'
-                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className={`outline-none rounded-none text-[#192657] ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                             </div>
                             <div className='grid grid-cols-2 gap-6 mt-6'>
@@ -288,7 +290,7 @@ export default function Education() {
                                     }}
                                     type="text" 
                                     placeholder='School'
-                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className={`outline-none rounded-none text-[#192657] ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                                 <input 
                                     value={location}
@@ -297,7 +299,7 @@ export default function Education() {
                                     }}
                                     type="text" 
                                     placeholder='Location'
-                                    className='outline-none rounded-none text-[#192657] font-bold placeholder:font-normal placeholder:text-[#444444] text-[14px] py-2 border-b-[1px] border-[#444444]'
+                                    className={`outline-none rounded-none text-[#192657] ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657] placeholder:text-[#444444]'} font-bold placeholder:font-normal text-[14px] py-2 border-b-[1px] border-[#444444]`}
                                 />
                             </div>
                         </div>
@@ -309,7 +311,7 @@ export default function Education() {
                 )
             })}
 
-            <button onClick={addNewEducation} className='text-[#192657] gap-3 font-medium flex items-center mt-6'>
+            <button onClick={addNewEducation} className={`${darkTheme ? "text-[#ffebcd]" : "text-[#192657]"} gap-3 font-medium flex items-center mt-6`}>
                 <FaPlus />
                 <p>add more education</p>
             </button>
