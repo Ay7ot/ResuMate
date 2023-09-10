@@ -7,6 +7,7 @@ import Login from '../AuthComponents/Login';
 import Signup from '../AuthComponents/Signup';
 import { AuthProvider } from '../../Contexts/AuthContexts';
 import { useNavigate } from 'react-router-dom';
+import ThemeToggler from '../ThemeToggler';
 
 export default function Landing() {
 
@@ -125,7 +126,8 @@ export default function Landing() {
       </div>
       <div ref={navref} className={`${navShown ? 'flex' : 'hidden'} md:hidden py-4 px-8 transition-all duration-150  flex-col ease-in z-[999999] top-0 right-0 fixed dynamicHeight ${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]':'bg-[#f4f5fd] text-[#192657]'} min-w-[250px]`}>
         <i className='self-end text-[1.9rem]' onClick={hideNavBar}><RxCross1 /></i>
-        <div className='self-end flex flex-col gap-6 mt-6'>
+        <div className='items-end flex flex-col gap-6 mt-6'>
+          <ThemeToggler />
           <button className="text-end px-[28px] py-[12px]" onClick={(e)=>{e.stopPropagation(); loginResumeButtonFunction()}}>Login</button>
           <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); createResumeButtonFunction()}}>Create Resume</button>
         </div>

@@ -6,17 +6,18 @@ import Loader from "../Loader";
 import { color } from "../../Types/ColorTypes";
 import { useColorContext } from "../../Functions/useColorContext";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
-import { useUserDetails } from "../../Functions/useUserDetails";
-import axios from 'axios'
+// import { useUserDetails } from "../../Functions/useUserDetails";
+// import axios from 'axios'
 
 export default function TemplateStyles({template}: { template: string}) {
   
-  const { itemRef, resumeFont, dispatch, currentUser } = useGeneralAppContext();
+  const { itemRef, resumeFont, dispatch } = useGeneralAppContext();
+  // const { currentUser } = useGeneralAppContext()
   const [loading, setLoading] = useState(false)
   const [colors, setColors] = useState<color[]>([])
   const [showFontBox, setShowFontBox] = useState(false)
   const { colorDispatch, currentColor, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
-  const { firstName, lastName, workHistory, profession, phoneNumber, professionalSummary, country, state, email, skills, education, languages } = useUserDetails()
+  // const { firstName, lastName, workHistory, profession, phoneNumber, professionalSummary, country, state, email, skills, education, languages } = useUserDetails()
   
   const  backgroundColor = `bg-${currentColor.color}`
 
@@ -48,51 +49,51 @@ export default function TemplateStyles({template}: { template: string}) {
     
   },[colorDispatch, template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
   
-  async function sendUserDetailstoServer(){
-    const data = {
-      "firebaseUid": currentUser?.uid,
-      'firstName': firstName,
-      'lastName': lastName,
-      'profession': profession,
-      'experience': workHistory,
-      "education": education,
-      'phoneNumber': phoneNumber,
-      'professionalSummary': professionalSummary,
-      'country': country,
-      'state': state,
-      'email': email,
-      'skills': skills.map(skill=>{
-        return {
-          skill: skill.skill,
-          id: skill.id
-        }
-      }),
-      'languages': languages.map(language=>{
-        return {
-          language: language.language,
-          id: language.id
-        }
-      })
-    }
+  // async function sendUserDetailstoServer(){
+  //   const data = {
+  //     "firebaseUid": currentUser?.uid,
+  //     'firstName': firstName,
+  //     'lastName': lastName,
+  //     'profession': profession,
+  //     'experience': workHistory,
+  //     "education": education,
+  //     'phoneNumber': phoneNumber,
+  //     'professionalSummary': professionalSummary,
+  //     'country': country,
+  //     'state': state,
+  //     'email': email,
+  //     'skills': skills.map(skill=>{
+  //       return {
+  //         skill: skill.skill,
+  //         id: skill.id
+  //       }
+  //     }),
+  //     'languages': languages.map(language=>{
+  //       return {
+  //         language: language.language,
+  //         id: language.id
+  //       }
+  //     })
+  //   }
 
-    const url = `http://localhost:3000/userResume/resume?firebaseUid=${currentUser?.uid}`
+  //   const url = `http://localhost:3000/userResume/resume?firebaseUid=${currentUser?.uid}`
 
-    try {
-      await axios.post('http://localhost:3000/userResume/resume', data)
+  //   try {
+  //     await axios.post('http://localhost:3000/userResume/resume', data)
       
-      //code to get all user resumes
-      const resumes = await axios.get(url)
-      console.log(resumes)
-    } catch(err){
-      console.error(err)
-    }
-  }
+  //     //code to get all user resumes
+  //     const resumes = await axios.get(url)
+  //     console.log(resumes)
+  //   } catch(err){
+  //     console.error(err)
+  //   }
+  // }
 
   //download dunction
   async function generatePdf(){
     
     setLoading(true)
-    await sendUserDetailstoServer()
+    // await sendUserDetailstoServer()
     
     const toDownload = itemRef.current
   

@@ -3,12 +3,13 @@ import { CgDanger } from 'react-icons/cg'
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getIdToken, signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
+// import {  getIdToken } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useAuthContext } from "../../Functions/useAuthContext";
 import GoogleButton from "./GoogleButton";
 import Loader from "../Loader";
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function Login() {
 
@@ -92,15 +93,15 @@ export default function Login() {
               const userCredential = await signInWithEmailAndPassword(auth, userEmail, userPassword);
       
               // Get the Firebase ID token
-              const idToken = await getIdToken(userCredential.user);
+            //   const idToken = await getIdToken(userCredential.user);
       
               // Now you have the actual ID token, so you can use it in your Axios request
-                await axios.post('http://localhost:3000/user/createUser', userCredential, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `${idToken}`,
-                    }
-                });
+                // await axios.post('http://localhost:3000/user/createUser', userCredential, {
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //         'Authorization': `${idToken}`,
+                //     }
+                // });
               
               dispatch({
                 type: 'setCurrentUser',
@@ -130,7 +131,7 @@ export default function Login() {
     }
 
     return (
-        <div className={`${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]' : 'bg-[#f4f5fd] text-[#192657]'} absolute md:rounded-md flex flex-col justify-between items-center top-0 md:left-[15%] lg:left-[0] p-6 md:px-10 md:w-[70%] lg:w-full w-full z-[999999999] dynamicHeight`}>
+        <div className={`${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657]'} absolute md:rounded-md flex flex-col justify-between items-center top-0 md:left-[15%] lg:left-[0] p-6 md:px-10 md:w-[70%] lg:w-full w-full z-[999999999] dynamicHeight overflow-y-scroll`}>
             <div className="w-full lg:max-w-[600px]">
                 <div className="flex items-center md:px-3 justify-between">
                     <div></div>
