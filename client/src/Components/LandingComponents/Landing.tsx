@@ -118,7 +118,7 @@ export default function Landing() {
   }
 
   return (
-    <div className={`${darkTheme ? 'bg-[#121212]' : 'bg-[#ffffff]'}`}>
+    <div className={`${darkTheme ? 'bg-[#121212]' : 'bg-[#ffffff]'} transition-colors duration-300 ease-in`}>
       <div className={`${navShown || showLogin || showSignup ? 'opacity-75 blur-sm transition-all duration-200 ease-linear darken' : ''} dynamicHeight flex flex-col items-center`}>
         <Navlanding />
         <LandingBody />

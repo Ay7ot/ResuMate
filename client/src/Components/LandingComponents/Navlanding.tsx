@@ -1,6 +1,7 @@
 import { HiOutlineBars3BottomRight } from 'react-icons/hi2'
 import { useGeneralAppContext } from '../../Functions/useGeneralAppContext'
 import { Link, useNavigate } from 'react-router-dom'
+import ThemeToggler from '../ThemeToggler'
 
 export default function Navlanding() {
 
@@ -60,6 +61,7 @@ export default function Navlanding() {
           </div>
         </Link>
         <div className='hidden md:block'>
+            <ThemeToggler />
             <button className={` ${darkTheme ? 'text-[#ffebcd]':'text-[#192657]'} w-[10rem] px-[28px] py-[12px]`} onClick={(e)=>{e.stopPropagation(); loginResumeButtonFunction()}}>Login</button>
             <button className=" px-[28px] py-[12px] rounded-md gradient text-[#ffffff]" onClick={(e)=>{e.stopPropagation(); createResumeButtonFunction()}}>Create Resume</button>
         </div>

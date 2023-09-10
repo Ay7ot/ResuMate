@@ -130,7 +130,7 @@ export default function Login() {
     }
 
     return (
-        <div className={`${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]':'bg-[#f4f5fd] text-[#192657]'} absolute md:rounded-md flex flex-col justify-between items-center top-0 md:left-[15%] lg:left-[0] bg-white p-6 md:px-10 md:w-[70%] lg:w-full w-full z-[999999999] dynamicHeight`}>
+        <div className={`${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]' : 'bg-[#f4f5fd] text-[#192657]'} absolute md:rounded-md flex flex-col justify-between items-center top-0 md:left-[15%] lg:left-[0] p-6 md:px-10 md:w-[70%] lg:w-full w-full z-[999999999] dynamicHeight`}>
             <div className="w-full lg:max-w-[600px]">
                 <div className="flex items-center md:px-3 justify-between">
                     <div></div>

@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
+import ThemeToggler from "../ThemeToggler";
 
 export default function NavTemplates() {
 
@@ -23,7 +24,10 @@ export default function NavTemplates() {
           <p className={`${darkTheme ? 'text-[#ffebcd]':'text-[#192657]'} font-bold  text-xl md:text-[1.5rem]`}>ResuMate</p>
         </div>
       </Link>
-      <button onClick={navigateTo}  className={`${state?.isSelected ? 'border-[#121212] gradientForChooseTemplate' : ' border-[#747C99] text-[#747C99]'} hidden md:block rounded-md py-3 px-7 border-[1px] font-medium duration-300 ease-in transition-colors`}>Choose Template</button>
+      <div className="flex items-center gap-6">
+        <ThemeToggler />
+        <button onClick={navigateTo}  className={`${state?.isSelected ? 'border-[#121212] gradientForChooseTemplate' : ' border-[#747C99] text-[#747C99]'} hidden md:block rounded-md py-3 px-7 border-[1px] font-medium duration-300 ease-in transition-colors`}>Choose Template</button>
+      </div>
     </div>  
   )
 }
