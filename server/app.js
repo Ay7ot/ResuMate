@@ -12,6 +12,17 @@ const testAPIRouter = require("./routes/testAPI");
 
 const app = express();
 
+const fs = require('fs');
+
+// Read the private key file
+// const privateKey = fs.readFileSync('./config/private-key.json', 'utf8');
+
+// // Encode the private key to base64
+// const encodedPrivateKey = Buffer.from(privateKey).toString('base64');
+
+// console.log(encodedPrivateKey);
+
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
