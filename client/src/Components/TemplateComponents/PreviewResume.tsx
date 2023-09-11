@@ -1,6 +1,6 @@
 // import html2pdf from "html2pdf.js"
 // import { useEffect } from "react"
-// import { useGeneralAppContext } from "../../Functions/useGeneralAppContext"
+import { useGeneralAppContext } from "../../Functions/useGeneralAppContext"
 import { useLocation, useNavigate } from "react-router-dom"
 import Istanbul from "./TemplateItems/Istanbul"
 import Porto from "./TemplateItems/Porto"
@@ -17,6 +17,7 @@ import { useUserDetails } from "../../Functions/useUserDetails"
 export default function PreviewResume() {
 
     const { resumeName, userDispatch } = useUserDetails()
+    const {darkTheme} = useGeneralAppContext()
 
     const location = useLocation()
     const name = location.state
@@ -29,9 +30,9 @@ export default function PreviewResume() {
 
     return (
 
-        <div className="min-h-screen flex flex-col items-center pt-16 px-6 bg-[#FAFAFA] pb-[6rem] w-full">
+        <div className={`${darkTheme ? 'bg-[#121212]' : 'bg-[#ffffff]'} min-h-screen flex flex-col items-center pt-16 px-6 pb-[6rem] w-full`}>
            <div className='flex justify-between w-full max-w-[400px]'>
-                <button onClick={goBack} className='w-[10%] flex items-center gap-1 text-[#192657] font-medium'>
+                <button onClick={goBack} className={`w-[10%] flex items-center gap-1 ${darkTheme ? 'text-[#ffebcd]':'text-[#192657]'} font-medium`}>
                     <i className='text-[#444444] '><IoChevronBack /></i>
                     <p>Back</p>
                 </button>
@@ -46,7 +47,7 @@ export default function PreviewResume() {
                             }
                         })
                     }}
-                    className='max-w-[220px] bg-[#fafafa] self-center px-6 py-2 border-b-[1px] text-center border-[#9D9D9D] text-[#444444] text-lg lg:text-xl font-medium'
+                    className={`max-w-[220px]  ${darkTheme ? 'bg-[#121212] text-[#ffebcd]' : 'bg-[#ffffff] text-[#192657]'} self-center px-6 py-2 border-b-[1px] text-center border-[#9D9D9D] text-lg lg:text-xl font-medium`}
                 />
                 <div className='w-[10%] '></div>
             </div>
