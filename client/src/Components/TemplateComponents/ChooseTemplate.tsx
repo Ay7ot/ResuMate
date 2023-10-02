@@ -9,7 +9,6 @@ export default function ChooseTemplate() {
     const scrollRef = useRef<HTMLDivElement | null>(null)
     const modalRef = useRef<HTMLDivElement | null>(null)
 
-
     const { resumeTemplates, dispatch, darkTheme } = useGeneralAppContext()
     const { width } = useWindowDimensions()
     const navigateTo = useNavigate()

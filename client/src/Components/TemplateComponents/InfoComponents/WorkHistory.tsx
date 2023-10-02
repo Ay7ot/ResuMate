@@ -294,7 +294,7 @@ export default function WorkHistory() {
                                                         <input
                                                             style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
                                                             autoFocus={index > 0 && jobItems.length-1===index ? true : false}
-                                                            className={`outline-none rounded-none  font-bold placeholder:font-normal placeholder:text-[#444444] w-full text-sm md:text-base ${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]' : 'bg-[#fafafa] text-[#192657]'} placeholder:italic mt-3`}
+                                                            className={`outline-none rounded-none  font-bold placeholder:font-normal placeholder:text-[#444444] w-full text-sm ${darkTheme ? 'bg-[#1a1a1a] text-[#ffebcd]' : 'bg-[#fafafa] text-[#192657]'} placeholder:italic`}
                                                             value={item.jobDetail} 
                                                             onChange={(e)=>{
                                                                 const newWorkHistory = workHistory.map(newwork=>{

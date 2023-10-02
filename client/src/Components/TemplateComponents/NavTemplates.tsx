@@ -26,7 +26,7 @@ export default function NavTemplates() {
       </Link>
       <div className="flex items-center gap-6">
         <ThemeToggler />
-        <button onClick={navigateTo}  className={`${state?.isSelected ? 'border-[#121212] gradientForChooseTemplate' : ' border-[#747C99] text-[#747C99]'} hidden md:block rounded-md py-3 px-7 border-[1px] font-medium duration-300 ease-in transition-colors`}>Choose Template</button>
+        <button onClick={navigateTo}  className={`${state?.isSelected && darkTheme ? 'border-[#121212] gradientForChooseTemplate' : state?.isSelected && !darkTheme ? 'border-[#ffffff] gradientForChooseTemplate' : ' border-[#747C99] text-[#747C99]'} hidden md:block rounded-md py-3 px-7 border-[1px] font-medium duration-300 ease-in transition-colors`}>Choose Template</button>
       </div>
     </div>  
   )
