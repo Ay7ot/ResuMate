@@ -15,6 +15,12 @@
   background: linear-gradient(90deg, #64C2DB 13.89%, #7476ED 36.94%, #C994DF 59.2%, #E56F8C 88.89%);
 }
 
+.newTemplateGradient:hover {
+  background: linear-gradient(90deg, #64C2DB 13.89%, #7476ED 36.94%, #C994DF 59.2%, #E56F8C 88.89%);
+  border-color: #ffffff;
+  color:#ffffff
+}
+
 .gradientForChooseTemplate {
  background: linear-gradient(90deg, #64C2DB 13.89%, #7476ED 36.94%, #C994DF 59.2%, #E56F8C 88.89%);
  color: #ffffff;

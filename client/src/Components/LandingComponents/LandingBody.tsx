@@ -19,7 +19,7 @@ export default function LandingBody() {
 
   function createResumeButtonFunction(){
     if(currentUser !== null){
-      navigateTo('/templates')
+      navigateTo('/dashboard')
     } else {
       showLoginPage()
     }

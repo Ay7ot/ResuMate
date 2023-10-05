@@ -110,7 +110,7 @@ export default function Login() {
                 }
               });
       
-              navigateTo('/templates');
+              navigateTo('/dashboard');
             } catch (error) {
 
               console.error(error);

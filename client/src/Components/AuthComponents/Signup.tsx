@@ -147,7 +147,7 @@ export default function Signup() {
                 }
               });
       
-              navigateTo('/templates');
+              navigateTo('/dashboard');
             } catch (error) {
               console.error(error);
               authDispatch({

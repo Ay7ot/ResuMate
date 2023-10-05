@@ -2,13 +2,13 @@ import { GoogleAuthProvider, getIdToken, signInWithPopup } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../../firebase";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
-import {useState} from 'react'
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function GoogleButton({buttonName}: {buttonName: string}) {
-    
-    const {dispatch} = useGeneralAppContext()
+export default function GoogleButton({ buttonName }: { buttonName: string }) {
+
+    const { dispatch } = useGeneralAppContext()
 
     const [isloading, setIsLoading] = useState(false)
 
@@ -16,11 +16,11 @@ export default function GoogleButton({buttonName}: {buttonName: string}) {
 
     const navigateTo = useNavigate()
 
-    async function signInWithGoogle(){
+    async function signInWithGoogle() {
         setIsLoading(true)
         // await signInWithPopup(auth, provider)
         // .then(data=>{
-            
+
         //     dispatch({
         //         type: 'setCurrentUser',
         //         payload: {
@@ -52,8 +52,8 @@ export default function GoogleButton({buttonName}: {buttonName: string}) {
                 }
             })
 
-            navigateTo('/templates')
-        } catch (error){
+            navigateTo('/dashboard')
+        } catch (error) {
             console.log(error)
         } finally {
             setIsLoading(false)

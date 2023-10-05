@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
-import ThemeToggler from "../ThemeToggler";
+// import ThemeToggler from "../ThemeToggler";
 
 export default function NavTemplates() {
 
@@ -25,7 +25,7 @@ export default function NavTemplates() {
         </div>
       </Link>
       <div className="flex items-center gap-6">
-        <ThemeToggler />
+        {/* <ThemeToggler /> */}
         <button onClick={navigateTo}  className={`${state?.isSelected && darkTheme ? 'border-[#121212] gradientForChooseTemplate' : state?.isSelected && !darkTheme ? 'border-[#ffffff] gradientForChooseTemplate' : ' border-[#747C99] text-[#747C99]'} hidden md:block rounded-md py-3 px-7 border-[1px] font-medium duration-300 ease-in transition-colors`}>Choose Template</button>
       </div>
     </div>  

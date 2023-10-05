@@ -5,13 +5,15 @@ import { generalAppReducer } from '../Functions/generalAppReducer'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 
+const userString = localStorage.getItem('user')
+
 export const GeneralAppContext = createContext<GeneralAppContextType>({
     darkTheme: false,
     dispatch: ()=>{return},
     navShown: false,
     showSignup: false,
     showLogin: false,
-    currentUser: null,
+    currentUser: null || userString && JSON.parse(userString),
     itemRef: { current: null },
     resumeTemplates: [
         {
