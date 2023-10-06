@@ -1,4 +1,4 @@
-export type UserDetailContextType = {
+export interface UserDetailContextType  {
     resumeName: string;
     userDispatch: React.Dispatch<userActionType>;
     firstName: string;
@@ -21,6 +21,13 @@ export type UserDetailContextType = {
     }[];
     workHistory: jobInformation[];
     education: school[];
+}
+
+export interface UserInterface extends Omit<UserDetailContextType, 'userDispatch'>{
+    firebaseuid: string;
+    createdAt: string;
+    updatedAt: string;
+    id: string;
 }
 
 export type jobInformation = {

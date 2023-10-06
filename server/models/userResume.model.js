@@ -54,7 +54,8 @@ module.exports = mongoose => {
       country: String,
       state: String,
       professionalSummary: String,
-      experience: [experienceSchema],
+      resumeName: String,
+      workHistory: [experienceSchema],
       education: [educationSchema],
       skills: [skillsSchema],
       languages: [languageSchema]

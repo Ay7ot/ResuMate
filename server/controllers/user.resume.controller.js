@@ -1,10 +1,10 @@
 const db = require("../models");
-const User = db.users;
+const User = db.resume;
 
 // Create and Save a new User Resume
 exports.create = async (req, res) => {
-    const { firebaseUid, firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email } = req.body
-    await User.create({firebaseUid, firstName, lastName, profession, experience, skills, languages, education, country, state, phoneNumber, email})
+    const { firebaseUid, firstName, lastName, profession, workHistory, skills, languages, education, country, state, phoneNumber, email, professionalSummary, resumeName } = req.body
+    await User.create({firebaseUid, firstName, lastName, profession, workHistory, skills, languages, education, country, state, phoneNumber, email, professionalSummary, resumeName})
     res.json({msg: `User ${firstName}  successfully created`})
 };
 

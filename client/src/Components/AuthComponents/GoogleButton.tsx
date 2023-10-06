@@ -5,6 +5,7 @@ import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loader from "../Loader"
 
 export default function GoogleButton({ buttonName }: { buttonName: string }) {
 
@@ -62,8 +63,13 @@ export default function GoogleButton({ buttonName }: { buttonName: string }) {
 
     return (
         <button onClick={signInWithGoogle} disabled={isloading} className="w-full py-[22px] mt-8 flex items-center justify-center gap-3 bg-[#F2F2F2] rounded-lg">
-            <i className="text-[1.7rem]"><FcGoogle /></i>
-            <p className="text-[#192657]">{`${buttonName} with Google`}</p>
+            {isloading ? <Loader /> :
+                <>
+                    <i className="text-[1.7rem]"><FcGoogle /></i>
+                    <p className="text-[#192657]">{`${buttonName} with Google`}</p>
+                </>
+
+            }
         </button>
     )
 }
