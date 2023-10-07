@@ -21,6 +21,7 @@ export interface UserDetailContextType  {
     }[];
     workHistory: jobInformation[];
     education: school[];
+    objectId: string;
 }
 
 export interface UserInterface extends Omit<UserDetailContextType, 'userDispatch'>{

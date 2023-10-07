@@ -19,7 +19,7 @@ export default function DashboardBody() {
         const resumesInfo = await axios.get(`${import.meta.env.VITE_SERVER_URL}userResume/resume`, {
             params: { firebaseUid } // Send firebaseUid as a query parameter
         })
-        return resumesInfo.data.message as UserInterface[]
+        return resumesInfo.data.message.reverse() as UserInterface[]
     }
 
     const { data, isLoading, error } = useQuery('resumes', fetchResumes)
@@ -31,32 +31,32 @@ export default function DashboardBody() {
     console.log(data)
 
     function timeAgo(dateString: string) {
-  const currentDate = new Date();
-  const givenDate = new Date(dateString);
-  const timeDifference: number = currentDate.getTime() - givenDate.getTime();
+        const currentDate = new Date();
+        const givenDate = new Date(dateString);
+        const timeDifference: number = currentDate.getTime() - givenDate.getTime();
 
-  // Calculate time difference in various units
-  const secondsAgo = Math.floor(timeDifference / 1000);
-  const minutesAgo = Math.floor(secondsAgo / 60);
-  const hoursAgo = Math.floor(minutesAgo / 60);
-  const daysAgo = Math.floor(hoursAgo / 24);
-  const yearsAgo = Math.floor(daysAgo / 365);
+        // Calculate time difference in various units
+        const secondsAgo = Math.floor(timeDifference / 1000);
+        const minutesAgo = Math.floor(secondsAgo / 60);
+        const hoursAgo = Math.floor(minutesAgo / 60);
+        const daysAgo = Math.floor(hoursAgo / 24);
+        const yearsAgo = Math.floor(daysAgo / 365);
 
-  // Display the result based on the time difference
-  if (yearsAgo > 1) {
-    return `Edited ${yearsAgo} years ago`;
-  } else if (daysAgo > 1) {
-    return `Edited ${daysAgo} days ago`;
-  } else if (hoursAgo > 1) {
-    return `Edited ${hoursAgo} hours ago`;
-  } else if (minutesAgo > 1) {
-    return `Edited ${minutesAgo} minutes ago`;
-  } else if (secondsAgo > 1) {
-    return `Edited ${secondsAgo} seconds ago`;
-  } else {
-    return 'Edited Just now';
-  }
-}
+        // Display the result based on the time difference
+        if (yearsAgo > 1) {
+            return `Edited ${yearsAgo} years ago`;
+        } else if (daysAgo > 1) {
+            return `Edited ${daysAgo} days ago`;
+        } else if (hoursAgo > 1) {
+            return `Edited ${hoursAgo} hours ago`;
+        } else if (minutesAgo > 1) {
+            return `Edited ${minutesAgo} minutes ago`;
+        } else if (secondsAgo > 1) {
+            return `Edited ${secondsAgo} seconds ago`;
+        } else {
+            return 'Edited Just now';
+        }
+    }
 
 
     return (
@@ -74,7 +74,7 @@ export default function DashboardBody() {
                                 {data && data?.length > 0 ?
                                     <div className="grid grid-cols-2 gap-4 lg:gap-6 md:grid-cols-3 lg:grid-cols-5">
                                         {data.map((item) => {
-                                            console.log(item.resumeName)
+
                                             return (
                                                 <div key={item.id} className="flex flex-col gap-4">
                                                     <div className="bg-[#9d9d9d] min-h-[300px] shadow-md">
@@ -83,11 +83,11 @@ export default function DashboardBody() {
                                                     <div className="flex flex-col gap-2">
                                                         <div className="flex items-center justify-between">
                                                             <p>{item.resumeName}</p>
-                                                            <i className="text-[1.2rem]"><HiOutlineEllipsisHorizontal /></i>
+                                                            <i className="text-[1.2rem] cursor-pointer"><HiOutlineEllipsisHorizontal /></i>
                                                         </div>
                                                         <div className="flex items-center justify-between">
                                                             <p className="text-xs text-[#9d9d9d]">{timeAgo(item.updatedAt)}</p>
-                                                            <i className="text-[#ff3d00]"><RiDeleteBinLine /></i>
+                                                            <i className="text-[#ff3d00] cursor-pointer"><RiDeleteBinLine /></i>
                                                         </div>
                                                     </div>
                                                 </div>

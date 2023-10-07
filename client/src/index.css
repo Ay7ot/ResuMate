@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,300;10..48,400;10..48,500;10..48,600;10..48,700;10..48,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -12,18 +12,18 @@
 }
 
 .gradient {
-  background: linear-gradient(90deg, #64C2DB 13.89%, #7476ED 36.94%, #C994DF 59.2%, #E56F8C 88.89%);
+  background: linear-gradient(90deg, #64c2db 13.89%, #7476ed 36.94%, #c994df 59.2%, #e56f8c 88.89%);
 }
 
 .newTemplateGradient:hover {
-  background: linear-gradient(90deg, #64C2DB 13.89%, #7476ED 36.94%, #C994DF 59.2%, #E56F8C 88.89%);
+  background: linear-gradient(90deg, #64c2db 13.89%, #7476ed 36.94%, #c994df 59.2%, #e56f8c 88.89%);
   border-color: #ffffff;
-  color:#ffffff
+  color: #ffffff;
 }
 
 .gradientForChooseTemplate {
- background: linear-gradient(90deg, #64C2DB 13.89%, #7476ED 36.94%, #C994DF 59.2%, #E56F8C 88.89%);
- color: #ffffff;
+  background: linear-gradient(90deg, #64c2db 13.89%, #7476ed 36.94%, #c994df 59.2%, #e56f8c 88.89%);
+  color: #ffffff;
 }
 
 .landing-bg {
@@ -33,20 +33,20 @@
 }
 
 .darken:after {
-  content: '\A';
+  content: "\A";
   position: absolute;
-  width: 100%; 
-  height:100%;
-  top:0; 
-  left:0;
-  background:rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
 }
 
 .imageOutline:hover {
-  border-image: linear-gradient(#64C2DB, #C994DF, #E56F8C, #7476ED) 30;
+  border-image: linear-gradient(#64c2db, #c994df, #e56f8c, #7476ed) 30;
   border-width: 2px;
   border-style: solid;
 }
@@ -55,7 +55,7 @@
   border-image-slice: 1;
   border-radius: 50%;
   /* border-image: linear-gradient(#64C2DB, #C994DF, #E56F8C, #7476ED) 1; */
-  border-color: #E56F8C;
+  border-color: #e56f8c;
 }
 
 .chosenTemplate {
@@ -78,7 +78,7 @@
 }
 
 .selected {
-  border-image: linear-gradient(#64C2DB, #C994DF, #E56F8C, #7476ED) 30;
+  border-image: linear-gradient(#64c2db, #c994df, #e56f8c, #7476ed) 30;
   border-width: 2px;
   border-style: solid;
 }
@@ -118,7 +118,7 @@
   min-height: 100vh;
 }
 
-@supports (height: 100dvh){
+@supports (height: 100dvh) {
   .dynamicHeight {
     min-height: 100dvh;
   }
@@ -148,7 +148,7 @@
   right: 0;
   bottom: 0;
   background-color: #192657;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 30px;
 }
 
@@ -162,7 +162,7 @@
   bottom: 2px;
   z-index: 2;
   background-color: #e8e8e8;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .sun svg {
@@ -175,7 +175,7 @@
 }
 
 .moon svg {
-  fill: #73C0FC;
+  fill: #73c0fc;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -184,12 +184,12 @@
   height: 24px;
 }
 
-/* .switch:hover */.sun svg {
+/* .switch:hover */
+.sun svg {
   animation: rotate 15s linear infinite;
 }
 
 @keyframes rotate {
- 
   0% {
     transform: rotate(0);
   }
@@ -199,12 +199,12 @@
   }
 }
 
-/* .switch:hover */.moon svg {
+/* .switch:hover */
+.moon svg {
   animation: tilt 5s linear infinite;
 }
 
 @keyframes tilt {
- 
   0% {
     transform: rotate(0deg);
   }
@@ -244,18 +244,18 @@
   border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 5px;
 }
 
-.clamp{
+.clamp {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-break: break-word;
 }
 
-.no-scrollbar::-webkit-scrollbar{
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
