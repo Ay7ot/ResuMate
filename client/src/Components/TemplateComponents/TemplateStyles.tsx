@@ -8,7 +8,7 @@ import { useColorContext } from "../../Functions/useColorContext";
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { useUserDetails } from "../../Functions/useUserDetails";
 import axios from 'axios'
-import html2canvas from 'html2canvas'
+import * as htmlToImage from 'html-to-image';
 
 export default function TemplateStyles({ template }: { template: string }) {
 
@@ -21,17 +21,6 @@ export default function TemplateStyles({ template }: { template: string }) {
   const { resumeName, firstName, lastName, workHistory, profession, phoneNumber, professionalSummary, country, state, email, skills, education, languages, objectId } = useUserDetails()
 
   const backgroundColor = `bg-${currentColor.color}`
-
-  function dataURItoBlob(dataURI: string) {
-    const byteString = atob(dataURI.split(',')[1]);
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    const ab = new ArrayBuffer(byteString.length);
-    const ia = new Uint8Array(ab);
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: mimeString });
-  }
 
   useEffect(() => {
     const templates: { [key: string]: color[] } = {
@@ -61,7 +50,7 @@ export default function TemplateStyles({ template }: { template: string }) {
 
   }, [colorDispatch, template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
 
-  async function sendUserDetailstoServer() {
+  async function sendUserDetailstoServer(imageUrl: string) {
     const data = {
       "resumeName": resumeName,
       "firebaseUid": currentUser?.uid,
@@ -87,7 +76,8 @@ export default function TemplateStyles({ template }: { template: string }) {
           id: language.id
         }
       }),
-      'objectId': objectId
+      'objectId': objectId,
+      'imageUrl': imageUrl
     }
 
     try {
@@ -99,10 +89,6 @@ export default function TemplateStyles({ template }: { template: string }) {
 
   //download dunction
   async function generatePdf() {
-    // Create a FormData object
-    const formData = new FormData();
-    setLoading(true);
-    await sendUserDetailstoServer();
 
     const toDownload = itemRef.current;
 
@@ -117,44 +103,19 @@ export default function TemplateStyles({ template }: { template: string }) {
 
       const fileName = resumeName !== 'Untitled Resume' && resumeName || 'Untitled_Resume';
 
-      // Capture the element as a canvas using html2canvas
-      html2canvas(toDownload).then((canvas) => {
-        // Convert canvas to a data URL
-        const dataUrl = canvas.toDataURL('image/png');
-
-        // Convert data URL to a Blob
-        const blob = dataURItoBlob(dataUrl);
-
-        // Append the data URL as a file to the FormData object
-        formData.append('image', blob, `${fileName}.png`);
-        formData.append('objectId', objectId);
-
-        // console.log(formData.get('image'))
-        // console.log(formData.get('objectId'))
-        // const fileInfo = formData.get('image')
-        // const objectInfo = formData.get('objectId')
-        // const formInfo = {
-        //   fileInfo,
-        //   objectInfo
-        // }
-        // Make the Axios POST request to upload the image
-        axios.post(`${import.meta.env.VITE_SERVER_URL}createImage/upload-image/${objectId}`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-          .then(response => {
-            // Handle the response from the server here
-            console.log(response.data);
+      await htmlToImage.toJpeg(toDownload, { quality: 0.1 })
+        .then(function (dataUrl) {
+          console.log(dataUrl)
+          sendUserDetailstoServer(dataUrl);
+          axios.post(`${import.meta.env.VITE_SERVER_URL}image/upload-image/${objectId}`, {
+            path: dataUrl
           })
-          .catch(error => {
-            // Handle any errors here
-            console.error(error);
-          });
+        })
+        .catch(function (error) {
+          console.error('oops, something went wrong!', error);
+        });
 
-        // Generate the PDF after the image is uploaded
-        html2pdf().from(toDownload).set(opt).save(`${fileName}.pdf`);
-      });
+      await html2pdf().from(toDownload).set(opt).save(`${fileName}.pdf`);
     }
     setLoading(false);
   }

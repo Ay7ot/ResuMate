@@ -29,6 +29,7 @@ export interface UserInterface extends Omit<UserDetailContextType, 'userDispatch
     createdAt: string;
     updatedAt: string;
     id: string;
+    imageUrl: string;
 }
 
 export type jobInformation = {

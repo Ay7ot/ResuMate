@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { BsChevronDown } from "react-icons/bs";
 import { useEffect, useRef, useState } from 'react'
 import { auth } from "../../firebase";
+import { useUserDetails } from "../../Functions/useUserDetails";
 
 export default function NavDashboard() {
 
@@ -12,6 +13,7 @@ export default function NavDashboard() {
     const navref = useRef<HTMLDivElement>(null)
     const [showLogout, setShowLogout] = useState(false)
     const displayLetter = currentUser?.email?.[0].toUpperCase() || ''
+    const { userDispatch } = useUserDetails()
 
     const navigateTo = useNavigate()
 
@@ -30,6 +32,10 @@ export default function NavDashboard() {
     }, [navref]);
 
     function createNewResume() {
+        userDispatch({
+            type: 'setNewResume'
+        })
+
         navigateTo('/templates')
     }
 

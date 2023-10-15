@@ -19,6 +19,7 @@ exports.create = async (req, res) => {
     professionalSummary,
     resumeName,
     objectId,
+    imageUrl
   } = req.body;
 
   const userExists = await User.find({ objectId: objectId });
@@ -40,6 +41,7 @@ exports.create = async (req, res) => {
       professionalSummary,
       resumeName,
       objectId,
+      imageUrl
     });
     res.json({ msg: `User ${firstName} successfully created` });
   } else {

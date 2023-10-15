@@ -59,7 +59,8 @@ module.exports = mongoose => {
       education: [educationSchema],
       skills: [skillsSchema],
       languages: [languageSchema],
-      objectId: String
+      objectId: String,
+      imageUrl: String
     },
     { timestamps: true }
   );

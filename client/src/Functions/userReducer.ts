@@ -1,4 +1,5 @@
 import { UserDetailContextType, userActionType } from "../Types/UserTypes";
+import { nanoid } from 'nanoid'
 
 export function userReducer(state: UserDetailContextType, action: userActionType){
     switch(action.type){
@@ -66,6 +67,62 @@ export function userReducer(state: UserDetailContextType, action: userActionType
             return {
                 ...state,
                 languages: action.payload?.languagesPayload ?? []
+            }
+        case 'setNewResume':
+            return {
+                ...state,
+                resumeName: 'Untitled Resume',
+                userDispatch: ()=>{return},
+                firstName: '',
+                lastName: '',
+                profession: '',
+                phoneNumber: '',
+                email: '',
+                country: '',
+                state: '',
+                professionalSummary: '',
+                skills: [{
+                    skill: '',
+                    id: nanoid(),
+                    isShowing: true
+                }],
+                languages: [{
+                    language: '',
+                    id: nanoid(),
+                    isShowing: true
+                }],
+                workHistory: [
+                    {
+                        jobTitle: '',
+                        month: {
+                            start: '',
+                            end: '',
+                        },
+                        companyName: '',
+                        jobItems: [{
+                            jobDetail: '',
+                            id: nanoid()
+                        }],
+                        location: '',
+                        id: nanoid(),
+                        isShowing: true
+                    }
+                ],
+                education: [
+                    {
+                        schoolName: '',
+                        degree: '',
+                        month: {
+                            start: '',
+                            end: '',
+                        },
+                        course: '',
+                        location: '',
+                        id: nanoid(),
+                        isShowing: true
+                    }
+                ],
+                objectId: nanoid()
             }
         default:
             return state
