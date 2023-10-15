@@ -91,7 +91,7 @@ export default function TemplateStyles({ template }: { template: string }) {
   async function generatePdf() {
 
     const toDownload = itemRef.current;
-
+    setLoading(true)
     if (toDownload) {
       const opt = {
         margin: 0,
@@ -107,9 +107,6 @@ export default function TemplateStyles({ template }: { template: string }) {
         .then(function (dataUrl) {
           console.log(dataUrl)
           sendUserDetailstoServer(dataUrl);
-          axios.post(`${import.meta.env.VITE_SERVER_URL}image/upload-image/${objectId}`, {
-            path: dataUrl
-          })
         })
         .catch(function (error) {
           console.error('oops, something went wrong!', error);

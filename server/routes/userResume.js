@@ -12,4 +12,6 @@ router.get('/resume', user.findAll)
 
 router.post('/resume', user.create)
 
+router.delete('/resume/:objectId', user.delete)
+
 module.exports = router;

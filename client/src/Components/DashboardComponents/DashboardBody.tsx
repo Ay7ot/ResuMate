@@ -1,18 +1,23 @@
 import axios from "axios"
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext"
-import { useQuery } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 import Loader from "../Loader"
 import { ImPlus } from 'react-icons/im'
 import { HiOutlineEllipsisHorizontal } from 'react-icons/hi2'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { useNavigate } from "react-router-dom";
 import { UserInterface } from '../../Types/UserTypes'
+import { useState } from "react"
+import { useUserDetails } from "../../Functions/useUserDetails"
 
 export default function DashboardBody() {
 
     const { currentUser } = useGeneralAppContext()
     const name = currentUser?.displayName?.split(' ')[0] || 'User'
     const navigateTo = useNavigate()
+    const queryClient = useQueryClient()
+    const [loading, setLoading] = useState(false)
+    const { userDispatch } = useUserDetails()
 
     async function fetchResumes() {
         const firebaseUid = currentUser?.uid;
@@ -22,9 +27,15 @@ export default function DashboardBody() {
         return resumesInfo.data.message.reverse() as UserInterface[]
     }
 
+    console.log(loading)
+    
     const { data, isLoading, error } = useQuery('resumes', fetchResumes)
 
     function createNewResume() {
+
+        userDispatch({
+            type: 'setNewResume'
+        })
         navigateTo('/templates')
     }
 
@@ -56,15 +67,21 @@ export default function DashboardBody() {
         }
     }
 
-    async function findResumeImage(objectId: string) {
+    console.log(data)
+
+    const deleteResume = useMutation(async (objectId: string) => {
+        setLoading(true)
         try {
-            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}image/find-image/${objectId}`);
-            return response.data.message[0].imagePath as string;
+            await axios.delete(`${import.meta.env.VITE_SERVER_URL}userResume/resume/${objectId}`);
         } catch (error) {
-            console.log(error);
-            throw error; // Optionally rethrow the error to propagate it further.
+            // Handle the error, e.g., show a notification or log it
+            console.error('Error deleting resume:', error);
+        } finally {
+            // Whether there's an error or not, invalidate the query
+            queryClient.invalidateQueries('resumes');
+            setLoading(false)
         }
-    }
+    });
 
 
     return (
@@ -82,7 +99,7 @@ export default function DashboardBody() {
                                 {data && data?.length > 0 ?
                                     <div className="grid grid-cols-2 gap-4 lg:gap-6 md:grid-cols-3 lg:grid-cols-5">
                                         {data.map((item) => {
-                                            findResumeImage(item.objectId)
+
                                             return (
                                                 <div key={item.id} className="flex flex-col gap-4">
                                                     <div className="bg-[#9d9d9d] min-h-[200px] md:min-h-[300px] shadow-md">
@@ -98,7 +115,7 @@ export default function DashboardBody() {
                                                         </div>
                                                         <div className="flex items-center justify-between">
                                                             <p className="text-xs text-[#9d9d9d]">{timeAgo(item.updatedAt)}</p>
-                                                            <i className="text-[#ff3d00] cursor-pointer"><RiDeleteBinLine /></i>
+                                                            <i className="text-[#ff3d00] cursor-pointer" onClick={() => { deleteResume.mutate(item.objectId) }}><RiDeleteBinLine /></i>
                                                         </div>
                                                     </div>
                                                 </div>
