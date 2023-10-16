@@ -19,7 +19,8 @@ exports.create = async (req, res) => {
     professionalSummary,
     resumeName,
     objectId,
-    imageUrl
+    imageUrl,
+    templateInfo,
   } = req.body;
 
   const userExists = await User.find({ objectId: objectId });
@@ -41,11 +42,40 @@ exports.create = async (req, res) => {
       professionalSummary,
       resumeName,
       objectId,
-      imageUrl
+      imageUrl,
+      templateInfo,
     });
     res.json({ msg: `User ${firstName} successfully created` });
   } else {
-    res.json({ message: "Resume already exists on database" });
+    const updatedItem = await User.updateOne(
+      { objectId: objectId },
+      {
+        $set: {
+          firebaseUid,
+          firstName,
+          lastName,
+          profession,
+          workHistory,
+          skills,
+          languages,
+          education,
+          country,
+          state,
+          phoneNumber,
+          email,
+          professionalSummary,
+          resumeName,
+          imageUrl,
+          templateInfo,
+        },
+      }
+    );
+
+    if (updatedItem.nModified === 0) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
+    return res.json({ message: "Updated Resume" });
   }
 };
 
@@ -70,19 +100,19 @@ exports.update = (req, res) => {};
 
 // Delete a User with the specified id in the request
 exports.delete = async (req, res) => {
-  const { objectId } = req.params
-  console.log(objectId)
+  const { objectId } = req.params;
+  console.log(objectId);
   try {
     // Use Mongoose to find and delete the item by the customId
     const deletedItem = await User.findOneAndRemove({ objectId });
-  
+
     if (deletedItem) {
-      res.status(200).json({ message: 'Item deleted successfully' });
+      res.status(200).json({ message: "Item deleted successfully" });
     } else {
-      res.status(404).json({ message: 'Item not found' });
+      res.status(404).json({ message: "Item not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 

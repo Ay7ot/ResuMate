@@ -12,7 +12,7 @@ import * as htmlToImage from 'html-to-image';
 
 export default function TemplateStyles({ template }: { template: string }) {
 
-  const { itemRef, resumeFont, dispatch } = useGeneralAppContext();
+  const { itemRef, resumeFont, dispatch, resumeTemplates } = useGeneralAppContext();
   const { currentUser } = useGeneralAppContext()
   const [loading, setLoading] = useState(false)
   const [colors, setColors] = useState<color[]>([])
@@ -51,6 +51,8 @@ export default function TemplateStyles({ template }: { template: string }) {
   }, [colorDispatch, template, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin])
 
   async function sendUserDetailstoServer(imageUrl: string) {
+    const selectedTemplate = resumeTemplates.find((resume) => { return resume.isSelected === true })?.name || ''
+
     const data = {
       "resumeName": resumeName,
       "firebaseUid": currentUser?.uid,
@@ -77,7 +79,12 @@ export default function TemplateStyles({ template }: { template: string }) {
         }
       }),
       'objectId': objectId,
-      'imageUrl': imageUrl
+      'imageUrl': imageUrl,
+      'templateInfo': {
+        color: currentColor.color,
+        font: resumeFont,
+        template: selectedTemplate
+      }
     }
 
     try {
@@ -105,7 +112,6 @@ export default function TemplateStyles({ template }: { template: string }) {
 
       await htmlToImage.toJpeg(toDownload, { quality: 0.1 })
         .then(function (dataUrl) {
-          console.log(dataUrl)
           sendUserDetailstoServer(dataUrl);
         })
         .catch(function (error) {

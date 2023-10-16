@@ -30,6 +30,11 @@ export interface UserInterface extends Omit<UserDetailContextType, 'userDispatch
     updatedAt: string;
     id: string;
     imageUrl: string;
+    templateInfo: {
+        template: string;
+        color: string;
+        font: string;
+    }
 }
 
 export type jobInformation = {
@@ -77,5 +82,6 @@ export type userActionType = {
         languagesPayload?: {language: string, id: string, isShowing: boolean}[];
         workHistoryPayload?: jobInformation[];
         educationPayload?: school[];
+        objectIdPayload?: string;
     }
 }

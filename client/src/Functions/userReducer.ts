@@ -68,6 +68,11 @@ export function userReducer(state: UserDetailContextType, action: userActionType
                 ...state,
                 languages: action.payload?.languagesPayload ?? []
             }
+        case 'setObjectId':
+            return {
+                ...state,
+                objectId: action.payload?.objectIdPayload ?? ''
+            }
         case 'setNewResume':
             return {
                 ...state,

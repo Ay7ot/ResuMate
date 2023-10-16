@@ -19,33 +19,33 @@ export default function EditTemplate() {
   const template = location.state
   const { darkTheme } = useGeneralAppContext()
 
-  useEffect(()=>{
+  useEffect(() => {
     window.screenTop
-  },[])
+  }, [])
 
   return (
     <div className={`${darkTheme ? 'bg-[#121212]' : 'bg-[#ffffff]'} flex lg:w-screen h-[100dvh] relative overflow-x-hidden`}>
       <div className='relative pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
         <TemplateDetails />
         <div className='right-10 fixed bottom-3 lg:hidden flex items-center'>
-          <PreviewButton template={template.name}/>
+          <PreviewButton template={template.name || template.templateInfo.template} />
         </div>
       </div>
       <div className={`hidden lg:block ${darkTheme ? 'bg-[#1a1a1a]' : 'bg-[#fafafa]'} h-[100dvh]`}>
         <div className='chosenTemplate shadow-lg w-[595px] mt-[-8rem] mb-[-10rem]'>
           {
-            template.name === 'Istanbul' ? <Istanbul /> 
-            :template.name === 'Porto' ? <Porto />
-            :template.name === 'Lisbon' ? <Lisbon />
-            :template.name === 'Madrid' ? <Madrid />
-            :template.name === 'Kyiv' ? <Kyiv />
-            :template.name === 'Milan' ? <Milan />
-            :template.name === 'Cardiff' ? <Cardiff />
-            :template.name === 'Berlin' ? <Berlin />
-            : <Istanbul />
+            template.name === 'Istanbul' || (template.templateInfo && template.templateInfo.template === 'Istanbul') ? <Istanbul />
+              : template.name === 'Porto' || (template.templateInfo && template.templateInfo.template === 'Porto') ? <Porto />
+                : template.name === 'Lisbon' || (template.templateInfo && template.templateInfo.template === 'Lisbon') ? <Lisbon />
+                  : template.name === 'Madrid' || (template.templateInfo && template.templateInfo.template === 'Madrid') ? <Madrid />
+                    : template.name === 'Kyiv' || (template.templateInfo && template.templateInfo.template === 'Kyiv') ? <Kyiv />
+                      : template.name === 'Milan' || (template.templateInfo && template.templateInfo.template === 'Milan') ? <Milan />
+                        : template.name === 'Cardiff' || (template.templateInfo && template.templateInfo.template === 'Cardiff') ? <Cardiff />
+                          : template.name === 'Berlin' || (template.templateInfo && template.templateInfo.template === 'Berlin') ? <Berlin />
+                            : <Istanbul />
           }
         </div>
-        <TemplateStyles template={template.name}/>
+        <TemplateStyles template={template.name || template.templateInfo.template} />
       </div>
     </div>
   )

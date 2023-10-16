@@ -60,7 +60,12 @@ module.exports = mongoose => {
       skills: [skillsSchema],
       languages: [languageSchema],
       objectId: String,
-      imageUrl: String
+      imageUrl: String,
+      templateInfo: {
+        template: String,
+        color: String,
+        font: String
+      }
     },
     { timestamps: true }
   );

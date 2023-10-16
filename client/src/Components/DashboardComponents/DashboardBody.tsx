@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { UserInterface } from '../../Types/UserTypes'
 import { useState } from "react"
 import { useUserDetails } from "../../Functions/useUserDetails"
+import { useColorContext } from "../../Functions/useColorContext"
+import { nanoid } from "nanoid"
+import { color } from "../../Types/ColorTypes"
 
 export default function DashboardBody() {
 
@@ -18,6 +21,8 @@ export default function DashboardBody() {
     const queryClient = useQueryClient()
     const [loading, setLoading] = useState(false)
     const { userDispatch } = useUserDetails()
+    const { colorDispatch, currentColor, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
+
 
     async function fetchResumes() {
         const firebaseUid = currentUser?.uid;
@@ -27,8 +32,6 @@ export default function DashboardBody() {
         return resumesInfo.data.message.reverse() as UserInterface[]
     }
 
-    console.log(loading)
-    
     const { data, isLoading, error } = useQuery('resumes', fetchResumes)
 
     function createNewResume() {
@@ -67,8 +70,6 @@ export default function DashboardBody() {
         }
     }
 
-    console.log(data)
-
     const deleteResume = useMutation(async (objectId: string) => {
         setLoading(true)
         try {
@@ -83,9 +84,144 @@ export default function DashboardBody() {
         }
     });
 
+    function editResume(state: UserInterface) {
+        navigateTo('/edit-template', { state })
+        userDispatch({
+            type: 'setResumeName',
+            payload: {
+                resumeNamePayload: state.resumeName
+            }
+        })
+        userDispatch({
+            type: 'setFirstName',
+            payload: {
+                firstNamePayload: state.firstName
+            }
+        })
+        userDispatch({
+            type: 'setLastName',
+            payload: {
+                lastNamePayload: state.lastName
+            }
+        })
+        userDispatch({
+            type: 'setProfession',
+            payload: {
+                professionPayload: state.profession
+            }
+        })
+        userDispatch({
+            type: 'setPhone',
+            payload: {
+                phoneNumberPayload: state.phoneNumber
+            }
+        })
+        userDispatch({
+            type: 'setEmail',
+            payload: {
+                emailPayload: state.email
+            }
+        })
+        userDispatch({
+            type: 'setCountry',
+            payload: {
+                countryPayload: state.country
+            }
+        })
+        userDispatch({
+            type: 'setState',
+            payload: {
+                statePayload: state.state
+            }
+        })
+        userDispatch({
+            type: 'setProfessionalSummary',
+            payload: {
+                professionalSummaryPayload: state.professionalSummary
+            }
+        })
+        userDispatch({
+            type: 'setWorkHistory',
+            payload: {
+                workHistoryPayload: state.workHistory
+            }
+        })
+        userDispatch({
+            type: 'setEducation',
+            payload: {
+                educationPayload: state.education
+            }
+        })
+        userDispatch({
+            type: 'setSkills',
+            payload: {
+                skillsPayload: state.skills
+            }
+        })
+        userDispatch({
+            type: 'setLanguages',
+            payload: {
+                languagesPayload: state.languages
+            }
+        })
+        userDispatch({
+            type: 'setObjectId',
+            payload: {
+                objectIdPayload: state.objectId
+            }
+        })
+
+        const templates: { [key: string]: color[] } = {
+            Istanbul,
+            Porto,
+            Lisbon,
+            Madrid,
+            Kyiv,
+            Cardiff,
+            Milan,
+            Berlin,
+        };
+
+        if (state.templateInfo.template in templates) {
+            // console.log(templates[state.templateInfo.template])
+            const cityKey = `set${state.templateInfo.template}Colors`;
+            const payloadKey = `${state.templateInfo.template.toLowerCase()}Payload`;
+            const templates: { [key: string]: color[] } = {
+                Istanbul,
+                Porto,
+                Lisbon,
+                Madrid,
+                Kyiv,
+                Cardiff,
+                Milan,
+                Berlin,
+            };
+
+            const updatedColors = templates[state.templateInfo.template].map(cityColors => {
+                if (cityColors.color === state.templateInfo.color) {
+                    return {
+                        ...cityColors,
+                        isActive: true
+                    }
+                } else return {
+                    ...cityColors,
+                    isActive: false
+                }
+            });
+
+            const payload = {
+                [payloadKey]: updatedColors,
+            };
+
+            colorDispatch({
+                type: cityKey,
+                payload,
+            });
+        }
+    }
 
     return (
-        <section className=" w-full py-6 md:pt-16 px-8 md:px-[3rem] lg:px-[6rem]">
+        <section className=" w-full py-6 md:pt-10 px-8 md:px-[3rem] lg:px-[6rem]">
             <div className=" border-b-[1px] py-4">
                 <h2 className="text-[#121212] text-[1.5rem] font-medium leading-[3rem] md:text-[2rem]">{`Hello ${name}`}</h2>
                 <p className="text-[#9d9d9d] leading-6">Create your Resume</p>
@@ -97,18 +233,18 @@ export default function DashboardBody() {
                         error ? <h4>There was an error fetching your resume</h4> :
                             <div className="w-full mt-4">
                                 {data && data?.length > 0 ?
-                                    <div className="grid grid-cols-2 gap-4 lg:gap-6 md:grid-cols-3 lg:grid-cols-5">
+                                    <div className="grid grid-cols-1 min-[300px]:grid-cols-2 gap-4 lg:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                                         {data.map((item) => {
 
                                             return (
                                                 <div key={item.id} className="flex flex-col gap-4">
-                                                    <div className="bg-[#9d9d9d] min-h-[200px] md:min-h-[300px] shadow-md">
+                                                    <div onClick={() => editResume(item)} className="bg-[#9d9d9d] h-[250px] md:h-[300px] max-w-[200px] shadow-md">
                                                         <img
                                                             className='h-full w-full'
                                                             src={item.imageUrl}
                                                         />
                                                     </div>
-                                                    <div className="flex flex-col gap-2">
+                                                    <div className="flex flex-col gap-2 max-w-[200px]">
                                                         <div className="flex items-center justify-between">
                                                             <p>{item.resumeName}</p>
                                                             <i className="text-[1.2rem] cursor-pointer"><HiOutlineEllipsisHorizontal /></i>
