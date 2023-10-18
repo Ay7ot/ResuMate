@@ -88,7 +88,7 @@ export default function TemplateStyles({ template }: { template: string }) {
     }
 
     try {
-      await axios.post('http://localhost:3000/userResume/resume', data)
+      await axios.post(`${import.meta.env.VITE_SERVER_URL}userResume/resume`, data)
     } catch (err) {
       console.error(err)
     }

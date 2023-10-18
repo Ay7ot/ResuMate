@@ -19,27 +19,12 @@ export default function GoogleButton({ buttonName }: { buttonName: string }) {
 
     async function signInWithGoogle() {
         setIsLoading(true)
-        // await signInWithPopup(auth, provider)
-        // .then(data=>{
-
-        //     dispatch({
-        //         type: 'setCurrentUser',
-        //         payload: {
-        //             currentUserPayload: data.user
-        //         }
-        //     })
-        //     navigateTo('/templates')
-        // })
-        // .catch(error=>{
-        //     console.log(error)
-        // })
-        // setIsLoading(false)
         try {
             const userCredential = await signInWithPopup(auth, provider)
 
             const idToken = await getIdToken(userCredential.user);
 
-            await axios.post('http://localhost:3000/user/createUser', userCredential, {
+            await axios.post(`${import.meta.env.VITE_SERVER_URL}user/createUser`, userCredential, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${idToken}`,

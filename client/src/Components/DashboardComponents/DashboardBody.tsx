@@ -10,7 +10,6 @@ import { UserInterface } from '../../Types/UserTypes'
 import { useState } from "react"
 import { useUserDetails } from "../../Functions/useUserDetails"
 import { useColorContext } from "../../Functions/useColorContext"
-import { nanoid } from "nanoid"
 import { color } from "../../Types/ColorTypes"
 
 export default function DashboardBody() {
@@ -21,8 +20,9 @@ export default function DashboardBody() {
     const queryClient = useQueryClient()
     const [loading, setLoading] = useState(false)
     const { userDispatch } = useUserDetails()
-    const { colorDispatch, currentColor, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
+    const { colorDispatch, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
 
+    console.log(loading)
 
     async function fetchResumes() {
         const firebaseUid = currentUser?.uid;
@@ -84,6 +84,7 @@ export default function DashboardBody() {
         }
     });
 
+    //Start function to redirect to the edit-template Page with the needed details
     function editResume(state: UserInterface) {
         navigateTo('/edit-template', { state })
         userDispatch({
@@ -219,6 +220,8 @@ export default function DashboardBody() {
             });
         }
     }
+    //End Redirect Function
+    console.log(isLoading)
 
     return (
         <section className=" w-full py-6 md:pt-10 px-8 md:px-[3rem] lg:px-[6rem]">
@@ -238,14 +241,14 @@ export default function DashboardBody() {
 
                                             return (
                                                 <div key={item.id} className="flex flex-col gap-4">
-                                                    <div onClick={() => editResume(item)} className="bg-[#9d9d9d] h-[250px] md:h-[300px] max-w-[200px] shadow-md">
+                                                    <div onClick={() => editResume(item)} className="bg-[#9d9d9d] h-[250px] md:h-[300px] max-w-[200px] shadow-md cursor-pointer">
                                                         <img
                                                             className='h-full w-full'
                                                             src={item.imageUrl}
                                                         />
                                                     </div>
                                                     <div className="flex flex-col gap-2 max-w-[200px]">
-                                                        <div className="flex items-center justify-between">
+                                                        <div className="flex items-center justify-between relative">
                                                             <p>{item.resumeName}</p>
                                                             <i className="text-[1.2rem] cursor-pointer"><HiOutlineEllipsisHorizontal /></i>
                                                         </div>
@@ -258,8 +261,8 @@ export default function DashboardBody() {
                                             )
                                         })}
                                     </div> :
-                                    <div className=" h-[50vh] md:h-[40vh] w-full md:w-[50%] lg:w-[20%] flex flex-col gap-4">
-                                        <div onClick={createNewResume} className='bg-[#e7e3e3de] p-6 w-full h-full flex items-center justify-center'>
+                                    <div className="h-[40vh] w-full md:w-[50%] lg:w-[20%] flex flex-col gap-4">
+                                        <div onClick={createNewResume} className='bg-[#e7e3e3de] p-6 max-w-[200px] h-full flex items-center justify-center'>
                                             <i className='text-[6rem] text-[#19265751]'><ImPlus /></i>
                                         </div>
                                         <p className="font-medium text-[#192657]">Create New Resume</p>

@@ -12,6 +12,7 @@ import Berlin from "./TemplateItems/Berlin"
 import PreviewButton from "./PreviewButton"
 import { useEffect } from "react"
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext"
+// import SaveModal from "./SaveModal"
 
 export default function EditTemplate() {
 
@@ -19,13 +20,15 @@ export default function EditTemplate() {
   const template = location.state
   const { darkTheme } = useGeneralAppContext()
 
+  console.log(template)
+
   useEffect(() => {
     window.screenTop
   }, [])
 
   return (
-    <div className={`${darkTheme ? 'bg-[#121212]' : 'bg-[#ffffff]'} flex lg:w-screen h-[100dvh] relative overflow-x-hidden`}>
-      <div className='relative pt-16 w-full px-6 py-6 md:px-10 overflow-y-scroll'>
+    <div className={`${darkTheme ? 'bg-[#121212]' : 'bg-[#ffffff]'} flex items-center justify-center lg:w-screen h-[100dvh] overflow-y-hidden relative overflow-x-hidden`}>
+      <div className='relative pt-16 w-full px-6 py-6 md:px-10 h-screen overflow-y-scroll'>
         <TemplateDetails />
         <div className='right-10 fixed bottom-3 lg:hidden flex items-center'>
           <PreviewButton template={template.name || template.templateInfo.template} />
@@ -47,6 +50,9 @@ export default function EditTemplate() {
         </div>
         <TemplateStyles template={template.name || template.templateInfo.template} />
       </div>
+      {/* <div className="absolute">
+        <SaveModal />
+      </div> */}
     </div>
   )
 }

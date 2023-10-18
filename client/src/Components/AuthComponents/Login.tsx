@@ -3,12 +3,13 @@ import { CgDanger } from 'react-icons/cg'
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {  signInWithEmailAndPassword } from "firebase/auth";
+import {  getIdToken, signInWithEmailAndPassword } from "firebase/auth";
 // import {  getIdToken } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useAuthContext } from "../../Functions/useAuthContext";
 import GoogleButton from "./GoogleButton";
 import Loader from "../Loader";
+import axios from "axios";
 // import axios from 'axios';
 
 export default function Login() {
@@ -93,15 +94,15 @@ export default function Login() {
               const userCredential = await signInWithEmailAndPassword(auth, userEmail, userPassword);
       
               // Get the Firebase ID token
-            //   const idToken = await getIdToken(userCredential.user);
+              const idToken = await getIdToken(userCredential.user);
       
               // Now you have the actual ID token, so you can use it in your Axios request
-                // await axios.post('http://localhost:3000/user/createUser', userCredential, {
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //         'Authorization': `${idToken}`,
-                //     }
-                // });
+                await axios.post(`${import.meta.env.VITE_SERVER_URL}user/createUser`, userCredential, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `${idToken}`,
+                    }
+                });
               
               dispatch({
                 type: 'setCurrentUser',
