@@ -78,8 +78,9 @@ export default function NavDashboard() {
                     <i className="mt-4"><BsChevronDown /></i>
                 </div>
                 {showLogout &&
-                    <div ref={navref} className="absolute bg-[#f4f5fd] shadow-md rounded-md p-2 right-0 top-16 w-[200px] flex flex-col gap-4">
+                    <div ref={navref} className="absolute bg-[#f4f5fd] shadow-md rounded-md p-4 right-0 top-16 w-[220px] flex flex-col items-start gap-4">
                         <button onClick={createNewResume} className={`text-[#192657] font-medium duration-300 ease-in transition-colors md:hidden`}>Create a new template</button>
+                        <hr className="w-full bg-[#000000] md:hidden"/>
                         <button onClick={logout} className="text-[#192657] font-medium">Logout</button>
                     </div>
                 }

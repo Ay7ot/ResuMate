@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useGeneralAppContext } from "../../Functions/useGeneralAppContext"
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import Loader from "../Loader"
 import { ImPlus } from 'react-icons/im'
 import { HiOutlineEllipsisHorizontal } from 'react-icons/hi2'
 import { RiDeleteBinLine } from 'react-icons/ri'
@@ -11,6 +10,7 @@ import { useState } from "react"
 import { useUserDetails } from "../../Functions/useUserDetails"
 import { useColorContext } from "../../Functions/useColorContext"
 import { color } from "../../Types/ColorTypes"
+import MainLoader from "../TemplateComponents/MainLoader"
 
 export default function DashboardBody() {
 
@@ -22,17 +22,22 @@ export default function DashboardBody() {
     const { userDispatch } = useUserDetails()
     const { colorDispatch, Istanbul, Porto, Lisbon, Madrid, Kyiv, Cardiff, Milan, Berlin } = useColorContext()
 
-    console.log(loading)
-
     async function fetchResumes() {
         const firebaseUid = currentUser?.uid;
-        const resumesInfo = await axios.get(`${import.meta.env.VITE_SERVER_URL}userResume/resume`, {
-            params: { firebaseUid } // Send firebaseUid as a query parameter
-        })
-        return resumesInfo.data.message.reverse() as UserInterface[]
+        setLoading(true)
+        try {
+            const resumesInfo = await axios.get(`${import.meta.env.VITE_SERVER_URL}userResume/resume`, {
+                params: { firebaseUid } // Send firebaseUid as a query parameter
+            })
+            return resumesInfo.data.message.reverse() as UserInterface[]
+        } catch (error) {
+            console.error(error)
+        } finally {
+            setLoading(false)
+        }
     }
 
-    const { data, isLoading, error } = useQuery('resumes', fetchResumes)
+    const { data, error } = useQuery('resumes', fetchResumes)
 
     function createNewResume() {
 
@@ -220,8 +225,6 @@ export default function DashboardBody() {
             });
         }
     }
-    //End Redirect Function
-    console.log(isLoading)
 
     return (
         <section className=" w-full py-6 md:pt-10 px-8 md:px-[3rem] lg:px-[6rem]">
@@ -232,7 +235,7 @@ export default function DashboardBody() {
             <div className="mt-8">
                 <h3 className="text-[121212] font-medium leading-8">My Resumes</h3>
                 <div className='flex'>
-                    {isLoading ? <Loader /> :
+                    {loading ? <div className="flex flex-grow items-center justify-center"><MainLoader /></div> :
                         error ? <h4>There was an error fetching your resume</h4> :
                             <div className="w-full mt-4">
                                 {data && data?.length > 0 ?
